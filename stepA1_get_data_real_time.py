@@ -1,9 +1,10 @@
 import pandas as pd
+from pathlib import Path
 
 
 def stepA1_get_data_real_time(
     series_id: str = "CBBTCUSD",
-    output_excel: str = "btc_price_fred.xlsx",
+    output_excel: str = "data/btc_price_fred.xlsx",
 ) -> None:
     """
     Download latest BTC price data from FRED (Coinbase Bitcoin series)
@@ -14,7 +15,7 @@ def stepA1_get_data_real_time(
     series_id : str
         FRED series ID. Default is "CBBTCUSD" (Coinbase Bitcoin, USD).
     output_excel : str
-        Path for the output Excel file.
+        Path for the output Excel file (default: data/btc_price_fred.xlsx).
     """
     # FRED CSV endpoint for a given series
     csv_url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
@@ -22,17 +23,19 @@ def stepA1_get_data_real_time(
     # Read CSV directly from FRED
     df = pd.read_csv(csv_url)
 
-    # Save to Excel
-    df.to_excel(output_excel, index=False)
+    # Ensure data directory exists, then save to Excel
+    out_path = Path(output_excel)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_excel(out_path, index=False)
 
-    # Print latest data row as a simple sanity check
+    # Print latest data row (use actual column names from FRED CSV)
     latest = df.iloc[-1]
-    date_col = "DATE"
-    value_col = series_id
+    date_col = df.columns[0]
+    value_col = df.columns[1] if len(df.columns) > 1 else df.columns[0]
 
-    print(f"最新日期: {latest[date_col]}")
-    print(f"最新价格 ({series_id}): {latest[value_col]}")
-    print(f"数据已保存到: {output_excel}")
+    print(f"Latest date: {latest[date_col]}")
+    print(f"Latest price ({value_col}): {latest[value_col]}")
+    print(f"Saved to: {output_excel}")
 
 
 if __name__ == "__main__":
