@@ -1,0 +1,23 @@
+=== BTC Merged Daily Data Summary ===
+Generated: 2026-03-02
+Date range: 2014-12-01 ~ 2026-03-01
+Total days: 4109
+Price range: $120.00 ~ $124720.09
+
+Source priority: btc_price_fred > btc_2025 > btc_2021 > btc_2015
+Missing days filled with previous day's price.
+
+By year:
+  2014: 31 days, $340 ~ $378
+  2015: 365 days, $120 ~ $464
+  2016: 366 days, $358 ~ $982
+  2017: 365 days, $796 ~ $19650
+  2018: 365 days, $3183 ~ $17099
+  2019: 365 days, $3359 ~ $12903
+  2020: 366 days, $4980 ~ $29027
+  2021: 365 days, $29391 ~ $67510
+  2022: 365 days, $15756 ~ $47749
+  2023: 365 days, $16615 ~ $44224
+  2024: 366 days, $39548 ~ $106137
+  2025: 365 days, $76252 ~ $124720
+  2026: 60 days, $63846 ~ $96853
