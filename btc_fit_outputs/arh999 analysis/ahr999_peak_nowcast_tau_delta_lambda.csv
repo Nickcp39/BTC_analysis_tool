@@ -1,0 +1,8 @@
+﻿param,value
+tau,1.04
+delta,-0.08
+lambda,0.8500000000000001
+rmse_log2_weighted,0.3828465129719389
+T25_days,558.1730769230769
+pred_peak_date,2025-10-30
+pred_peak_AHR,8.035095259345242

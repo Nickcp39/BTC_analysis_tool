@@ -1,0 +1,10 @@
+[AHR999 Time-warp 拟合]
+窗口：2024-06-01 → 2025-08-15，峰后 60 天；平滑=7
+权重：tau=60；γ∈[0.75,1.3]×56；预/后单独scale=True
+
+2021: gamma=1.0000, a_pre=0.2496, rmse(pre)=8.041, a_post=0.3750
+2017: gamma=0.7500, a_pre=0.1101, rmse(pre)=11.023, a_post=0.2617
+
+—— 与 2025 的相关/误差（% 单位）——
+2021_fit: r_pre=0.7186, rmse_pre=17.81 | r_post=0.7233, rmse_post=3.60
+2017_fit: r_pre=0.2320, rmse_pre=22.87 | r_post=0.8649, rmse_post=2.79

@@ -1,0 +1,12 @@
+﻿item,value
+M_window,303
+dtw_band,0.06
+peak_w_alpha,3.5
+vol_target_mult,1.35
+scale21_median,0.8160148286839701
+scale25_median,0.8805091947205501
+corr_21_vs_18,0.08715911344255754
+corr_25_vs_18,0.07498449336259075
+peak_used_2018,2018-01-13
+peak_used_2021,2021-11-10
+peak_used_2025,2025-08-22

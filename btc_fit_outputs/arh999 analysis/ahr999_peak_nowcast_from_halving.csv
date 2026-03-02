@@ -1,0 +1,14 @@
+﻿item,value
+D_ref(days),537.5
+best_tau(avg-shape),0.8125
+pred_peak_AHR(avg-shape),6.695800799277303
+pred_T25_days(avg-shape),661.5384615384615
+pred_peak_date(avg-shape),2026-02-10
+best_tau(2017),0.8125
+pred_peak_AHR(2017),16.22796928586516
+pred_T25_days(2017),661.5384615384615
+pred_peak_date(2017),2026-02-10
+best_tau(2021),0.7875
+pred_peak_AHR(2021),2.7527208552325497
+pred_T25_days(2021),682.5396825396825
+pred_peak_date(2021),2026-03-03

@@ -1,0 +1,10 @@
+﻿name,u_min,u_max,thr,weight,k_hat,f_hat,rmse_log2_weighted,rmse_log2_full,error
+uniform_full,0.0,1.0,,uniform,0.202567,0.869003,0.782994,0.782994,
+ahr_gt_1_full,0.0,1.0,1.0,uniform,0.578552,0.669635,0.818649,0.841025,
+ahr_weight_full,0.0,1.0,,ahr,0.696209,0.617192,1.054211,0.880644,
+u_0.7_1.0,0.7,1.0,,uniform,1.005441,0.498118,0.402817,1.17789,
+ahr_weight_tail,0.7,1.0,,ahr,1.227701,0.426997,0.576515,1.287745,
+u_0.7_1.0,0.7,1.0,,uniform,,,,,"tuple indices must be integers or slices, not str"
+ahr_gt_1_full,0.0,1.0,1.0,uniform,,,,,"tuple indices must be integers or slices, not str"
+ahr_weight_full,0.0,1.0,,ahr,,,,,"tuple indices must be integers or slices, not str"
+ahr_weight_tail,0.7,1.0,,ahr,,,,,"tuple indices must be integers or slices, not str"

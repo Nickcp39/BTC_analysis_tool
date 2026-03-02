@@ -1,0 +1,11 @@
+﻿param,value
+lambda,0.0
+dtw_dist,1e+18
+tail_slope,5.263157894459834e-11
+j_end,560
+remain_tpl,0
+days_to_peak,0.0
+pred_peak_date,2025-08-23
+a,-0.006565243291382991
+s,-0.012449053035692145
+ahr_peak_est,0.9793040723097268
