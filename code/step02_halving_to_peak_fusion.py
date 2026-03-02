@@ -25,19 +25,28 @@ PNG_DIR = OUTDIR / "png"
 F15 = DATA_DIR / "btc_2015.xlsx"
 F21 = DATA_DIR / "btc_2021.xlsx"
 FRED_2025 = DATA_DIR / "btc_price_fred.xlsx"
+HALVING_PEAK_DATES = DATA_DIR / "btc_halving_peak_dates.xlsx"
 
-# ========= 4 fusion 锚点（与 btc price predict 4 fusion model 一致）=========
-HALVINGS: List[date] = [
-    date(2012, 11, 28),
-    date(2016, 7, 9),
-    date(2020, 5, 11),
-    date(2024, 4, 20),
-]
-TOPS: List[date] = [
-    date(2013, 11, 29),
-    date(2017, 12, 17),
-    date(2021, 11, 10),
-]
+# 4 fusion 锚点：优先从 data/btc_halving_peak_dates.xlsx 读取（含 2025 峰值）；若无则用下列默认
+def _load_halving_peak():
+    import sys
+    _code_dir = ROOT / "code"
+    if str(_code_dir) not in sys.path:
+        sys.path.insert(0, str(_code_dir))
+    try:
+        from load_halving_peak import load_halving_peak_dates
+        h, p = load_halving_peak_dates(HALVING_PEAK_DATES)
+        return h, p
+    except Exception:
+        return (
+            [date(2012, 11, 28), date(2016, 7, 9), date(2020, 5, 11), date(2024, 4, 20)],
+            [date(2013, 11, 29), date(2017, 12, 17), date(2021, 11, 10), date(2025, 8, 15)],
+        )
+
+_HALVINGS, _TOPS = _load_halving_peak()
+HALVINGS: List[date] = _HALVINGS
+TOPS: List[date] = _TOPS
+
 BOTTOMS: List[date] = [
     date(2015, 1, 14),
     date(2018, 12, 15),
@@ -72,8 +81,9 @@ class MultiModelTimeResult:
 
 
 def predict_peak_multi() -> MultiModelTimeResult:
-    """基线 + 修正A(回归) + 修正B(顶→顶)。"""
-    halving_to_top = [(TOPS[i] - HALVINGS[i]).days for i in range(len(TOPS))]
+    """基线 + 修正A(回归) + 修正B(顶→顶)。用前 3 个周期（TOPS 前 3 个）."""
+    tops_for_model = TOPS[:3]  # 2013, 2017, 2021
+    halving_to_top = [(tops_for_model[i] - HALVINGS[i]).days for i in range(len(tops_for_model))]
     base_days = int(round(median(halving_to_top)))
     base_date = HALVINGS[-1] + timedelta(days=base_days)
 
@@ -85,9 +95,9 @@ def predict_peak_multi() -> MultiModelTimeResult:
     regress_days = int(round(a * halving_intervals[-1] + b))
     regress_date = HALVINGS[-1] + timedelta(days=regress_days)
 
-    peak2peak = [(TOPS[i + 1] - TOPS[i]).days for i in range(len(TOPS) - 1)]
+    peak2peak = [(tops_for_model[i + 1] - tops_for_model[i]).days for i in range(len(tops_for_model) - 1)]
     avg_p2p = int(round(np.mean(peak2peak)))
-    peak2peak_date = TOPS[-1] + timedelta(days=avg_p2p)
+    peak2peak_date = tops_for_model[-1] + timedelta(days=avg_p2p)
     peak2peak_days = (peak2peak_date - HALVINGS[-1]).days
 
     lo = min(base_date, regress_date, peak2peak_date)
@@ -111,8 +121,9 @@ class TimeModelResult:
 
 
 def predict_peak_window_by_time(u_factor: float = 1.2, method: str = "regress") -> TimeModelResult:
-    """时间模型 A：减半→大顶 回归/中位数 + 不确定度窗口。"""
-    halving_to_top = np.array([(TOPS[i] - HALVINGS[i]).days for i in range(len(TOPS))], dtype=float)
+    """时间模型 A：减半→大顶 回归/中位数 + 不确定度窗口。用前 3 个周期。"""
+    tops_for_model = TOPS[:3]
+    halving_to_top = np.array([(tops_for_model[i] - HALVINGS[i]).days for i in range(len(tops_for_model))], dtype=float)
     halving_intervals = np.array(
         [(HALVINGS[i + 1] - HALVINGS[i]).days for i in range(len(HALVINGS) - 1)], dtype=float
     )
@@ -266,13 +277,15 @@ def main():
     except Exception:
         pass
 
-    # ---------- 1) 多模型时间预测 → 2025 峰值锚点 ----------
+    # ---------- 1) 多模型时间预测（仅用于摘要）；2025 画图锚点取自 data 表 ----------
     multi = predict_peak_multi()
     time_res = predict_peak_window_by_time(u_factor=1.2, method="regress")
-    PEAK_2025_DATE = fusion_time_center(multi, weights=(1.0, 1.3, 1.1))
+    fusion_center = fusion_time_center(multi, weights=(1.0, 1.3, 1.1))
+    # 画图与对齐用 data/btc_halving_peak_dates.xlsx 中的 2025 峰值（当前为 8 月 15 日）
+    PEAK_2025_DATE = TOPS[-1] if len(TOPS) > 3 else fusion_center
     PEAK_2025 = pd.Timestamp(PEAK_2025_DATE)
 
-    # ---------- 2) 读价格、对齐（2025 用融合锚点）----------
+    # ---------- 2) 读价格、对齐（2025 用 data 表锚点）----------
     s15 = to_daily(read_two_col_excel(F15))
     s21 = to_daily(read_two_col_excel(F21))
     s25 = to_daily(read_fred_excel(FRED_2025))
@@ -331,7 +344,8 @@ def main():
         f.write(f"综合预测窗口       : {multi.window[0]} → {multi.window[1]}\n")
         f.write(f"时间模型A 相关系数 r: {time_res.corr_halving_vs_delay:.3f}\n")
         f.write(f"时间模型A 窗口     : {time_res.window_lo} → {time_res.window_hi}\n")
-        f.write(f"融合时间中心（用作 2025 锚点）: {PEAK_2025_DATE}\n")
+        f.write(f"融合时间中心（仅参考）: {fusion_center}\n")
+        f.write(f"画图用 2025 锚点（取自 data 表）: {PEAK_2025_DATE}\n")
 
     merged = (
         pd.DataFrame({"dd_pct_2025": c25})
@@ -344,8 +358,8 @@ def main():
     merged.to_csv(OUTDIR / "halving_to_peak_aligned_fusion.csv", encoding="utf-8-sig")
 
     with open(OUTDIR / "halving_to_peak_metrics_fusion.txt", "w", encoding="utf-8") as f:
-        f.write(f"2025 峰值锚点（多模型融合）: {PEAK_2025_DATE}\n")
-        f.write(f"减半→峰值天数：2017={d_17}，2021={d_21}，2025(融合)={d_25}\n")
+        f.write(f"2025 峰值锚点（data 表）: {PEAK_2025_DATE}\n")
+        f.write(f"减半→峰值天数：2017={d_17}，2021={d_21}，2025(锚点)={d_25}\n")
         f.write(f"std(峰前)：2017={std17:.3f}，2021={std21:.3f}，2025={std25:.3f}\n")
         f.write(f"scale(method={SCALE_METHOD}, alpha={VOL_ALPHA}): 2017→25={scale17:.3f}，2021→25={scale21:.3f}\n\n")
         f.write("未缩放 r/RMSE（峰前 | 峰后）：\n")
@@ -355,11 +369,10 @@ def main():
         f.write(f"2021_scal: pre r={m21_scal[0]:.4f}, rmse={m21_scal[1]:.3f} | post r={m21_scal[2]:.4f}, rmse={m21_scal[3]:.3f}\n")
         f.write(f"2017_scal: pre r={m17_scal[0]:.4f}, rmse={m17_scal[1]:.3f} | post r={m17_scal[2]:.4f}, rmse={m17_scal[3]:.3f}\n")
 
-    # 图：标题注明 2025 锚点来自多模型融合
-    title_note = f"2025锚点={PEAK_2025_DATE}（多模型融合）"
+    title_note = f"2025锚点={PEAK_2025_DATE}（data表）"
 
     plt.figure(figsize=(12.5, 4.5))
-    plt.plot(c25.index, c25.values, label="2025（参考，融合锚点）")
+    plt.plot(c25.index, c25.values, label="2025（参考）")
     plt.plot(c21_s.index, c21_s.values, label=f"2021（缩放 ×{scale21:.2f}）")
     plt.plot(c17_s.index, c17_s.values, label=f"2017（缩放 ×{scale17:.2f}）")
     plt.axvline(0, linestyle="--")
@@ -368,11 +381,11 @@ def main():
     plt.title(f"减半→峰值对齐（含峰后）：波动退火后 | {title_note}")
     plt.legend()
     plt.tight_layout()
-    plt.savefig(PNG_DIR / "halving_to_peak_scaled_fusion.png", dpi=170)
+    plt.savefig(PNG_DIR / "step02_001_scaled.png", dpi=170)
     plt.close()
 
     plt.figure(figsize=(12.5, 4.5))
-    plt.plot(c25.index, c25.values, label="2025（原幅度，融合锚点）")
+    plt.plot(c25.index, c25.values, label="2025（原幅度）")
     plt.plot(c21.index, c21.values, label="2021（原幅度）")
     plt.plot(c17.index, c17.values, label="2017（原幅度）")
     plt.axvline(0, linestyle="--")
@@ -381,11 +394,11 @@ def main():
     plt.title(f"减半→峰值对齐（含峰后）：原始幅度 | {title_note}")
     plt.legend()
     plt.tight_layout()
-    plt.savefig(PNG_DIR / "halving_to_peak_unscaled_fusion.png", dpi=170)
+    plt.savefig(PNG_DIR / "step02_002_unscaled.png", dpi=170)
     plt.close()
 
-    print("Step02: time fusion + halving-to-peak plot")
-    print("Time fusion center (2025 peak anchor):", PEAK_2025_DATE)
+    print("Step02: halving-to-peak plot (2025 anchor from data)")
+    print("2025 peak anchor (plot):", PEAK_2025_DATE)
     print("Output dir:", OUTDIR.resolve())
     print("PNG dir:   ", PNG_DIR.resolve())
     print("Done.")
