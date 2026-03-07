@@ -17,7 +17,7 @@ CURRENT_DATE = date.today().strftime("%Y-%m-%d")
 OUTDIR = ROOT / "visualization" / CURRENT_DATE
 PNG_DIR = OUTDIR / "png"
 
-WINDOW_DAYS = 400      # 峰后只看前 400 天
+WINDOW_DAYS = 600      # 峰后只看前 600 天
 POST_GAMMA = 0.65      # 峰后相对于峰前的衰减系数（同一周期内 <1）
 
 MERGED_CSV = DATA_DIR / "btc_merged_daily.csv"

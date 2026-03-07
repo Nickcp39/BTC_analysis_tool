@@ -1,7 +1,7 @@
 """
 StepA3: 峰后时间轴使用原始天数（不缩放），但只展示峰后前 WINDOW_DAYS 天
 - 2017/2021/2025 峰后都用真实天数，截取 0~WINDOW_DAYS 区间
-- 方便对比各周期 peak 后前 400 天的走势
+- 默认看峰后前 600 天走势（可调 WINDOW_DAYS）
 """
 from __future__ import annotations
 from pathlib import Path
@@ -17,7 +17,7 @@ CURRENT_DATE = date.today().strftime("%Y-%m-%d")
 OUTDIR = ROOT / "visualization" / CURRENT_DATE
 PNG_DIR = OUTDIR / "png"
 
-WINDOW_DAYS = 400  # 峰后只看前 400 天
+WINDOW_DAYS = 600  # 峰后只看前 600 天
 EXTEND_DAYS = 0    # 不再额外延伸
 
 # 峰后缩放：以 2025 为基准（=1），只缩放 2017 / 2021
@@ -205,8 +205,9 @@ def main():
     x21 = p21_post.index.values
     x25 = p25_post.index.values
 
-    # x 轴范围：固定到 WINDOW_DAYS
+    # x 轴范围：左侧显示完整峰前，右侧固定到 WINDOW_DAYS
     x_max = WINDOW_DAYS
+    x_min = int(pre25.index.min()) - 20
 
     plt.figure(figsize=(16, 5.5))
 
@@ -236,7 +237,7 @@ def main():
     )
 
     plt.axvline(0, linestyle="--", color="gray", linewidth=1.2, zorder=1)
-    plt.xlim(left=pre25.index.min() - 20, right=x_max)
+    plt.xlim(left=x_min, right=x_max)
     plt.ylabel("相对峰顶涨跌（%）")
     plt.xlabel("左：峰前相对天数 | 右：峰后真实天数（仅前 %d 天，2025 基准=1）" % WINDOW_DAYS)
     plt.title(
@@ -252,9 +253,9 @@ def main():
 
     notes_path = OUTDIR / f"stepA3_notes_{run_ts}.txt"
     with open(notes_path, "w", encoding="utf-8") as f:
-        f.write("StepA3: 峰后使用原始天数（不缩放），仅展示前 %d 天\n" % WINDOW_DAYS)
+        f.write("StepA3: 峰前+峰后联合视图，峰后使用原始天数（不缩放），仅展示前 %d 天\n" % WINDOW_DAYS)
         f.write("峰后有效天数: 2017=%d, 2021=%d, 2025=%d\n" % (days_17, days_21, days_25))
-        f.write("x 轴范围: 0 ~ %d\n" % x_max)
+        f.write("x 轴范围: %d ~ %d（左侧为峰前负天数，右侧为峰后天数）\n" % (x_min, x_max))
         f.write("峰后缩放: POST_SCALE_ALPHA=%.2f, post_scale17=%.4f, post_scale21=%.4f\n" % (POST_SCALE_ALPHA, post_scale17, post_scale21))
 
     print("StepA3 done. Post-peak scaled with 2025 as baseline=1, first %d days" % WINDOW_DAYS)
