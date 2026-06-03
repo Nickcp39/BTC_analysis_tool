@@ -1,0 +1,37 @@
+{
+  "generated": "2026-06-01",
+  "model": "bottom_ratio_fusion_v1",
+  "data_range": [
+    "2014-12-01",
+    "2026-05-31"
+  ],
+  "latest": {
+    "date": "2026-05-31",
+    "price": 73688.35
+  },
+  "actual_2025_peak": {
+    "date": "2025-10-05",
+    "price": 124720.09,
+    "current_day_after_peak": 238,
+    "current_drawdown_pct": -40.91701665705981
+  },
+  "core_logic": [
+    "bottom/peak ratio is modeled in log space, analogous to prior peak multiplier ratio",
+    "historical log drawdown is compressed by sqrt(vol_2025 / vol_history)",
+    "bottom time fuses peak-to-bottom and bottom-to-next-halving clocks"
+  ],
+  "bottom_forecast": {
+    "center_date": "2026-10-30",
+    "date_p10": "2026-09-16",
+    "date_p25": "2026-10-03",
+    "date_p50": "2026-10-23",
+    "date_p75": "2026-11-18",
+    "date_p90": "2026-12-21",
+    "center_price": 57867.52828181057,
+    "price_p10": 42202.41769953243,
+    "price_p25": 47680.15486957874,
+    "price_p50": 55367.57740904165,
+    "price_p75": 65154.68284603975,
+    "price_p90": 77418.05047062291
+  }
+}

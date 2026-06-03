@@ -1,0 +1,45 @@
+{
+  "latest_date": "2026-05-31",
+  "latest_price": 73688.35,
+  "assumed_anchor_date": "2025-08-15",
+  "assumed_anchor_price": 117455.68,
+  "assumed_anchor_current_day": 289,
+  "assumed_anchor_current_drawdown_pct": -37.26284671801312,
+  "actual_peak_date": "2025-10-05",
+  "actual_peak_price": 124720.09,
+  "actual_peak_current_day": 238,
+  "actual_peak_current_drawdown_pct": -40.91701665705981,
+  "historical_bottoms": [
+    {
+      "cycle": "2017",
+      "peak_date": "2017-12-17",
+      "peak_price": 19378.99,
+      "bottom_date": "2018-12-15",
+      "days_peak_to_bottom": 363,
+      "bottom_drawdown_pct": -83.57499539449682,
+      "bottom_price": 3183.0
+    },
+    {
+      "cycle": "2021",
+      "peak_date": "2021-11-10",
+      "peak_price": 64896.86,
+      "bottom_date": "2022-11-21",
+      "days_peak_to_bottom": 376,
+      "bottom_drawdown_pct": -75.7218608111394,
+      "bottom_price": 15755.75
+    }
+  ],
+  "best_fit": {
+    "anchor": "2025_assumed_0815",
+    "history_cycle": "2021",
+    "variant": "manual_pre_scale_x_post_gamma",
+    "days_compared": 290,
+    "scale_used": 0.37527767497325676,
+    "corr": 0.8143476998995274,
+    "rmse_pct_points": 12.550978080552461,
+    "mae_pct_points": 10.952881545610378,
+    "pred_latest_dd_pct": -25.829304868023616,
+    "obs_latest_dd_pct": -37.26284671801312
+  },
+  "output_dir": "I:\\yc_research\\claude code\\BTC_analysis_tool\\analysis_runs\\2026-06-01_latest_recalc"
+}

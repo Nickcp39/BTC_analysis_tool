@@ -1,0 +1,6 @@
+name,bottom_price,sigma_pct,weight,note
+bottom_peak_log_ratio_trend,44757.07634274363,0.14,1.15,log(bottom/peak ratio) trend from 2017->2021 extrapolated one cycle
+bottom_to_bottom_log_trend,77990.46750314164,0.18,0.85,log(bottom price) trend from 2018->2022 extrapolated to next bottom
+sqrt_log_vol_annealed_mean,61691.15315075718,0.15,1.2,"historical log drawdown compressed by sqrt volatility scale, mean of 2017/2021"
+sqrt_log_vol_annealed_2021,55079.54696800269,0.13,1.1,2021-only sqrt-log replay; best shape match in prior diagnostics
+old_core_bottom_soft_anchor,49399.67857142858,0.16,0.75,"prior core artifact bottom ensemble, retained as soft anchor"

@@ -1,0 +1,39 @@
+{
+  "generated": "2026-06-01",
+  "model": "bottom_model_sqrt_log_v1",
+  "data_range": [
+    "2014-12-01",
+    "2026-05-31"
+  ],
+  "latest": {
+    "date": "2026-05-31",
+    "price": 73688.35
+  },
+  "actual_2025_peak": {
+    "date": "2025-10-05",
+    "price": 124720.09,
+    "current_day_after_peak": 238,
+    "current_log_drawdown": -0.5262272329353002,
+    "current_drawdown_pct": -40.91701665705981
+  },
+  "formula": "annealed_log_drawdown = log(historical_bottom / historical_peak) * sqrt(vol_2025 / vol_history)",
+  "vol_levels": {
+    "2017": 9.0,
+    "2021": 3.0,
+    "2025": 1.0
+  },
+  "bottom_forecast": {
+    "center_date": "2026-10-22",
+    "date_p10": "2026-09-10",
+    "date_p25": "2026-09-27",
+    "date_p50": "2026-10-16",
+    "date_p75": "2026-11-07",
+    "date_p90": "2026-12-08",
+    "center_price": 60385.182422424616,
+    "price_p10": 49007.240532675874,
+    "price_p25": 53670.14829163344,
+    "price_p50": 59487.49477293447,
+    "price_p75": 66109.72366881331,
+    "price_p90": 72811.61241590684
+  }
+}

@@ -1,0 +1,4 @@
+﻿model,center_date,lo,hi,weight,note
+T1_halving_to_peak_recent_mean,2029-09-30,2029-09-11,2029-10-28,1.15,"halving->peak days [528, 548, 533]"
+T2_top_to_top_clock,2029-08-29,2029-08-02,2029-10-04,1.05,"top->top days [1422, 1425]"
+T3_bottom_to_peak_clock,2029-09-11,2029-08-02,2029-10-26,0.9,"historical bottom->peak: 2018->2021=1061d, 2022->2025=1049d"

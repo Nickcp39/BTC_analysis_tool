@@ -1,0 +1,5 @@
+model,bottom_date,bottom_price,sigma_days,sigma_price_pct,weight,note
+peak_to_bottom_time_mean,2026-10-10,40074.15,20.5,0.14,1.25,"2017/2021 peak-to-bottom days, price uses contracting bottom/peak ratio trend"
+bottom_to_next_halving_regressed,2026-12-30,44270.64,43.02134998974974,0.15,0.75,"estimate next halving interval by regression; contributes late timing, price uses trend/core blended ratio"
+bottom_to_next_halving_conservative,2026-10-23,40074.15,33.02134998974974,0.14,0.9,assume next halving interval stays near 2020-2024 interval
+old_core_bottom_price_anchor,2026-10-16,49399.68,42.0,0.12,1.0,"reuse prior core product bottom ensemble as price anchor, updated with actual 2025 peak timing"

@@ -1,0 +1,6 @@
+model,bottom_date,bottom_price,sigma_days,sigma_price_pct,weight,note
+sqrt_log_replay_2017,2026-10-03,68302.76,24.0,0.16,0.7,"log(bottom/peak) from 2017 multiplied by sqrt(1/9), then replayed from 2025 peak"
+sqrt_log_replay_2021,2026-10-16,55079.55,24.0,0.14,1.25,"log(bottom/peak) from 2021 multiplied by sqrt(1/3), then replayed from 2025 peak"
+sqrt_log_blended_time,2026-10-10,61691.15,24.5,0.13,1.0,mean of sqrt-log replay prices with mean 2017/2021 peak-to-bottom time
+bottom_to_next_halving_conservative,2026-10-23,59223.51,37.02134998974974,0.15,0.8,"stable bottom-to-next-halving interval, using sqrt-log price anchor"
+bottom_to_next_halving_regressed,2026-12-30,56755.86,45.02134998974974,0.17,0.45,slower next halving regression; keeps late-date tail but lower weight

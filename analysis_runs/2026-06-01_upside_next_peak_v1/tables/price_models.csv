@@ -1,0 +1,5 @@
+﻿model,center_price,lo,hi,weight,note
+P1_log_gain_sqrt_vol,188055.72911046428,157966.81245278998,221905.76035034785,1.35,"log gain 2025=2.069, next sqrt scale=0.577"
+P2_peak_ratio_decay_soft,125765.01118242517,103127.30916958863,157206.26397803146,0.85,"peak ratios 2021/2017=3.64, 2025/2021=1.92"
+P3_bottom_network_growth,265864.1998945637,212691.35991565097,340306.17586504156,0.75,bottom-to-bottom growth attenuated by next volatility scale
+P4_log_gain_trend_floor,235551.01410724348,193151.83156793963,287372.237210837,1.05,"log gain decay ratio=0.686, floor=0.55"

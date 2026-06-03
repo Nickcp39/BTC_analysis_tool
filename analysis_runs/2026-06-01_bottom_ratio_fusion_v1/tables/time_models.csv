@@ -1,0 +1,5 @@
+name,bottom_date,sigma_days,weight,note
+peak_to_bottom_mean,2026-10-10,20.5,1.05,mean of 2017/2021 peak-to-bottom days
+peak_to_bottom_regression,2026-10-29,30.0,0.85,"linear extension of peak-to-bottom days, analogous to top timing regression"
+bottom_to_next_halving_stable,2026-10-23,33.02134998974974,1.0,bottom->next halving has been stable near 524 days
+bottom_to_next_halving_regressed,2026-12-30,45.02134998974974,0.45,late tail if next halving interval keeps lengthening

@@ -1,0 +1,39 @@
+{
+  "generated": "2026-06-01",
+  "data_file": "I:\\yc_research\\claude code\\BTC_analysis_tool\\data\\btc_merged_daily.csv",
+  "data_range": [
+    "2014-12-01",
+    "2026-05-31"
+  ],
+  "latest": {
+    "date": "2026-05-31",
+    "price": 73688.35
+  },
+  "actual_2025_peak": {
+    "date": "2025-10-05",
+    "price": 124720.09,
+    "current_day_after_peak": 238,
+    "current_drawdown_pct": -40.91701665705981
+  },
+  "next_halving_estimates": {
+    "regressed_interval_days": 1508.0,
+    "regressed_halving_date": "2028-06-06",
+    "conservative_halving_date": "2028-03-30",
+    "bottom_to_next_halving_days_mean": 523.6666666666666,
+    "bottom_to_next_halving_days_std": 13.02134998974974
+  },
+  "bottom_forecast": {
+    "center_date": "2026-10-30",
+    "date_p10": "2026-09-11",
+    "date_p25": "2026-09-30",
+    "date_p50": "2026-10-22",
+    "date_p75": "2026-11-22",
+    "date_p90": "2027-01-03",
+    "center_price": 43611.42219088227,
+    "price_p10": 35224.13001867276,
+    "price_p25": 38607.3756354048,
+    "price_p50": 43015.54074515322,
+    "price_p75": 48111.192297833106,
+    "price_p90": 52829.02194917895
+  }
+}
