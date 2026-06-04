@@ -1,0 +1,1272 @@
+{
+  "2022_ftx": {
+    "count": 3575,
+    "categories": {
+      "fraud_cefi_counterparty": 1660,
+      "other": 965,
+      "panic_capitulation": 885,
+      "leverage_liquidation": 431,
+      "macro_liquidity": 407,
+      "buy_dip_hodl": 189,
+      "institutional_flow": 162,
+      "cycle_thesis": 69,
+      "ai_capital_rotation": 11
+    },
+    "category_percent": {
+      "fraud_cefi_counterparty": 46.4,
+      "other": 27.0,
+      "panic_capitulation": 24.8,
+      "leverage_liquidation": 12.1,
+      "macro_liquidity": 11.4,
+      "buy_dip_hodl": 5.3,
+      "institutional_flow": 4.5,
+      "cycle_thesis": 1.9,
+      "ai_capital_rotation": 0.3
+    },
+    "stance": {
+      "neutral_or_analysis": 2149,
+      "bearish_fear": 927,
+      "buy_supportive": 268,
+      "mixed": 231
+    },
+    "stance_percent": {
+      "neutral_or_analysis": 60.1,
+      "bearish_fear": 25.9,
+      "buy_supportive": 7.5,
+      "mixed": 6.5
+    },
+    "subreddits": {
+      "Buttcoin": 1811,
+      "CryptoCurrency": 1138,
+      "CryptoMarkets": 373,
+      "StockMarket": 198,
+      "Bitcoin": 50,
+      "China_irl": 3,
+      "real_China_irl": 2
+    },
+    "daily_counts": {
+      "2022-11-02": 6,
+      "2022-11-03": 3,
+      "2022-11-04": 6,
+      "2022-11-05": 3,
+      "2022-11-06": 10,
+      "2022-11-07": 14,
+      "2022-11-08": 22,
+      "2022-11-09": 24,
+      "2022-11-10": 25,
+      "2022-11-11": 22,
+      "2022-11-12": 28,
+      "2022-11-13": 83,
+      "2022-11-14": 82,
+      "2022-11-15": 60,
+      "2022-11-16": 114,
+      "2022-11-17": 132,
+      "2022-11-18": 143,
+      "2022-11-19": 113,
+      "2022-11-20": 192,
+      "2022-11-21": 237,
+      "2022-11-22": 487,
+      "2022-11-23": 880,
+      "2022-11-24": 889
+    },
+    "examples": {
+      "panic_capitulation": [
+        {
+          "score": 1,
+          "body": "You wouldn’t have said it much better. I stopped drawing my conclusion on token marketcap since the day I invested in some projects with a tangling MC. The manipulation was so high that investors were coming in but token kept on dumping. It’s best to look out for key areas like the utilities that’s ",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/yio9fp/_/iupdjjp/"
+        },
+        {
+          "score": -2,
+          "body": "You left out wage inflation, fuel cost, gross mismanagement of energy policy by the administration in your 50/50 mix. The only things that have been passed by this congress have been inflationary. More stimulus, chips act that dumped a ton of money into un-needed/un-related science. The IRA bill was",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yjdmcw/_/iupjc5y/"
+        },
+        {
+          "score": 2,
+          "body": "Just search up this subbreddit for timeperiod when it was \\~180-200$ after the first dump. \"Gotta buy the dip, it will never be as cheap as this!\" and other similar stuff. Or just look at the posts about META now, its still same deal, only the stock dropped to <100, but the posts are mostly the same",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yjoviz/_/iupt536/"
+        },
+        {
+          "score": 8,
+          "body": "Another pump and dump 😅😅",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yjue8r/_/iupxp4f/"
+        },
+        {
+          "score": 1,
+          "body": "This isn’t really news. I think the problem with Facebook is how they spend the money earned. I think they would be in good shape had they just grown their social media platforms and paid dividends with the excess cash. Instead they chose to dump all profits into a highly competitive market. There a",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yk2kqo/_/ius6sqj/"
+        },
+        {
+          "score": 55,
+          "body": "It gives off some real pump and dump vibes. Correct me if am wrong",
+          "url": "https://www.reddit.com/r/StockMarket/comments/ykuuqc/_/iuvbv0z/"
+        }
+      ],
+      "macro_liquidity": [
+        {
+          "score": -2,
+          "body": "You left out wage inflation, fuel cost, gross mismanagement of energy policy by the administration in your 50/50 mix. The only things that have been passed by this congress have been inflationary. More stimulus, chips act that dumped a ton of money into un-needed/un-related science. The IRA bill was",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yjdmcw/_/iupjc5y/"
+        },
+        {
+          "score": 2,
+          "body": "Just search up this subbreddit for timeperiod when it was \\~180-200$ after the first dump. \"Gotta buy the dip, it will never be as cheap as this!\" and other similar stuff. Or just look at the posts about META now, its still same deal, only the stock dropped to <100, but the posts are mostly the same",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yjoviz/_/iupt536/"
+        },
+        {
+          "score": 3,
+          "body": "Yeah but thats me being absolutely pessimistic as fuck and assuming that it literally doesn't get a single dollar in revenue for 10 years. Oculus has already gotten more than $2 billion in revenue and my pessimistic analysis assumed that they never even made $2 billion on top of having zero revenue ",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yldm4g/_/iuz161d/"
+        },
+        {
+          "score": 2,
+          "body": "They cannot bump another .75 without triggering mass debt default contagion. The limits have been reached. Even holding the current rate long is risky given the sheer quantity of debt and weakness of economies globally. This is positive for Bitcoin as its the only remaining functional monetary syste",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/ym13ro/_/iv1oqxz/"
+        },
+        {
+          "score": 2,
+          "body": "\"Got to shill my useless meme doggy coins. For the pump and dump. Need more exit liquidity\"",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ylxq9u/_/iv2xurt/"
+        },
+        {
+          "score": 7,
+          "body": "Because if things look fine until the elections are over, everyone gets to keep their jobs and maintain the status quo. If everything took a huge dump after this recent rate hike, voters would be going to the polls looking for changes.",
+          "url": "https://www.reddit.com/r/StockMarket/comments/ym98ov/_/iv4nvbx/"
+        }
+      ],
+      "buy_dip_hodl": [
+        {
+          "score": 2,
+          "body": "Just search up this subbreddit for timeperiod when it was \\~180-200$ after the first dump. \"Gotta buy the dip, it will never be as cheap as this!\" and other similar stuff. Or just look at the posts about META now, its still same deal, only the stock dropped to <100, but the posts are mostly the same",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yjoviz/_/iupt536/"
+        },
+        {
+          "score": 2,
+          "body": "Thank you for the honest opinion, unlike most people in space would advise one to jump in. Well, I've come to the conclusion that it's better not to withdraw again from the platform since the yield is still accumulating. And secondly, I'm not 100% sure on those alts I want to ape into.",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ybh3zf/_/iuz1cx0/"
+        },
+        {
+          "score": 1,
+          "body": "Geometric mean only matters when you dump a crapton of money or if you're about to retire. If it's the latter, then you should be properly diversified into safer asset classes by then. If it's the former... well... not much you can do. Either DCA or hope for a good sequence of return",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yozd9r/_/ivjrntn/"
+        },
+        {
+          "score": 0,
+          "body": "That makes us two. Now I accumulated some more UNQ, DOT, & BAND on the dump. BAND rose 60%+ the next day. Polkadot also moved higher as well. Unique is totally going to go parabolic in the next bull rally.",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/yryfgu/_/ivxkj7f/"
+        },
+        {
+          "score": 1,
+          "body": "bro, just go buy a trezor, ledger or a cold wallet set it up, and remove it from the exchange. It is doing you no good sitting on there and you might save your ass your entire stack if this contagion continues. It's not business as usual anymore.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/yrxp55/_/ivy1pmv/"
+        },
+        {
+          "score": 11,
+          "body": "As they say: The higher they fly, the harder they fall. Or Icarus fell because he flew too close to the sun. I dislke cz and his deformed head as much as anyone, but theres no bs wunderkid story, he was flipping burgers at Maca's. All the exchanges are resembling fly by night operations, tether is 2",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/yu13ke/_/iw7lher/"
+        }
+      ],
+      "fraud_cefi_counterparty": [
+        {
+          "score": 0,
+          "body": "Idk I don't use CEX besides some rare transfers, everything else personally goes on Kaddex via wrapped assets. They will block any withdrawals under 1$ if you annoy them and then you will just cry again, go use DEX if you really care about hurting them and encourage others to decentralize as well, t",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/yjrnqd/_/iuqk5mb/"
+        },
+        {
+          "score": 2,
+          "body": "Thank you for the honest opinion, unlike most people in space would advise one to jump in. Well, I've come to the conclusion that it's better not to withdraw again from the platform since the yield is still accumulating. And secondly, I'm not 100% sure on those alts I want to ape into.",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ybh3zf/_/iuz1cx0/"
+        },
+        {
+          "score": -19,
+          "body": "This Twitter handle has correctly predicted every insolvency as part of this contagion wave. He’s now calling for FTX to be next. Proof of his past calls: https://twitter.com/otteroooo/status/1589242605279535105?s=46&t=hT7bqOW05zpDay-R4QNL1Q",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/ynqicu/_/iva5uar/"
+        },
+        {
+          "score": 1,
+          "body": "Left Kucoin a while ago. Withdrawal fees are horrendous.",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ynd5ds/_/ivab5l0/"
+        },
+        {
+          "score": 1,
+          "body": "Gotcha. Do a little research and see about opening either a Roth IRA (investment is post taxable income but it grows tax-free even when you begin making withdrawals) or a regular IRA through a company like Fidelity, etc. (where the money is ACH’d pre-tax and you only pay tax on it at retirement when",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yn8bmi/_/ivaypcv/"
+        },
+        {
+          "score": 12,
+          "body": "Better yet, remove assets from all custodians (FTX contagion risk). Not your keys not your coins.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/ynh9g7/_/ivbbaip/"
+        }
+      ],
+      "leverage_liquidation": [
+        {
+          "score": 1,
+          "body": "This isn’t really news. I think the problem with Facebook is how they spend the money earned. I think they would be in good shape had they just grown their social media platforms and paid dividends with the excess cash. Instead they chose to dump all profits into a highly competitive market. There a",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yk2kqo/_/ius6sqj/"
+        },
+        {
+          "score": 2,
+          "body": "They cannot bump another .75 without triggering mass debt default contagion. The limits have been reached. Even holding the current rate long is risky given the sheer quantity of debt and weakness of economies globally. This is positive for Bitcoin as its the only remaining functional monetary syste",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/ym13ro/_/iv1oqxz/"
+        },
+        {
+          "score": 1,
+          "body": "#Regulation Pro-Arguments Below is an argument written by MrMoustacheMan which won 1st place in the Regulation Pro-Arguments topic for a prior [Cointest](/r/CointestOfficial/wiki/cointest_policy) round. > #Regulation - Pro Arguments (Part 1/2) > > - *Disclaimer: reusing my previous argument [from he",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/yourdy/_/ivfwun5/"
+        },
+        {
+          "score": 1,
+          "body": "#Regulation Pro-Arguments Below is an argument written by MrMoustacheMan which won 1st place in the Regulation Pro-Arguments topic for a prior [Cointest](/r/CointestOfficial/wiki/cointest_policy) round. > #Regulation - Pro Arguments (Part 1/2) > > - *Disclaimer: reusing my previous argument [from he",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ypt5yh/_/ivkngox/"
+        },
+        {
+          "score": 0,
+          "body": "Isn't this classic pump and dump. Just this week he was pumping Tesla market cap will reach $4.5T ([https://www.torquenews.com/14335/elon-musk-and-ron-baron-discuss-teslas-future-2030](https://www.torquenews.com/14335/elon-musk-and-ron-baron-discuss-teslas-future-2030)) and then he is dumping at the",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yq52pf/_/ivn1w9t/"
+        },
+        {
+          "score": 1,
+          "body": "#Avalanche Con-Arguments Below is an argument written by gustavossj which won 1st place in the Avalanche Con-Arguments topic for a prior [Cointest](/r/CointestOfficial/wiki/cointest_policy) round. > The main issue behind AVAX is that it does not handle transaction loads well. There is a lot of conge",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ypzkch/_/ivo9f70/"
+        }
+      ],
+      "institutional_flow": [
+        {
+          "score": 1,
+          "body": "Gotcha. Do a little research and see about opening either a Roth IRA (investment is post taxable income but it grows tax-free even when you begin making withdrawals) or a regular IRA through a company like Fidelity, etc. (where the money is ACH’d pre-tax and you only pay tax on it at retirement when",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yn8bmi/_/ivaypcv/"
+        },
+        {
+          "score": 2,
+          "body": "Everyone expected one more leg down. At least it had a valid catalyst and now what appears to be contagion strategy. Not a TA person by any means but feel like this is gonna be a 2-3 week ride. Tax refund season will be here before you know it.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/yplbri/_/ivl0voo/"
+        },
+        {
+          "score": 6,
+          "body": "The difference is possible upside. Crypto has become such a large market with many institutional investments. Farther downturns can end up spreading contagion throughout the market bring crypto under closer scrutiny of regulators. When crypto comes into fed regulation where laws are put in place to ",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yqxjek/_/ivrzbwl/"
+        },
+        {
+          "score": 1,
+          "body": "I got you. Quotes and experience out there is meant to shake the mindset of another 2021 from happening to unsuspecting new investors. the media and movements influence people to dump money into bad timed and ill digital and traditional investments who are not affluent with cold wallets sitting or i",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yrhnkl/_/ivvf0lx/"
+        },
+        {
+          "score": 1,
+          "body": ">Try sending $25k or a $100k to someone via your bank. I can guarantee you that it'll cost you a lot more than $1.50 and there will be questions and paperwork to fill out. It'll also take a lot longer than 20 minutes, more like a few days. Depends if it's an IMT or national transfer. In my country N",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yqxjek/_/ivwhydp/"
+        },
+        {
+          "score": 1,
+          "body": "#Tether Pro-Arguments Below is an argument written by aqqlebottom which won 3rd place in the Tether Pro-Arguments topic for a prior [Cointest](/r/CointestOfficial/wiki/cointest_policy) round. > Tether is the name of a blockchain-based cryptocurrency backed by U.S. dollars, also known as Tether. To p",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ys75wp/_/ivxm3vm/"
+        }
+      ],
+      "cycle_thesis": [
+        {
+          "score": 1,
+          "body": "a few days ago someone posted an (supposedly incomplete) balancesheet showing FTX exchange's (or was it Alameda'S?...doesnt matter) multi-billion funds are largely their own FTT token, valued at a price not necessarily representing the marketvalue (something like 150% of its total marketcap). meanin",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/ynrpyc/_/ivemtj5/"
+        },
+        {
+          "score": 1,
+          "body": "Surprised so many in this sub don't understand the Bitcoin cycle. Sure, there is some FTX drama going on but that is irrelevant. There is always some type of contagion around this time. Learn what the halving means and its implications. Also, review the Bitcoin rainbow chart.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/yqrfp0/_/ivpvtq8/"
+        },
+        {
+          "score": 1,
+          "body": "$2.2 trillion lost in crypto means it’s trending towards being fairly valued. Mass layoffs? Has the unemployment rate even risen significantly since 1/1/2022? People have forgotten what inventory driven economic cycles look like. The incredible management of supply chains and the expansion of domest",
+          "url": "https://www.reddit.com/r/StockMarket/comments/yv4c27/_/iwcllcq/"
+        },
+        {
+          "score": 6,
+          "body": "We sure reached comedy ATH, but certainly not peak. There's still a lot to uncover from FTX. Then there's Coinbase, Binance, Tether, and... Buttcoin!!!",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/yxtfuw/_/iwrykxw/"
+        },
+        {
+          "score": 3,
+          "body": "Completely wiped out? Were you using leverage? Or do you have cheaper BTC.. if you have cheaper BTC just hold till the next bull market and remember to take some profit this time.",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/yznam7/_/ix1so9s/"
+        },
+        {
+          "score": 7,
+          "body": "He is an extreme right winger on the large majority of topics, and he’s close to a16z and others. He has no reason to lie or make it up; I don’t think he’s ever been super into crypto I could be wrong. The SBF story has probably rattled the SV elite who are now under more scrutiny than ever; he KNOW",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/z0heq7/_/ix5qltn/"
+        }
+      ],
+      "ai_capital_rotation": [
+        {
+          "score": 1,
+          "body": "So your telling me to baislcy invent in amd becuz there getting better and will slowly climb again cuase they just finished dumping billions or millions ina super computer a few months ago and proably still recovering and gunna get paid later down the road plus Nvidia and amd are both going up fast ",
+          "url": "https://www.reddit.com/r/StockMarket/comments/ys3m4t/_/ivz6j70/"
+        },
+        {
+          "score": 1,
+          "body": "Kevin O’Leary? Same guy that dumped $10 million into Palantir?!? 😂😂😂",
+          "url": "https://www.reddit.com/r/StockMarket/comments/ytkdj2/_/iw8nzt8/"
+        },
+        {
+          "score": 55,
+          "body": "3/3 >\\>So you've got this box and it’s kind of dumb, but like what's the end game, right? This box is worth zero obviously. … But on the other hand, if everyone kind of now thinks that this box token is worth about a billion dollar market cap, that's what people are pricing it at and sort of has tha",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/yvuuk0/_/iwg69wz/"
+        },
+        {
+          "score": 3,
+          "body": "Remedial aUtomatic Mediation Pool (not a coin per se, but HOT🔥🔥🔥), Binance Universal Transaction Token (TBA 🤫🤐), and AI Stable Shekels. Happy pumping🚀💄🚀! Not financial advice!",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/yycds3/_/iwtlopt/"
+        },
+        {
+          "score": 7,
+          "body": "The thing is that the money wasn’t going to malaria nets- it was going to longtermist causes. SBF boasted he was never one if those malaria net guys. So money was flowing to Griups talking about AI and lab leaks, neither of which help the global poor and neither of which are vetted to be “more effec",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/yzfz67/_/ix1rt2z/"
+        },
+        {
+          "score": 3,
+          "body": "I hadn't heard of that, thanks for the link. Lots of media outlets mention that SBF treated AI safety as one of the most important issues facing humanity. It's unclear to what extent his spending millions of dollars in this area actually made us safer. If it weren't for SBF, would killer robots be r",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/yzfz67/_/ix7tvis/"
+        }
+      ]
+    },
+    "top_comments": [
+      {
+        "score": 670,
+        "body": "Wow I didn’t expect Coinbase to have that many. A Coinbase crash would absolutely devastate the crypto market, that is 10% of BTC supply",
+        "categories": "panic_capitulation",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/z3t6zi/_/ixni4fm/"
+      },
+      {
+        "score": 497,
+        "body": "If BTC and crypto drops to $0, exchanges like FTX, Binance has $0 liabilities to their customers!! Few understand.",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/z0mxmy/_/ix6jy3l/"
+      },
+      {
+        "score": 378,
+        "body": "So if I am right Binance holds 0.5million BTC Coinbase holds 2million BTC Almost 4 times of what Binance has. Also Coinbase is US based. I am never gonna doubt Coinbase again. CZ was definitely trying to create FUD.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/z3t6zi/_/ixnnwqf/"
+      },
+      {
+        "score": 326,
+        "body": "We sure it's a hacker? Seems especially dumb given the elevated scrutiny around FTX at the moment.",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/z03nvd/_/ix3dju0/"
+      },
+      {
+        "score": 314,
+        "body": "Imagine there's no Bitcoin It's easy if you try No babbling Bitcoin weirdos Urging you to buy Imagine all the crypto At zero, and gone away....",
+        "categories": "panic_capitulation",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/z3vqtq/_/ixnz9oh/"
+      },
+      {
+        "score": 307,
+        "body": "Lol and it's even better because instead of actually being the lender of last resort, Binance is really just acting as a loan shark and will seize the assets of the distressed exchanges when they inevitably go bankrupt.",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/yvtyc1/_/iwg8cla/"
+      },
+      {
+        "score": 266,
+        "body": "They’re also publicly traded so they’re beholden to extremely strict legal reporting requirements. Binance is not",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/z3t6zi/_/ixnupnr/"
+      },
+      {
+        "score": 256,
+        "body": "-> move to Binance -> swap to stablecoin -> swap to Fiat money -> run away as fast as you can",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/yyv06o/_/iwwesq1/"
+      },
+      {
+        "score": 245,
+        "body": "I like how the gofundmepage for the guy who lost 53k has a 83k goal because it includes his portfolio losing value too. I bet the money will go towards buying shit coins on Binance who is \"too large to fail\". Poor family.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/yyxrkc/_/iwwwuov/"
+      },
+      {
+        "score": 243,
+        "body": "I truly feel like CZ is trying to take out all remaining competition and is promising some shady financier that Binance will be the last exchange standing.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/z20a4x/_/ixdw1at/"
+      },
+      {
+        "score": 240,
+        "body": "No serious investor acquires a position by buying it all in 10 seconds and pumping the price 120% while experiencing massive slippage as a result. They buy slow and methodically, reducing slippage as much as possible, trying not to effect price. These pumps are done to get attention on the coin, pull more people into it when it inevitably gets publicized and dumping on them. OP may be a part of that group, maybe an u",
+        "categories": "panic_capitulation",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/z2rkos/_/ixhvfcj/"
+      },
+      {
+        "score": 221,
+        "body": "It was news months ago that SBF literally described a Ponzi scheme as his revenue stream. It's not like this was forbidden knowledge. In a more efficient market you could have shorted FTT to reflect this sentiment but *\"the market can stay irrational longer than you can stay solvent\"* is doubly true in the case of cooked books and fraud. So we post here instead.",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/yyzcgg/_/iwxdo0w/"
+      },
+      {
+        "score": 211,
+        "body": "This is why I laugh when people are like “bro you leave your crypto on a CEX. your stupid af.” I’m like if CB or binance go down then this whole thing is over anyway. Yubikey Auth on Coinbase account is all the protection you need imo.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/z3t6zi/_/ixnornv/"
+      },
+      {
+        "score": 196,
+        "body": "All I see here is strong hands (Bahamas gov't) rightfully taking from weaker hands (FTX) by force. This is the world crypto advocates always wanted. They just didn't realize they're the weaker side of that dynamic.",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/z03nvd/_/ix3fzto/"
+      },
+      {
+        "score": 189,
+        "body": "No, I thought BTC was a novel solution to buying high quality drugs over the internet. Unfortunately use cases didn't develop too much past that.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/z1up6m/_/ixcvt5j/"
+      }
+    ]
+  },
+  "2022_luna_celsius": {
+    "count": 9578,
+    "categories": {
+      "other": 6891,
+      "fraud_cefi_counterparty": 1040,
+      "leverage_liquidation": 640,
+      "macro_liquidity": 615,
+      "panic_capitulation": 472,
+      "cycle_thesis": 315,
+      "buy_dip_hodl": 223,
+      "institutional_flow": 98,
+      "ai_capital_rotation": 17
+    },
+    "category_percent": {
+      "other": 71.9,
+      "fraud_cefi_counterparty": 10.9,
+      "leverage_liquidation": 6.7,
+      "macro_liquidity": 6.4,
+      "panic_capitulation": 4.9,
+      "cycle_thesis": 3.3,
+      "buy_dip_hodl": 2.3,
+      "institutional_flow": 1.0,
+      "ai_capital_rotation": 0.2
+    },
+    "stance": {
+      "neutral_or_analysis": 8141,
+      "bearish_fear": 649,
+      "buy_supportive": 622,
+      "mixed": 166
+    },
+    "stance_percent": {
+      "neutral_or_analysis": 85.0,
+      "bearish_fear": 6.8,
+      "buy_supportive": 6.5,
+      "mixed": 1.7
+    },
+    "subreddits": {
+      "CryptoCurrency": 5487,
+      "Bitcoin": 3004,
+      "Buttcoin": 1087
+    },
+    "daily_counts": {
+      "2022-05-23": 137,
+      "2022-05-24": 73,
+      "2022-05-25": 33,
+      "2022-05-27": 2,
+      "2022-05-30": 2,
+      "2022-05-31": 1,
+      "2022-06-02": 2,
+      "2022-06-05": 2,
+      "2022-06-16": 19,
+      "2022-06-17": 108,
+      "2022-06-18": 26,
+      "2022-06-24": 529,
+      "2022-06-25": 241,
+      "2022-06-26": 21,
+      "2022-06-27": 116,
+      "2022-06-28": 25,
+      "2022-06-29": 162,
+      "2022-06-30": 79,
+      "2022-07-01": 269,
+      "2022-07-02": 992,
+      "2022-07-03": 150,
+      "2022-07-04": 20,
+      "2022-07-05": 286,
+      "2022-07-06": 268,
+      "2022-07-07": 104,
+      "2022-07-08": 238,
+      "2022-07-09": 823,
+      "2022-07-10": 577,
+      "2022-07-11": 935,
+      "2022-07-12": 355,
+      "2022-07-13": 385,
+      "2022-07-14": 1313,
+      "2022-07-15": 1144,
+      "2022-07-16": 80,
+      "2022-07-17": 11,
+      "2022-07-18": 8,
+      "2022-07-19": 1,
+      "2022-07-20": 6,
+      "2022-07-21": 1,
+      "2022-07-23": 2,
+      "2022-07-27": 1,
+      "2022-07-31": 1,
+      "2022-08-02": 7,
+      "2022-08-03": 4,
+      "2022-08-04": 1,
+      "2022-08-05": 7,
+      "2022-08-07": 1,
+      "2022-08-09": 1,
+      "2022-08-15": 1,
+      "2022-08-16": 2,
+      "2022-08-20": 1,
+      "2022-08-23": 2,
+      "2022-09-15": 1,
+      "2022-10-20": 1,
+      "2022-12-05": 1
+    },
+    "examples": {
+      "buy_dip_hodl": [
+        {
+          "score": 49,
+          "body": "Counterpoint: But have you considered that the number has gone up a lot since everyone discovered that Bitcoin was useless tech? This makes you wrong and Bitcoin must have some use because you could have bought it lower and sold it higher, except never sell, only HODL and stack sats for the hyperbit",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9opggu/"
+        },
+        {
+          "score": 12,
+          "body": "It’s a negative sum asset since it requires money to operate the network, yet doesn’t generate any cash. So Bitcoiners have to get new investment to come into the system continually in order to maintain the value (let alone increase) of Bitcoin. Without continual new investment, Bitcoin crashes unde",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9oze3p/"
+        },
+        {
+          "score": 8,
+          "body": "I specifically only ever got into “crypto” to swing trade and always thought it’s the dumbest shit I’ve ever heard of. And the hype boys screeching nonstop is ridiculous. That said they helped keep enough pathetic fools and teenagers “HODL-ing” for me to profit. But at this point I don’t even find i",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9ppf2s/"
+        },
+        {
+          "score": -3,
+          "body": "Point 1. Intrinsic value. Like it or not, bitcoin opened the door to affordable international transactions. Before bitcoin, sending money or receiving money was slow and very expensive. You could loose something like 25% of your transfer and wait up to a week. Comparing to that, 7 TPS is not so bad.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9pxl36/"
+        },
+        {
+          "score": 2,
+          "body": "1. Monero can be used to buy drugs online. Heroin and such yea, but also for example, buying cheap insulin from europe to sneak into USA. That is a very intrinsically valuable.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9r1szn/"
+        },
+        {
+          "score": 1,
+          "body": ">Gold has value for its metallic properties in that it can be melted and molded to make items False. Gold is valuable because its scarcity and we proclaim it as valuable. Gold has one of the lowest flow- to stock ratios ever with an average anual inflation of only 1,5% during the last seven decades.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9tdjv6/"
+        }
+      ],
+      "macro_liquidity": [
+        {
+          "score": 25,
+          "body": "Honestly, I'm torn. On the one hand, I feel like it should be great to have bitcoiners come here and deliver the comedy gold to us instead of us having to mine for it. But on the other hand, their comments here are so blitheringly incoherent and impossible to follow because of the constant goal-post",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9otzwy/"
+        },
+        {
+          "score": 20,
+          "body": "You guys love to be hyper-technical about the definition of Ponzi scheme, but at the same time insanely loose with the definition of “currency” or “store of value” or “inflation hedge”. Bitcoin is just a protocol for a slow, decentralized, write-only spreadsheet. It is an enabling technology for Pon",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9ox36h/"
+        },
+        {
+          "score": 13,
+          "body": "You should add that the real reason why countries are making it legal tender is to attract cult idiots to invest in those countries, example El Salvador and there volcanos bonds. Al though it's not going the way butkele thought.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9ozc4n/"
+        },
+        {
+          "score": 7,
+          "body": "Do you usually give your casual flings Bitcoin or gold? Edit I'm sad this was deleted it was fascinating lmao something about gold and sex",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9p04uf/"
+        },
+        {
+          "score": 12,
+          "body": "All assets are most assuredly NOT negative sum games. You missed the part about not generating cash flow. And Gold isn’t a good investment either.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9p1raq/"
+        },
+        {
+          "score": 9,
+          "body": "Well, your wrong cause Bitcoin fiat bad Elon musk tether proof of work proof of stake DAOs superstonk to the moon Blockchain fiat bad gold standard or something",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9pau5j/"
+        }
+      ],
+      "leverage_liquidation": [
+        {
+          "score": 13,
+          "body": "Likewise. I bought ETH because I wasn't too well-versed in the tech (I thought it was at least somewhat cool because it had \"some\" utility as opposed to something like BTC, something I realize now isn't even true) and hadn't read about the whole Tether thing. Always thought it was risky so I had a s",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9ou6ip/"
+        },
+        {
+          "score": -9,
+          "body": "The real problem is that both \"sides\" are stuck in this ridiculous binary thinking. I'm still trying to figure out why its so impossible for almost anyone to see anything between \"it's completely useless\" and \"it fixes everything\" or between \"it's the future of everything\" and \"its all a scam.\" Is i",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9p59ld/"
+        },
+        {
+          "score": 10,
+          "body": "Yeah, number is down now but historically Bitcoin has always gone up in the future, therefore you would be a fool not to think it will continue increasing forever because that is what it did in the past. Or something.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9pb7pd/"
+        },
+        {
+          "score": 1,
+          "body": "I can only speak for myself. Far from the messiah, I think most of it is categorically worthless, the majority of the rest of it is dramatically overvalued, and the few remaining worthwhile things are either the seeds of ideas that will work better without blockchains (NFTs), or things that are curr",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9pluxn/"
+        },
+        {
+          "score": -5,
+          "body": "Having properties that make it a theorically good long term store of value isn't useful enough?",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9pn5dk/"
+        },
+        {
+          "score": 1,
+          "body": "So you’re saying we should short Buttcoin to make a profit since you know for sure it’s going down? How do we win? I just want to win.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9pnje1/"
+        }
+      ],
+      "fraud_cefi_counterparty": [
+        {
+          "score": -9,
+          "body": "It's not a ponzi. If you think so please study ponzi schemes.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9ouiwg/"
+        },
+        {
+          "score": 20,
+          "body": "You guys love to be hyper-technical about the definition of Ponzi scheme, but at the same time insanely loose with the definition of “currency” or “store of value” or “inflation hedge”. Bitcoin is just a protocol for a slow, decentralized, write-only spreadsheet. It is an enabling technology for Pon",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9ox36h/"
+        },
+        {
+          "score": -9,
+          "body": "It's a simple definition. Not complex. It's based on what the guy named Ponzi did.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9oxq4m/"
+        },
+        {
+          "score": 13,
+          "body": "I didn’t say complex. I said technical. You like broad definitions of “store of value” but insist a “Ponzi scheme” has to have a central operator. Like I said, Bitcoin is a Ponzi scheme enabler, but based on your pedantic definition, Bitcoin itself is a Pyramid scheme, not a Ponzi. So I guess we agr",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9oy6i2/"
+        },
+        {
+          "score": -9,
+          "body": "The real problem is that both \"sides\" are stuck in this ridiculous binary thinking. I'm still trying to figure out why its so impossible for almost anyone to see anything between \"it's completely useless\" and \"it fixes everything\" or between \"it's the future of everything\" and \"its all a scam.\" Is i",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9p59ld/"
+        },
+        {
+          "score": 1,
+          "body": "It’s never too late to get out of this Ponzi. If I can, you can too.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9p9hw1/"
+        }
+      ],
+      "panic_capitulation": [
+        {
+          "score": 12,
+          "body": "It’s a negative sum asset since it requires money to operate the network, yet doesn’t generate any cash. So Bitcoiners have to get new investment to come into the system continually in order to maintain the value (let alone increase) of Bitcoin. Without continual new investment, Bitcoin crashes unde",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9oze3p/"
+        },
+        {
+          "score": 2,
+          "body": "100% there’s no other point to ever getting into crypto other than gambling that your swing trade can dump it on fools.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9ppk6x/"
+        },
+        {
+          "score": -9,
+          "body": "Let me type a blithering comment. Bitcoin is way simpler than this post deems it. It’s code functions as intended “old tech” be damned it is secure as a currency and its supply is fixed. It has no leader, no one to rug it, no one to change its supply. It just is, and will be. You don’t like it? Does",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9q32cn/"
+        },
+        {
+          "score": 2,
+          "body": ">a) \"Neither does fiat!\". Like yes, correct, which is why you shouldn't hold all your savings in cash. You should invest them. I thought that's what we were doing? This is a form of the old motte-and-bailey tactic, where cryptobros talk about crypto in comparison to money when I say it's a bad inves",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9qg1xg/"
+        },
+        {
+          "score": 2,
+          "body": "> No one routinely makes or watches anti-crypto content. you ought to check CoffeeZilla's content, or the latest münecat video, or even Crypto Critics Corner and their latest take on Luna just before the crash, and their follow-up right after !",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9qlos6/"
+        },
+        {
+          "score": 9,
+          "body": "In the real world I could take 30k and use it as a down payment on shelter for my family, or pay for my mom’s surgery…you know, real world uses. Meanwhile he could spend 30k on Bitcoin, watch it go to zero and be totally cool with it because “ 1 BTC = 1 BTC man”.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9qn39o/"
+        }
+      ],
+      "institutional_flow": [
+        {
+          "score": -3,
+          "body": "Point 1. Intrinsic value. Like it or not, bitcoin opened the door to affordable international transactions. Before bitcoin, sending money or receiving money was slow and very expensive. You could loose something like 25% of your transfer and wait up to a week. Comparing to that, 7 TPS is not so bad.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9pxl36/"
+        },
+        {
+          "score": -9,
+          "body": "Let me type a blithering comment. Bitcoin is way simpler than this post deems it. It’s code functions as intended “old tech” be damned it is secure as a currency and its supply is fixed. It has no leader, no one to rug it, no one to change its supply. It just is, and will be. You don’t like it? Does",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9q32cn/"
+        },
+        {
+          "score": 3,
+          "body": "Only thing I'd dispute is whether Michael Saylor is a conman. I think he's just a complete idiot, he seems to genuinely believe his own bullshit",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9q353g/"
+        },
+        {
+          "score": 3,
+          "body": "I made a few thousand dollars on BTC and ETH last year and I cashed out and put it into buying an investment home. Also, who is Michael Saylor and why is he connected to BTC? I thought BTC is a lil like the Jonestown crowd but without a spiritual leader.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9q7r3w/"
+        },
+        {
+          "score": 1,
+          "body": "How do you explain the monetary premium that has existed in golds market cap for thousands of years, then? Shouldn’t it have been reduced down to its “intrinsic value” by now? I agree the blockchain as a tech is overrated, but it’s make use case is a tool of trustless verification. Entire industries",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9q8z98/"
+        },
+        {
+          "score": 1,
+          "body": "I’m just gonna address your Point 1 because many people have asked, and all the other points are just areas where we’ll need to agree to disagree. ALL currency systems fall into Maslow’s “Safety” category, which specifically includes the need for economic/financial security. The question is, what sy",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9uxtre/"
+        }
+      ],
+      "cycle_thesis": [
+        {
+          "score": 1,
+          "body": "I fall more into the Austrian Economists camp, I think the best system is something like the gold/commodity backed standard we used to have, and which I think we’ll have again after the current collapse cycle.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/i9v12dt/"
+        },
+        {
+          "score": 1,
+          "body": "I guess you are saying it right but we should care about investing in bitcoin, especially in days like this, this is a fucking bear market and we know that we have to invest.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vdwlfa/_/icpb525/"
+        },
+        {
+          "score": 1,
+          "body": "All i care about is bitcoin, and how many i could buy in bear market.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vdwlfa/_/ict4fas/"
+        },
+        {
+          "score": 1,
+          "body": "Bear market really hitting this sub in many different ways.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vdwlfa/_/ict4r1i/"
+        },
+        {
+          "score": 1,
+          "body": "Bear market is making sure that we do some really weird stuff.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vdwlfa/_/ict561t/"
+        },
+        {
+          "score": 26,
+          "body": "Common sense man. Use google (if you put the key -before:2015 you search articles before year 2015) , use coingecko o coinmarketcap to check every ATH/crash. Check what internet and newspapers says at every crash. 1st time 12/4/2013, second time 12/7/2017 third time , 11/9/201 you must be blind or d",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vjp8ua/_/idk9eba/"
+        }
+      ],
+      "ai_capital_rotation": [
+        {
+          "score": 1,
+          "body": "Never heard of wise but I'll assume it's cheaper for the same reasons I've already explained about PayPal. Yes crypto would be subject to AML regs, that doesn't mean the end result would be the same as the current system. That was my point. If the largest banks in 2 countries aren't worried about it",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/uvz90h/_/iaurli5/"
+        },
+        {
+          "score": 2,
+          "body": "Hah I don't think I'm a genius or anything, but I have a job that allows me to listen and learn about a broad set of topics throughout the whole day. Podcasts, documentaries, and even text articles converted into AI voice. I've been spending a lot of time learning about energy grids recently (from b",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vjp8ua/_/idl1ssm/"
+        },
+        {
+          "score": 1,
+          "body": "BTC doesn't trade at all like a commodity, given its historical volatility and high autocorrelation of returns( tendency for sustained trending moves) it would mostly be classified as a high beta tech stock.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vjp8ua/_/idlczv3/"
+        },
+        {
+          "score": 1,
+          "body": "Just to play devil's advocate: \\- Just because something has scarcity or a limited supply doesn't mean it's valuable. \\- BTC has been a HORRIBLE inflation hedge. It trades more like a somewhat risky tech stock rather than an inflation hedge. \\- The volatility makes it a horrible store of value. \\- Y",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vjp8ua/_/idlyrl0/"
+        },
+        {
+          "score": 1,
+          "body": ">Just because something has scarcity or a limited supply doesn't mean it's valuable In my eyes the real value-added from Bitcoin is POW and true decentralization. The fact that it has a hard cap will help it gain trust as a currency and store of value, since it cannot be debased. So making a decisio",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vjp8ua/_/idm7rav/"
+        },
+        {
+          "score": 15,
+          "body": "Technology reduces time and labor required to produce more and more of what we use and consume every day. This reduction reduces prices (creating deflation) but also removes jobs. Wouldn't you agree automation and AI is becoming more abundant? Imagine what that looks like centuries out. Technology t",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/vjp8ua/_/idn0t10/"
+        }
+      ]
+    },
+    "top_comments": [
+      {
+        "score": 1063,
+        "body": "Mashinsky is now up there with Do kwon in the hall of shame",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vz4knq/_/ig6cpgz/"
+      },
+      {
+        "score": 1062,
+        "body": "I get it that losing your life savings can be extremely hard, but killing your own child because you fucked up? If this is true, it makes me sick.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vwbt26/_/ifozdj2/"
+      },
+      {
+        "score": 1044,
+        "body": "So you are telling me putting 1k in LUNA will not make me a billionaire?",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vv1ape/_/ifgxe34/"
+      },
+      {
+        "score": 971,
+        "body": "Now we know why 3AC is in trouble, it's got employees with the mentality of a 12 year old.",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vy84rw/_/ig0hxqi/"
+      },
+      {
+        "score": 948,
+        "body": "> I filtered them out by hand to pick the best 6 I don't own yet, so my opinion is objective. An algorithmic approach where the last stage is filtered by hand with an arbitrary condition to reveal an objective opinion, that's... something.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vv2c29/_/ifhcgbb/"
+      },
+      {
+        "score": 886,
+        "body": "Because of math. Because of PoW. Because of the consequences of 50 years of fiat money. Because of current Debt to GDP. Because of current interest rates. Because of QE. Because of CBDCs. I don't know man, just to name a few. I'll admit it: two years ago I would have asked the same question. But then, slowly and then exponentially, all roads lead to Bitcoin.",
+        "categories": "macro_liquidity",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/vjp8ua/_/idk97bx/"
+      },
+      {
+        "score": 809,
+        "body": "You have drawn very strong conclusions from a cherry picked, not systematic, analysis. And those conclusions don’t really follow from the data you’ve presented anyway. You’ve confused achieving ATH with maximising returns. As others have pointed out, it’s not necessary for alt coins to reach ATHs to outperform BTC in the next cycle from where we are today. So saying buying alts is “making one of the worst bets in his",
+        "categories": "cycle_thesis",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vv1ape/_/ifh8jko/"
+      },
+      {
+        "score": 726,
+        "body": "Netflix should be striking gold with docuseries in the crypto space",
+        "categories": "macro_liquidity",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vvqvz9/_/iflj7k8/"
+      },
+      {
+        "score": 723,
+        "body": "In the event of a mass crash? Like being down 70% you mean?",
+        "categories": "panic_capitulation",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/vpcg2e/_/ieie8we/"
+      },
+      {
+        "score": 593,
+        "body": "You deserve more recognition for this. This is more than an experiment. It is proper research with good tracking and documenting of the experience. Here’s my wholesome award for you good sir.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vpe7i8/_/ieilhau/"
+      },
+      {
+        "score": 574,
+        "body": "You can easily be a billionaire, if you started as a multi-billionaire",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vv1ape/_/ifgzh6w/"
+      },
+      {
+        "score": 514,
+        "body": "That large of an amount makes you wonder if they weren’t already negative during the bull run.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vz4knq/_/ig6dhnh/"
+      },
+      {
+        "score": 507,
+        "body": "Yea.. this isn’t a family committing suicide. It’s a father murdering his family and killing himself with them.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vwbt26/_/ifp5hc8/"
+      },
+      {
+        "score": 453,
+        "body": "Man, fuck Do Kwon but fuck that father a million times. Recklessly putting his family’s future on a volatile asset with no diversification? He’s no different than the degenerate gamblers that lose the family’s home to loan sharks. And then when all goes to shit, instead of owning up to it, he murders his child and kills himself? What a monster.",
+        "categories": "fraud_cefi_counterparty|leverage_liquidation",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vwbt26/_/ifp1nh9/"
+      },
+      {
+        "score": 450,
+        "body": "They’re sharing a safe house with Do Kwon right now because thousands of people are looking for them",
+        "categories": "fraud_cefi_counterparty",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/vvqvz9/_/iflmltq/"
+      }
+    ]
+  },
+  "2026_current": {
+    "count": 2456,
+    "categories": {
+      "institutional_flow": 621,
+      "other": 606,
+      "panic_capitulation": 571,
+      "macro_liquidity": 557,
+      "ai_capital_rotation": 448,
+      "leverage_liquidation": 346,
+      "buy_dip_hodl": 226,
+      "cycle_thesis": 212,
+      "fraud_cefi_counterparty": 131
+    },
+    "category_percent": {
+      "institutional_flow": 25.3,
+      "other": 24.7,
+      "panic_capitulation": 23.2,
+      "macro_liquidity": 22.7,
+      "ai_capital_rotation": 18.2,
+      "leverage_liquidation": 14.1,
+      "buy_dip_hodl": 9.2,
+      "cycle_thesis": 8.6,
+      "fraud_cefi_counterparty": 5.3
+    },
+    "stance": {
+      "neutral_or_analysis": 1378,
+      "bearish_fear": 500,
+      "buy_supportive": 359,
+      "mixed": 219
+    },
+    "stance_percent": {
+      "neutral_or_analysis": 56.1,
+      "bearish_fear": 20.4,
+      "buy_supportive": 14.6,
+      "mixed": 8.9
+    },
+    "subreddits": {
+      "Bitcoin": 934,
+      "CryptoCurrency": 628,
+      "Buttcoin": 621,
+      "CryptoMarkets": 155,
+      "StockMarket": 118
+    },
+    "daily_counts": {
+      "2026-06-01": 324,
+      "2026-06-02": 598,
+      "2026-06-03": 672,
+      "2026-06-04": 862
+    },
+    "examples": {
+      "leverage_liquidation": [
+        {
+          "score": -2,
+          "body": ">How is an investor to know that it won’t happen again? Its happened with every currency so far, an investor will assume that it *will* happen, but as long as it is on a long enough timeline that they feel they can successfully extract value, they will invest anyway. A stark example is the investors",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tswne2/_/op1hfh5/"
+        },
+        {
+          "score": 1,
+          "body": "The early sellers or buyers are the ones who win. Most bitcoin buyers are waiting for October after another leg down. Supply is mostly fixed so there are more people short now or waiting for October which agrees with a bunch of charts. I believe October will be too late to enter at a good price . ET",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1n3hj/"
+        },
+        {
+          "score": 2,
+          "body": "Imo Binance is one of the best platforms for those factors. The liquidation is standard, the APR is very low, and it's not a defi loan so Binance does assume liability for holding the funds. You always have some platform risk but Binance has a good track record of seeking regulations and making cust",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt3n0s/_/op1rbgx/"
+        },
+        {
+          "score": 0,
+          "body": "I sold because the deflationary power of AI scared me off of a device whose bull thesis is largely rooted in the inevitability of inflation. I held around 4btc from 40k to 80k. To me BTC was always an extremely long horizon bet so I only thought of it in terms of commensurately long time horizons. T",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op24bfh/"
+        },
+        {
+          "score": 1,
+          "body": "Bitcoin is Bitcoin and different from anything else. It's not going to follow expectations and trying to figure it and predict it always falls short. You'll get alot of opinions in reply to your questions, but are any really accurate? The best way to understand Bitcoin's cycles is to listen to peopl",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op30r72/"
+        },
+        {
+          "score": 1,
+          "body": "7.99% is genuinely competitive. Aven is pushing rates down, and that's good for everyone. But here's what's interesting to me. This product is a term loan with fixed LTV buckets (30%, 50%, 70%) and a liquidation ladder (lock at 70%, warning at 80%, kill at 85%). That's one philosophy: predictable, s",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1sxutby/_/op3d0vq/"
+        }
+      ],
+      "panic_capitulation": [
+        {
+          "score": -2,
+          "body": ">How is an investor to know that it won’t happen again? Its happened with every currency so far, an investor will assume that it *will* happen, but as long as it is on a long enough timeline that they feel they can successfully extract value, they will invest anyway. A stark example is the investors",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tswne2/_/op1hfh5/"
+        },
+        {
+          "score": 1,
+          "body": "It still hasn’t even been 1 year since bitcoin topped at around 120k, the cycles bitcoin goes through are longer than 1 year lol. Just continue to DCA and don’t panic sell if it dips again.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1v4kx/"
+        },
+        {
+          "score": 3,
+          "body": "If you still believe the 4 year cycle is a thing, you should be asking why Bitcoin didn't/hasn't crashed further yet. The 4 year cycle would indicate we've probably got another 18 months of a little downward, then sideways, the gradually back upward activity. I think we're seeing the cycle breaking ",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1x1m9/"
+        },
+        {
+          "score": 1,
+          "body": "While its just a guess, thats what I think too. People are dumping money into stocks since they keep going up no matter what. Once the market corrects/pop/crashes/whatever, people will look for other places to keep their money as they panic sell.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op242ao/"
+        },
+        {
+          "score": 0,
+          "body": "I sold because the deflationary power of AI scared me off of a device whose bull thesis is largely rooted in the inevitability of inflation. I held around 4btc from 40k to 80k. To me BTC was always an extremely long horizon bet so I only thought of it in terms of commensurately long time horizons. T",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op24bfh/"
+        },
+        {
+          "score": 1,
+          "body": "Crypto is dead. AI is what crypto thought it would be but everyone is throwing in the towel.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op2jlhe/"
+        }
+      ],
+      "institutional_flow": [
+        {
+          "score": 1,
+          "body": "ETF’s vary, but all buy and sell Bitcoin based on inflows and outflows, and as major institutions, it’s a lot of money, but a lot is based on the mindset of the investors. MM’s set the odds on options, and I’m not sure if these levers impacts the price of Bitcoin itself, but if they work the same as",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1ifss/"
+        },
+        {
+          "score": 1,
+          "body": "The early sellers or buyers are the ones who win. Most bitcoin buyers are waiting for October after another leg down. Supply is mostly fixed so there are more people short now or waiting for October which agrees with a bunch of charts. I believe October will be too late to enter at a good price . ET",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1n3hj/"
+        },
+        {
+          "score": 1,
+          "body": "Yeah this is a real thing a lot of traders go through 👀📉 The key tradeoff is control vs. consistency: automation can help remove emotion, but you still need strong strategy design and risk management behind it 🚀",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/1ts2g7z/_/op1y3gp/"
+        },
+        {
+          "score": 2,
+          "body": "For me, I think less about Solana itself and more about crypto as an overall asset class. If there is enough institutional participation in crypto one day, I can easily see it becoming a $10T asset class by 2035. If Solana remains about 3% of the overall crypto market cap, we could be looking at a p",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/1tt4ere/_/op2aavp/"
+        },
+        {
+          "score": 1,
+          "body": "Bitcoin is Bitcoin and different from anything else. It's not going to follow expectations and trying to figure it and predict it always falls short. You'll get alot of opinions in reply to your questions, but are any really accurate? The best way to understand Bitcoin's cycles is to listen to peopl",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op30r72/"
+        },
+        {
+          "score": 2,
+          "body": "ETFs changes the dynamic a bit. Both providing stabiliity in up trends that is to their buy pressure and potential volatility in down trends due to sudden outflow and sale of bitcoin. And provides another more path for money flows, expanding the availability for investors to invest/speculate in bitc",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op33ohh/"
+        }
+      ],
+      "macro_liquidity": [
+        {
+          "score": 1,
+          "body": "ETF’s vary, but all buy and sell Bitcoin based on inflows and outflows, and as major institutions, it’s a lot of money, but a lot is based on the mindset of the investors. MM’s set the odds on options, and I’m not sure if these levers impacts the price of Bitcoin itself, but if they work the same as",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1ifss/"
+        },
+        {
+          "score": 1,
+          "body": "It *can* be an advantage in very low-liquidity markets, because attention itself becomes a form of buy pressure 👀💰 But it’s often overstated—slippage, timing, bots, and exits make outcomes inconsistent, and it quickly crosses into ethical/legal risk if influence is used to move price knowingly 🚨 So ",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/1ts46cc/_/op1xxwe/"
+        },
+        {
+          "score": 1,
+          "body": "While its just a guess, thats what I think too. People are dumping money into stocks since they keep going up no matter what. Once the market corrects/pop/crashes/whatever, people will look for other places to keep their money as they panic sell.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op242ao/"
+        },
+        {
+          "score": 0,
+          "body": "I sold because the deflationary power of AI scared me off of a device whose bull thesis is largely rooted in the inevitability of inflation. I held around 4btc from 40k to 80k. To me BTC was always an extremely long horizon bet so I only thought of it in terms of commensurately long time horizons. T",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op24bfh/"
+        },
+        {
+          "score": 1,
+          "body": "High interest rates, Fed draining liquidity from the market, recession scares, 4 year cycle",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op24wmg/"
+        },
+        {
+          "score": 1,
+          "body": "My answer is no I don’t. I don’t price things in Sats. Sats are meaningless. BTC will be a commodity, much like gold, but I doubt it will ever be a currency. However, my conspiratorial mind says that when AI achieves singularity (I promise, I’m not a nutcase), it will need spending money. So, there’",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt6i3t/_/op28jdf/"
+        }
+      ],
+      "ai_capital_rotation": [
+        {
+          "score": 1,
+          "body": "Paper bitcoin in the form of ibit leaps. Is one reason. Miners relentlessly selling to fund AI. It’s not being used as money enough",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1jl8x/"
+        },
+        {
+          "score": 5,
+          "body": "lol What about AI? 😂 it draws more energy than bitcoin.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tqwpwb/_/op1xdaq/"
+        },
+        {
+          "score": 1,
+          "body": "Because AI sucked all the oxygen",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op238mk/"
+        },
+        {
+          "score": 0,
+          "body": "I sold because the deflationary power of AI scared me off of a device whose bull thesis is largely rooted in the inevitability of inflation. I held around 4btc from 40k to 80k. To me BTC was always an extremely long horizon bet so I only thought of it in terms of commensurately long time horizons. T",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op24bfh/"
+        },
+        {
+          "score": 1,
+          "body": "My answer is no I don’t. I don’t price things in Sats. Sats are meaningless. BTC will be a commodity, much like gold, but I doubt it will ever be a currency. However, my conspiratorial mind says that when AI achieves singularity (I promise, I’m not a nutcase), it will need spending money. So, there’",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt6i3t/_/op28jdf/"
+        },
+        {
+          "score": 2,
+          "body": "For me, I think less about Solana itself and more about crypto as an overall asset class. If there is enough institutional participation in crypto one day, I can easily see it becoming a $10T asset class by 2035. If Solana remains about 3% of the overall crypto market cap, we could be looking at a p",
+          "url": "https://www.reddit.com/r/CryptoMarkets/comments/1tt4ere/_/op2aavp/"
+        }
+      ],
+      "buy_dip_hodl": [
+        {
+          "score": 1,
+          "body": "The early sellers or buyers are the ones who win. Most bitcoin buyers are waiting for October after another leg down. Supply is mostly fixed so there are more people short now or waiting for October which agrees with a bunch of charts. I believe October will be too late to enter at a good price . ET",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1n3hj/"
+        },
+        {
+          "score": 1,
+          "body": "It still hasn’t even been 1 year since bitcoin topped at around 120k, the cycles bitcoin goes through are longer than 1 year lol. Just continue to DCA and don’t panic sell if it dips again.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1v4kx/"
+        },
+        {
+          "score": 1,
+          "body": "Here’s another DCA calculator I found: [Kelevest](https://kelevest.com) Just type “Bitcoin” into the asset field and test different DCA strategies.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1rfsebj/_/op1wtxb/"
+        },
+        {
+          "score": 1,
+          "body": "Here’s another DCA calculator I found: [Kelevest](https://kelevest.com) Just type “Bitcoin” into the asset field and test different DCA strategies.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1r9zy1g/_/op1xgt3/"
+        },
+        {
+          "score": 1,
+          "body": "Here’s another DCA calculator I found: [Kelevest](https://kelevest.com) Just type “Bitcoin” into the asset field and test different DCA strategies.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1r0ijcf/_/op1xilq/"
+        },
+        {
+          "score": 1,
+          "body": "Here’s another DCA calculator I found: [Kelevest](https://kelevest.com) Just type “Bitcoin” into the asset field and test different DCA strategies.",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1qtezuc/_/op1xmku/"
+        }
+      ],
+      "cycle_thesis": [
+        {
+          "score": 3,
+          "body": "If you still believe the 4 year cycle is a thing, you should be asking why Bitcoin didn't/hasn't crashed further yet. The 4 year cycle would indicate we've probably got another 18 months of a little downward, then sideways, the gradually back upward activity. I think we're seeing the cycle breaking ",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op1x1m9/"
+        },
+        {
+          "score": 1,
+          "body": "High interest rates, Fed draining liquidity from the market, recession scares, 4 year cycle",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op24wmg/"
+        },
+        {
+          "score": 1,
+          "body": "It’s sitting at 73k in a bear market. Precious cycles it crashed harder and faster than this one. I would say it’s playing out as expected. Each cycle the rise and crash is becoming less powerful",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op2prw3/"
+        },
+        {
+          "score": 1,
+          "body": "Why? Because we are 1/2+ into the crypto bear market . I sold in December, and invest 100% my crypto into Ai . While Ai goes up andcrypto goes down , I will do the same swip in October - December , when the crypto market will touch floor . Why dos this happen? Because it is healthy for Bitcoin to lo",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op2t5ns/"
+        },
+        {
+          "score": 1,
+          "body": "Recovered? It will keep crashing until October 5 due to the cycle",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op2vrr5/"
+        },
+        {
+          "score": 2,
+          "body": "ETFs changes the dynamic a bit. Both providing stabiliity in up trends that is to their buy pressure and potential volatility in down trends due to sudden outflow and sale of bitcoin. And provides another more path for money flows, expanding the availability for investors to invest/speculate in bitc",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt7rbh/_/op33ohh/"
+        }
+      ],
+      "fraud_cefi_counterparty": [
+        {
+          "score": 1,
+          "body": "7.99% is genuinely competitive. Aven is pushing rates down, and that's good for everyone. But here's what's interesting to me. This product is a term loan with fixed LTV buckets (30%, 50%, 70%) and a liquidation ladder (lock at 70%, warning at 80%, kill at 85%). That's one philosophy: predictable, s",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1sxutby/_/op3d0vq/"
+        },
+        {
+          "score": 7,
+          "body": "It's also not like Saylor needs the money personally to make rent or whatever. He can absolutely afford to slow-roll the rug pull in order to go for the high score. Especially because letting the ~~suckers~~ market rationalize the change to selling means that you're less likely to be dragged in fron",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/1ttqixo/_/op4qjfa/"
+        },
+        {
+          "score": 10,
+          "body": ">Tether just burned $1B of market cap within 24 hrs. The largest drop ever. I can't wait for that to implode, when they finally get too many withdrawals that they can pay out, it's going to be marvelous.",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/1ttuhv1/_/op5dsba/"
+        },
+        {
+          "score": 5,
+          "body": "The 3-5 year claim is simply not true. That's just how often the chips tend to be updated because new faster and more efficient chips come out. They get resold and used for other purposes, and of course the value drops, but that's true of everything. The weird push to compare AI to crypto is weird. ",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/1ttuhv1/_/op66bml/"
+        },
+        {
+          "score": 1,
+          "body": "There are countless examples in history where investors have been unable to seperate a needed technology from investing - and when it comes to Bitcoin (and AI) this can be one of the most important lessons. We naturally evaluate things based on whether they work, but investors have to evaluate thing",
+          "url": "https://www.reddit.com/r/Bitcoin/comments/1tt2b8b/_/op6f4ta/"
+        },
+        {
+          "score": 8,
+          "body": "I think Tether is more important than MSTR in the Ponzi. MSTR just holds tokens, but Tether is (supposed to be) the keeper of liquidity. We here, know that liquidity is a one way street. Crypto bros pretend it's not. When the stablecoins refuse to redeem tokens, that's when you know the market is tr",
+          "url": "https://www.reddit.com/r/Buttcoin/comments/1ttuhv1/_/op8fwap/"
+        }
+      ]
+    },
+    "top_comments": [
+      {
+        "score": 352,
+        "body": "Sells 32 btc to cause panic, buys 3200 btc on the dip. 5D chess my friends.",
+        "categories": "panic_capitulation",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/1ttts9n/_/op5g86j/"
+      },
+      {
+        "score": 297,
+        "body": "He sold 32 and the price dropped 3% and you want me to believe that the remaining 800k should be valued at market price?",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/1tu3w64/_/op6tivs/"
+      },
+      {
+        "score": 228,
+        "body": "If Bitcoin crashes because Saylor sold 32 BTC it deserves to go all the way down. Like someone pawning off their gold watch and the whole gold market crashes! I’m not a gold bug, I’m just pointing out this absurdity",
+        "categories": "institutional_flow|macro_liquidity|panic_capitulation",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/1tv5xly/_/opf3z0n/"
+      },
+      {
+        "score": 208,
+        "body": "To paraphrase those in r-bitcoin: Let's not get too excited. We've seen this happen before. This market is so heavily manipulated and unregulated, we have no idea what's actually going on, where is the liquidity, or when things will finally settle. It's more likely bitcoin will die slowly than it will rapidly crash.",
+        "categories": "macro_liquidity|panic_capitulation",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/1ttuhv1/_/op54oy4/"
+      },
+      {
+        "score": 190,
+        "body": "Decouple achieved. It just goes down when tech stocks drop and down when tech stocks up.",
+        "categories": "macro_liquidity|ai_capital_rotation",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/1tv1ird/_/ope07et/"
+      },
+      {
+        "score": 155,
+        "body": "Saylor \"I'm never fucking selling\" lol",
+        "categories": "institutional_flow",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/1ttts9n/_/op58urc/"
+      },
+      {
+        "score": 147,
+        "body": "In two years he could have made a (checks price) 12% return on Bitcoin instead of a 40%+ return on the S&P 500.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/1tuyltn/_/opd0yu5/"
+      },
+      {
+        "score": 120,
+        "body": "Because liquidity goes somewhere else.",
+        "categories": "macro_liquidity",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/1ttvv4t/_/op5bd1k/"
+      },
+      {
+        "score": 112,
+        "body": "It's dumping way to little for my taste. Would like to get this over with",
+        "categories": "panic_capitulation",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/1tuhab4/_/op9ie9o/"
+      },
+      {
+        "score": 110,
+        "body": "I bought the dip each of the last three days and this morning too and well, I'm running out of dipitude.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/1tvegsh/_/opgbmba/"
+      },
+      {
+        "score": 106,
+        "body": "Saylor just needed to sell 0.0038% and the crowd freaks out. But if they buy 25k BTC it's another Monday.",
+        "categories": "institutional_flow",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/1tujsa4/_/opa2uqn/"
+      },
+      {
+        "score": 97,
+        "body": "And yet, considering the price, ETH is dropping around the similar percentage.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/1tvc7v4/_/opg9yah/"
+      },
+      {
+        "score": 88,
+        "body": "They sold 32 bitcoin, after having multiple weeks buying well over 20,000 bitcoin, big whoop. This is probably a tax loss harvesting strategy to save money on paying taxes, they'll buy it back this week plus more. Also this isn't the first time they've done this, they did it in December 2022 right at the bottom of the market, shortly after the stock went on an insane rally. The sale of these bitcoin is not bad, it is",
+        "categories": "institutional_flow|macro_liquidity",
+        "url": "https://www.reddit.com/r/Bitcoin/comments/1ttts9n/_/op54vm8/"
+      },
+      {
+        "score": 87,
+        "body": "No one cares about Bitcoin anymore.",
+        "categories": "other",
+        "url": "https://www.reddit.com/r/StockMarket/comments/1tv1ppa/_/opdoc8l/"
+      },
+      {
+        "score": 86,
+        "body": "Okay, so Saylor betrayed Bitcoin and everything it stands for. But that doesn't make up for all the bad stuff he's done.",
+        "categories": "institutional_flow",
+        "url": "https://www.reddit.com/r/Buttcoin/comments/1tuh9g8/_/op9kgj7/"
+      }
+    ]
+  }
+}
