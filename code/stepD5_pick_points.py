@@ -36,9 +36,10 @@ OUTDIR = ROOT / "output" / "core_points"
 CSV = OUTDIR / "manual_points.csv"
 PNG = OUTDIR / "manual_points.png"
 
-CHUNK_MONTHS = 12   # 12=一年一段；改 6=半年一段
+CHUNK_MONTHS = 12     # 12=一年一段；改 6=半年一段
 SNAP_DAYS = 15
 REF_PIVOT_TH = 0.15
+START_AT_END = True   # True=从最新一年(倒着)开始，用 ←/b 往更早走
 
 
 def main():
@@ -65,7 +66,8 @@ def main():
                 if a <= b:
                     windows.append((a, b, f"{y}-{m0:02d}~{min(m1,12):02d}"))
 
-    st = {"idx": 0, "sub": 0, "snap": SNAP_DAYS, "pts": []}
+    st = {"idx": len(windows) - 1 if START_AT_END else 0, "sub": 0,
+          "snap": SNAP_DAYS, "pts": []}
 
     def cur_range():
         a, b, label = windows[st["idx"]]
@@ -118,7 +120,7 @@ def main():
                             fontsize=9, fontweight="bold", zorder=6)
         ax.set_ylabel("价格(对数)")
         ax.set_title(f"[{label}]  第{st['idx']+1}/{len(windows)}段  吸附±{st['snap']}天  共{len(st['pts'])}点\n"
-                     f"左键标点 右键撤销 | n下一段 b上一段 h半年放大 +/-吸附窗 s保存")
+                     f"左键标点 右键撤销 | ←/b 更早一年  →/n 更晚一年  h半年放大 +/-吸附窗 s保存")
         fig.tight_layout()
         fig.canvas.draw_idle()
 
@@ -165,7 +167,7 @@ def main():
     fig.canvas.mpl_connect("close_event", lambda e: (save(), fig.savefig(PNG, dpi=150)))
 
     replot()
-    print(f"窗口已打开：共 {len(windows)} 段，从 {windows[0][2]} 开始。n下一段/b上一段/h半年/s保存/关闭即存。")
+    print(f"窗口已打开：共 {len(windows)} 段，从最新 {windows[-1][2]} 开始（倒着来）。←或b回更早年份，h半年，s保存，关闭即存。")
     plt.show()
 
 
