@@ -91,13 +91,12 @@ def main():
 
     def save():
         if not st["pts"]:
-            print("（当前还没有点，未写文件）")
             return
         df = pd.DataFrame(sorted(st["pts"], key=lambda x: x["date"]))
         df.insert(0, "n", range(1, len(df) + 1))
         df["date"] = pd.to_datetime(df["date"]).dt.strftime("%Y-%m-%d")
         df.to_csv(CSV, index=False, encoding="utf-8-sig")
-        print(f"已保存 {len(df)} 点 → {CSV}")
+        print(f"[自动保存] {len(df)} 点 → {CSV}", flush=True)
 
     fig, ax = plt.subplots(figsize=(15, 7))
 
@@ -127,17 +126,18 @@ def main():
     def on_click(event):
         if event.inaxes != ax or event.xdata is None or event.ydata is None:
             return
-        tb = fig.canvas.toolbar
-        if tb is not None and getattr(tb, "mode", "") != "":
-            return
         if event.button == 1:
             d = pd.Timestamp(mdates.num2date(event.xdata)).tz_localize(None).normalize()
             dd, px, typ = snap(d, np.log(event.ydata))
             st["pts"].append({"date": dd, "price": round(px, 2), "type": typ})
+            print(f"  +点 {dd:%Y-%m-%d} {px:.0f} ({typ})", flush=True)
+            save()          # 每点一下立刻落盘，崩了也不丢
             replot()
         elif event.button == 3:
             if st["pts"]:
-                st["pts"].pop()
+                rm = st["pts"].pop()
+                print(f"  -撤销 {rm['date']:%Y-%m-%d}", flush=True)
+                save()
                 replot()
 
     def on_key(event):
@@ -167,7 +167,8 @@ def main():
     fig.canvas.mpl_connect("close_event", lambda e: (save(), fig.savefig(PNG, dpi=150)))
 
     replot()
-    print(f"窗口已打开：共 {len(windows)} 段，从最新 {windows[-1][2]} 开始（倒着来）。←或b回更早年份，h半年，s保存，关闭即存。")
+    print(f"窗口已打开：共 {len(windows)} 段，从最新 {windows[-1][2]} 开始（倒着来）。"
+          f"←或b回更早年份，h半年，每点一下自动存到 {CSV}", flush=True)
     plt.show()
 
 
