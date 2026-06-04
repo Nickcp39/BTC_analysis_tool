@@ -1,0 +1,7 @@
+﻿id,side,role,label,date,price
+1,left,top,①顶 2021,2021-11-08,67510.06
+2,left,lower_high,②次高,2022-03-29,47430.74
+3,left,bottom,③底,2022-11-20,16261.22
+4,right,top,④顶 2025,2025-10-05,124720.09
+5,right,lower_high,⑤次高,2025-11-10,106071.01
+6,right,bottom,⑥底,2026-02-05,63845.99

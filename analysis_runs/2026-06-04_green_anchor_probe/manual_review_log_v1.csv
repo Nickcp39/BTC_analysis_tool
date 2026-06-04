@@ -1,0 +1,6 @@
+﻿order,case_id,name,left_anchor,right_anchor,pre_days,post_days,initial_amp_scale,initial_time_scale,initial_shift_days,manual_amp_scale,manual_time_scale,manual_shift_days,manual_left_anchor,manual_right_anchor,visual_grade_1_5,notes,status
+1,peak_2021_to_2025,Peak: 2021 top -> 2025 top,2021-11-08,2025-10-05,260,520,0.5,1.0,-59,0.5,1.0,-59.0,,,,"Initial run: projected low 2026-08-20 at $60,252",codex_initial_run_complete
+2,bear_bottom_2022_to_2026,Bottom: 2022 bear low -> 2026 local low,2022-11-21,2026-02-05,360,260,0.5,1.0,0,,,,,,,,needs_manual_review
+3,lower_high_2022_to_2025,Lower high: 2022 rebound high -> 2025 lower high,2022-03-29,2025-11-10,180,260,0.5,1.0,0,,,,,,,,needs_manual_review
+4,capitulation_2022_to_2026,Capitulation: 2022 Jun low -> 2026 Feb/Mar low,2022-06-18,2026-02-22,220,220,0.5,1.0,0,,,,,,,,needs_manual_review
+5,rebound_2022_to_2026,Rebound: 2022 Aug high -> 2026 May high,2022-08-14,2026-05-08,180,180,0.5,1.0,0,,,,,,,,needs_manual_review

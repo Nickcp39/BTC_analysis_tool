@@ -1,0 +1,18 @@
+{
+  "case_id": "peak_2021_to_2025",
+  "case_name": "Peak: 2021 top -> 2025 top",
+  "left_anchor": "2021-11-08",
+  "right_anchor": "2025-10-05",
+  "left_anchor_price": 67510.06,
+  "right_anchor_price": 124720.09,
+  "amp_scale": 0.5,
+  "time_scale": 1.0,
+  "shift_days": -59.0,
+  "current_date": "2026-06-04",
+  "current_price_from_data": null,
+  "data_latest": "2026-05-31",
+  "projected_future_low_date": "2026-08-20",
+  "projected_future_low_price": 60252.03,
+  "projected_future_low_source_date": "2022-11-21",
+  "days_until_projected_low_from_2026_06_04": 77
+}

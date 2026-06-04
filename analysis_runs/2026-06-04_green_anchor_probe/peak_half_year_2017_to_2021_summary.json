@@ -1,0 +1,17 @@
+{
+  "case_id": "peak_half_year_2017_to_2021",
+  "case_type": "peak_half_year",
+  "left_cycle": "2017",
+  "right_cycle": "2021",
+  "left_anchor": "2017-12-17",
+  "right_anchor": "2021-11-08",
+  "left_anchor_price": 19378.99,
+  "right_anchor_price": 67510.06,
+  "pre_days": 183,
+  "post_days": 183,
+  "amp_by_vol": 0.7114,
+  "amp_scale": 0.5114,
+  "time_scale": 1.24,
+  "shift_days": -25,
+  "rmse": 0.15134
+}

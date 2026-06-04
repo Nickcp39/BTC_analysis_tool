@@ -1,0 +1,4 @@
+﻿role,left_label,right_label,left_date,right_date,left_rel_day,right_rel_day,left_norm,right_norm
+top,①顶,④顶,2021-11-08,2025-10-05,0,0,1.0,1.0
+lower_high,②次高,⑤次高,2022-03-29,2025-11-10,141,36,0.7026,0.8505
+bottom,③底,⑥底,2022-11-20,2026-02-05,377,123,0.2409,0.5119

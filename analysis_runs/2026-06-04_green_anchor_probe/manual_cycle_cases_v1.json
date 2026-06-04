@@ -1,0 +1,89 @@
+{
+  "version": "manual_cycle_run_v1",
+  "created_for": "BTC cycle structure comparison",
+  "workflow": [
+    "Codex generates candidate comparison cases.",
+    "User opens v17 workbench and manually adjusts amp_scale, time_scale, shift_days, anchors, and windows.",
+    "User saves/downloads JSON after each good alignment.",
+    "Codex imports reviewed cases and derives default rules/search ranges."
+  ],
+  "default_constraints": {
+    "amp_scale_start": 0.5,
+    "time_scale_manual_range": [
+      0.7,
+      1.3
+    ],
+    "shift_days_manual_range": [
+      -360,
+      360
+    ],
+    "rule": "time_scale is global per case; no segment warp unless user explicitly validates it"
+  },
+  "cases": [
+    {
+      "id": "peak_2021_to_2025",
+      "name": "Peak: 2021 top -> 2025 top",
+      "left_anchor": "2021-11-08",
+      "right_anchor": "2025-10-05",
+      "pre_days": 260,
+      "post_days": 520,
+      "amp_scale": 0.5,
+      "time_scale": 1.0,
+      "shift_days": -59,
+      "status": "needs_manual_review",
+      "question": "Does the full peak-before and peak-after path visually align?"
+    },
+    {
+      "id": "bear_bottom_2022_to_2026",
+      "name": "Bottom: 2022 bear low -> 2026 local low",
+      "left_anchor": "2022-11-21",
+      "right_anchor": "2026-02-05",
+      "pre_days": 360,
+      "post_days": 260,
+      "amp_scale": 0.5,
+      "time_scale": 1.0,
+      "shift_days": 0,
+      "status": "needs_manual_review",
+      "question": "Does bottoming structure before/after the low align?"
+    },
+    {
+      "id": "lower_high_2022_to_2025",
+      "name": "Lower high: 2022 rebound high -> 2025 lower high",
+      "left_anchor": "2022-03-29",
+      "right_anchor": "2025-11-10",
+      "pre_days": 180,
+      "post_days": 260,
+      "amp_scale": 0.5,
+      "time_scale": 1.0,
+      "shift_days": 0,
+      "status": "needs_manual_review",
+      "question": "Does the rebound-high / second-high structure align?"
+    },
+    {
+      "id": "capitulation_2022_to_2026",
+      "name": "Capitulation: 2022 Jun low -> 2026 Feb/Mar low",
+      "left_anchor": "2022-06-18",
+      "right_anchor": "2026-02-22",
+      "pre_days": 220,
+      "post_days": 220,
+      "amp_scale": 0.5,
+      "time_scale": 1.0,
+      "shift_days": 0,
+      "status": "needs_manual_review",
+      "question": "Does the sharp capitulation and rebound segment align?"
+    },
+    {
+      "id": "rebound_2022_to_2026",
+      "name": "Rebound: 2022 Aug high -> 2026 May high",
+      "left_anchor": "2022-08-14",
+      "right_anchor": "2026-05-08",
+      "pre_days": 180,
+      "post_days": 180,
+      "amp_scale": 0.5,
+      "time_scale": 1.0,
+      "shift_days": 0,
+      "status": "needs_manual_review",
+      "question": "Does the post-bottom rebound structure align?"
+    }
+  ]
+}

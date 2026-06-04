@@ -1,0 +1,4 @@
+﻿left_id,right_id,role,left_date,right_date,span_days,left_price,right_price,price_ratio
+1,4,top,2021-11-08,2025-10-05,1427,67510.06,124720.09,1.8474
+2,5,lower_high,2022-03-29,2025-11-10,1322,47430.74,106071.01,2.2363
+3,6,bottom,2022-11-20,2026-02-05,1173,16261.22,63845.99,3.9263
