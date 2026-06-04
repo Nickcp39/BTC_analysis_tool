@@ -1,0 +1,9 @@
+model,type,prediction,actual,error_days,note,prediction_price,actual_price,error_pct
+Time MedianCenter,time,2025-09-28,2025-10-05,7.0,???????,,,
+Time RegressionCenter,time,2025-11-04,2025-10-05,30.0,??,,,
+Time TopToTopCenter,time,2025-11-01,2025-10-05,27.0,??,,,
+Fusion time center,time,2025-10-27,2025-10-05,22.0,??,,,
+ModelA nominal 1% peak,price,,,,???????,122062.0,124720.09,-2.1312444530788843
+ModelB nominal 3% peak,price,,,,??,133381.0,124720.09,6.944278183250185
+ModelC real base2025 peak,price,,,,??,142615.0,124720.09,14.348057317790586
+Fusion price center,price,,,,??,133754.0,124720.09,7.243347884049789

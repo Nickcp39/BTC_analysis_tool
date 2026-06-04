@@ -1,0 +1,6 @@
+model,weight,note,center_date,date_lo,date_hi,date_wide_lo,date_wide_hi,center_price,price_lo,price_hi,price_wide_lo,price_wide_hi
+M1_time_price_blend_v1,0.75,first independent bottom model: timing + old core price + ratio trend,2026-10-30,2026-09-30,2026-11-22,2026-09-11,2027-01-03,43611.42219088227,38607.3756354048,48111.19229783311,35224.13001867276,52829.02194917895
+M2_sqrt_log_vol_v1,1.2,strict log drawdown sqrt volatility annealing,2026-10-22,2026-09-27,2026-11-07,2026-09-10,2026-12-08,60385.182422424616,53670.14829163344,66109.72366881331,49007.240532675874,72811.61241590684
+M3_bottom_ratio_fusion_v1,1.3,closest to old peak conclusion style: ratio/log-ratio + sqrt-vol + timing fusion,2026-10-30,2026-10-03,2026-11-18,2026-09-16,2026-12-21,57867.52828181057,47680.15486957874,65154.68284603975,42202.41769953243,77418.05047062291
+M4_old_core_bottom_artifact,0.85,"prior core artifact bottom result: avg 48770, range 42722~53096; time inferred from real peak + historical p2b",2026-10-10,2026-10-03,2026-10-16,2026-09-28,2026-10-29,48770.0,42722.0,53096.0,40109.0,66083.0
+M5_peak_to_bottom_timing_only,0.65,actual peak + historical 363/376 day bottom timing; price anchored to ratio-fusion median,2026-10-10,2026-10-03,2026-10-16,2026-09-16,2026-11-07,55368.0,47680.0,65155.0,42202.0,77418.0
