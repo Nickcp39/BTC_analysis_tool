@@ -1,10 +1,11 @@
 """
-StepD4: 顶后路径对齐（按"走势形状"匹配，而非点对点）
-- 把左段(2021顶后)与右段(2025顶后)都画成「相对各自顶的回撤% vs 距顶天数」。
-- Panel1：原始时间轴直接叠（看右侧目前走到左侧的哪个阶段）。
-- Panel2：对右侧时间轴乘最优 α（最小二乘拟合左曲线），看路径形状是否真的吻合，
-          以及 α 是否≈1(同速)/<1(压缩)/>1(拉长)。
-- 目的：用"前导走势是否一致"客观定位 ⑤ 等对应点，并判定右侧当前所处阶段。
+StepD4 (v2): 顶后路径对齐 —— 同时缩放【时间 α】+【幅度 A】，结构才可比
+- 用户纠正：BTC 波动率持续下降→涨跌幅度逐周期变小，不能直接硬比幅度(−49% vs −77%)；
+  时间也在缩放(不完美)。两轴都缩放后，结构是一致的。
+- 做法：对数回撤 y=ln(P/顶)。模型 右(d) ≈ A · 左(α·d)。
+  网格搜 α(时间，左日=α·右日；α<1=右更慢)，每个 α 闭式解 A(幅度比，右/左；A<1=右更浅)。
+- 验证：用真实波动率(顶前365日 daily logret std)算各周期 vol，看拟合出的 A 是否≈ vol_右/vol_左
+  （若接近，说明幅度差确实由"波动率下降"解释，而非过拟合）。
 """
 import sys
 from pathlib import Path
@@ -22,23 +23,29 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTDIR = ROOT / "output" / "core_points"
-LEFT_TOP = pd.Timestamp("2021-11-08")
-RIGHT_TOP = pd.Timestamp("2025-10-05")
+TOP_2017 = pd.Timestamp("2017-12-16")
+LEFT_TOP = pd.Timestamp("2021-11-08")   # 左模板
+RIGHT_TOP = pd.Timestamp("2025-10-05")  # 右(待对齐)
 
-# 左侧已知地标（用于看右侧对应到哪个阶段）
 LEFT_MARKS = [
-    ("2022-01-22", "首低 -48%"),
-    ("2022-03-29", "②次高 -30%"),
-    ("2022-06-18", "急跌 ~-70%"),
-    ("2022-11-21", "③底 -77%"),
+    ("2022-01-22", "首低"),
+    ("2022-03-29", "②次高"),
+    ("2022-06-18", "急跌"),
+    ("2022-11-21", "③底"),
 ]
 
 
-def path(s, top, ndays):
+def logdd(s, top, ndays):
     seg = s.loc[top: top + pd.Timedelta(days=ndays)]
     days = (seg.index - top).days.values.astype(float)
-    pct = (seg.values / seg.iloc[0] - 1.0) * 100.0
-    return days, pct, seg.index
+    y = np.log(seg.values / seg.values[0])  # 对数回撤(<=0)
+    return days, y, seg.index
+
+
+def realized_vol(s, end, lookback=365):
+    seg = s.loc[end - pd.Timedelta(days=lookback): end]
+    r = np.diff(np.log(seg.values))
+    return float(np.std(r))
 
 
 def main():
@@ -46,61 +53,76 @@ def main():
     OUTDIR.mkdir(parents=True, exist_ok=True)
     s = read_series()
 
-    ld, lp, lidx = path(s, LEFT_TOP, 430)
-    rd, rp, ridx = path(s, RIGHT_TOP, 430)
+    ld, ly, _ = logdd(s, LEFT_TOP, 700)
+    rd, ry, ridx = logdd(s, RIGHT_TOP, 700)
     right_span = int(rd.max())
-    print(f"右侧(2025顶后)目前有 {right_span} 天数据，到 {ridx.max():%Y-%m-%d}")
 
-    def left_at(d):
-        return np.interp(d, ld, lp)
+    def lat(d):
+        return np.interp(d, ld, ly)
 
-    # 最优时间缩放 α：右侧 day d -> 左侧 α*d
-    alphas = np.linspace(0.3, 4.0, 740)
-    errs = [np.mean((left_at(a * rd) - rp) ** 2) for a in alphas]
-    alpha = float(alphas[int(np.argmin(errs))])
-    print(f"最优时间缩放 α = {alpha:.2f}  "
-          f"({'右侧更快/压缩' if alpha>1 else '右侧更慢/拉长' if alpha<1 else '同速'})")
+    # 联合拟合 α(时间) + A(幅度)
+    alphas = np.linspace(0.3, 2.5, 1101)
+    best = None
+    for a in alphas:
+        t = lat(a * rd)
+        denom = float(np.sum(t * t))
+        A = float(np.sum(ry * t) / denom) if denom > 0 else 1.0
+        err = float(np.mean((ry - A * t) ** 2))
+        if best is None or err < best[2]:
+            best = (a, A, err)
+    alpha, A, _ = best
 
-    # 右侧当前末端对应到左侧第几天 / 什么阶段
-    end_left_day = alpha * right_span
-    print(f"右侧末端({ridx.max():%Y-%m-%d}, {rp[-1]:.1f}%) ≈ 左侧第 {end_left_day:.0f} 天"
-          f"（左侧那天回撤 {left_at(end_left_day):.1f}%, 日期约 {(LEFT_TOP+pd.Timedelta(days=end_left_day)):%Y-%m-%d}）")
+    # 真实波动率(顶前365日)
+    v17 = realized_vol(s, TOP_2017)
+    v21 = realized_vol(s, LEFT_TOP)
+    v25 = realized_vol(s, RIGHT_TOP)
+    A_vol = v25 / v21
 
-    # 左侧地标对应到右侧（除以 α）现实天数
-    print("\n左侧地标 → 右侧对应（按 α 折算）：")
+    print(f"右段(2025顶后)现有 {right_span} 天，到 {ridx.max():%Y-%m-%d}")
+    print(f"\n联合拟合：α(时间)={alpha:.2f}  ({'右更慢/拉长' if alpha<1 else '右更快/压缩'})"
+          f"   A(幅度,右/左)={A:.2f}  (右只有左的 {A*100:.0f}% 幅度)")
+    print(f"\n真实波动率(顶前365日 daily logret std)：2017={v17:.4f}  2021={v21:.4f}  2025={v25:.4f}")
+    print(f"  逐周期下降比：2021/2017={v21/v17:.2f}   2025/2021={v25/v21:.2f}")
+    print(f"  拟合 A={A:.2f}  vs  波动率预测 A=vol25/vol21={A_vol:.2f}  "
+          f"→ {'吻合! 幅度差确由波动率下降解释' if abs(A-A_vol)<0.15 else '有偏差，幅度差不只波动率'}")
+
+    print("\n左侧地标 → 右侧对应(按 α 折算实际日期)：")
     for d, name in LEFT_MARKS:
         ldays = (pd.Timestamp(d) - LEFT_TOP).days
         rdays = ldays / alpha
         rdate = RIGHT_TOP + pd.Timedelta(days=rdays)
-        status = "已过" if rdays <= right_span else "未到"
-        print(f"  {name:14} 左第{ldays:>4}天 → 右第{rdays:>5.0f}天 ≈ {rdate:%Y-%m-%d}  [{status}]")
+        print(f"  {name:6} 左第{ldays:>4}天 → 右第{rdays:>5.0f}天 ≈ {rdate:%Y-%m-%d}  "
+              f"[{'已过' if rdays<=right_span else '未到'}]")
 
-    # ---- 画图 ----
+    # ---- 画图：左=原始硬比；右=两轴缩放后 ----
+    def pct(y):
+        return (np.exp(y) - 1) * 100
+
     fig, axes = plt.subplots(1, 2, figsize=(17, 6))
 
     ax = axes[0]
-    ax.plot(ld, lp, color="#c0392b", lw=1.4, label="左段 2021顶后")
-    ax.plot(rd, rp, color="#1f77b4", lw=1.8, label="右段 2025顶后")
-    for d, name in LEFT_MARKS:
-        ldays = (pd.Timestamp(d) - LEFT_TOP).days
-        ax.scatter([ldays], [left_at(ldays)], c="#c0392b", s=45, zorder=3)
-        ax.annotate(name, (ldays, left_at(ldays)), fontsize=8, color="#c0392b",
-                    xytext=(3, -12), textcoords="offset points")
-    ax.scatter([right_span], [rp[-1]], c="#1f77b4", s=55, zorder=3)
-    ax.annotate(f"右侧当前\n{ridx.max():%y-%m-%d} {rp[-1]:.0f}%",
-                (right_span, rp[-1]), fontsize=8, color="#1f77b4",
-                xytext=(3, 8), textcoords="offset points")
+    ax.plot(ld, pct(ly), color="#c0392b", lw=1.4, label="左 2021顶后")
+    ax.plot(rd, pct(ry), color="#1f77b4", lw=1.8, label="右 2025顶后")
     ax.axhline(0, color="#999", lw=0.6)
-    ax.set_title("Panel1 原始时间轴：右侧目前走到左侧哪个阶段？")
-    ax.set_xlabel("距顶天数"); ax.set_ylabel("相对顶回撤 %"); ax.legend()
+    ax.set_title("① 原始硬比（难看、比例不对）")
+    ax.set_xlabel("距顶天数"); ax.set_ylabel("回撤 %"); ax.legend()
 
     ax = axes[1]
-    ax.plot(ld, lp, color="#c0392b", lw=1.4, label="左段 2021顶后")
-    ax.plot(rd * alpha, rp, color="#1f77b4", lw=1.8,
-            label=f"右段×α={alpha:.2f}（拉到左侧时间尺度）")
+    ax.plot(ld, pct(ly), color="#c0392b", lw=1.6, label="左 2021顶后(模板)")
+    # 右映射到左的框架：x=α·d，y=右幅度/A（除以A放大到左尺度）
+    ax.plot(alpha * rd, pct(ry / A), color="#1f77b4", lw=2.0,
+            label=f"右×(α={alpha:.2f}, A={A:.2f}) 缩放后")
+    for d, name in LEFT_MARKS:
+        ldays = (pd.Timestamp(d) - LEFT_TOP).days
+        ax.scatter([ldays], [pct(lat(ldays))], c="#c0392b", s=45, zorder=3)
+        ax.annotate(name, (ldays, pct(lat(ldays))), fontsize=8, color="#c0392b",
+                    xytext=(3, -12), textcoords="offset points")
+    ax.axvline(alpha * right_span, color="#1f77b4", ls="--", lw=0.9)
+    ax.annotate(f"右侧当前到这\n≈左第{alpha*right_span:.0f}天",
+                (alpha * right_span, pct(ly).min() * 0.5), fontsize=8, color="#1f77b4")
     ax.axhline(0, color="#999", lw=0.6)
-    ax.set_title(f"Panel2 时间缩放 α={alpha:.2f} 后：路径形状吻合吗？")
-    ax.set_xlabel("距顶天数（左侧尺度）"); ax.set_ylabel("相对顶回撤 %"); ax.legend()
+    ax.set_title(f"② 两轴缩放后(α时间+A幅度)：结构是否一致？")
+    ax.set_xlabel("距顶天数(左尺度)"); ax.set_ylabel("回撤 %(左尺度)"); ax.legend()
 
     plt.tight_layout()
     out = OUTDIR / "post_top_align.png"
