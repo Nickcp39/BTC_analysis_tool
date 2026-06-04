@@ -1,0 +1,17 @@
+{
+  "case_id": "case01_peak_pre1y_2021_vs_2025",
+  "name": "Peak 前一年: 2021 peak pre-1y vs 2025 peak pre-1y",
+  "category": "peak_pre_1y",
+  "left_anchor": "2021-11-08",
+  "right_anchor": "2025-10-05",
+  "left_anchor_price": 67510.06,
+  "right_anchor_price": 124720.09,
+  "pre_days": 365,
+  "post_days": 0,
+  "auto_amp_scale": 0.275,
+  "auto_time_scale": 1.0,
+  "auto_shift_days": 165,
+  "auto_rmse": 0.067956,
+  "common_days": 201,
+  "overlay_csv": "case01_peak_pre1y_2021_vs_2025_overlay_auto.csv"
+}

@@ -1,0 +1,2 @@
+﻿case_id,name,status,left_anchor,right_anchor,pre_days,post_days,auto_amp_scale,auto_time_scale,auto_shift_days,auto_rmse,manual_amp_scale,manual_time_scale,manual_shift_days,visual_grade_1_5,manual_notes,html,overlay_csv
+case01_peak_pre1y_2021_vs_2025,Peak 前一年: 2021 peak pre-1y vs 2025 peak pre-1y,auto_initial_run_complete,2021-11-08,2025-10-05,365,0,0.275,1.0,165,0.067956,,,,,,case01_peak_pre1y_2021_vs_2025.html,case01_peak_pre1y_2021_vs_2025_overlay_auto.csv
