@@ -66,8 +66,27 @@ def main():
                 if a <= b:
                     windows.append((a, b, f"{y}-{m0:02d}~{min(m1,12):02d}"))
 
-    st = {"idx": len(windows) - 1 if START_AT_END else 0, "sub": 0,
-          "snap": SNAP_DAYS, "pts": []}
+    # 续标：载入已有点（去重），避免重开覆盖；从最早已标点所在年继续，便于往更早补
+    existing, seen = [], set()
+    if CSV.exists():
+        old = pd.read_csv(CSV)
+        old["date"] = pd.to_datetime(old["date"])
+        for _, r in old.sort_values("date").iterrows():
+            d = r["date"].normalize()
+            if d in seen:
+                continue
+            seen.add(d)
+            existing.append({"date": d, "price": float(r["price"]), "type": str(r["type"])})
+
+    def win_idx_for(date):
+        for i, (a, b, _) in enumerate(windows):
+            if a <= date <= b:
+                return i
+        return len(windows) - 1
+
+    start_idx = (win_idx_for(min(p["date"] for p in existing)) if existing
+                 else (len(windows) - 1 if START_AT_END else 0))
+    st = {"idx": start_idx, "sub": 0, "snap": SNAP_DAYS, "pts": existing}
 
     def cur_range():
         a, b, label = windows[st["idx"]]
@@ -164,11 +183,18 @@ def main():
 
     fig.canvas.mpl_connect("button_press_event", on_click)
     fig.canvas.mpl_connect("key_press_event", on_key)
-    fig.canvas.mpl_connect("close_event", lambda e: (save(), fig.savefig(PNG, dpi=150)))
+    def on_close(e):
+        try:
+            save()
+            fig.savefig(PNG, dpi=150)
+        except Exception as ex:
+            print("（关闭时存图出错，但点已在 CSV）", ex, flush=True)
+
+    fig.canvas.mpl_connect("close_event", on_close)
 
     replot()
-    print(f"窗口已打开：共 {len(windows)} 段，从最新 {windows[-1][2]} 开始（倒着来）。"
-          f"←或b回更早年份，h半年，每点一下自动存到 {CSV}", flush=True)
+    print(f"窗口已打开：已载入 {len(st['pts'])} 个已标点，从 {windows[st['idx']][2]} 段继续。"
+          f"←或b回更早年份，h半年，每点一下自动追加到 {CSV}", flush=True)
     plt.show()
 
 
