@@ -16,9 +16,9 @@ HTML = OUT / "peak_structure_workbench_v18.html"
 # 红 = 历史顶（做 幅度/时间/平移 变换去套绿），绿 = 当前顶（原样）。
 DEFAULT_CASES = [
     {
-        "name": "2021顶 → 2025顶（顶前一年结构）",
+        "name": "2021顶 → 2025主顶(8/12)（顶前一年结构）",
         "left_anchor": "2021-11-08",
-        "right_anchor": "2025-10-05",
+        "right_anchor": "2025-08-12",
         "pre_days": 365,
         "post_days": 120,
         "amp_scale": 0.50,
@@ -26,9 +26,9 @@ DEFAULT_CASES = [
         "shift_days": 0,
     },
     {
-        "name": "2017顶 → 2025顶（顶前一年结构）",
+        "name": "2017顶 → 2021顶（顶前一年结构·桥接用）",
         "left_anchor": "2017-12-17",
-        "right_anchor": "2025-10-05",
+        "right_anchor": "2021-11-08",
         "pre_days": 365,
         "post_days": 120,
         "amp_scale": 0.33,
@@ -151,7 +151,7 @@ code { background:#11161d; padding:1px 4px; border-radius:4px; color:#cfe3ff; }
 <script>
 const RAW = __DATA_JSON__.map(d => { const t = new Date(d[0] + "T00:00:00").getTime(); return { dateText:d[0], t:t, price:+d[1] }; });
 const DEFAULT_CASES = __CASES_JSON__;
-const STORAGE_KEY = "btc_peak_structure_workbench_v18";
+const STORAGE_KEY = "btc_peak_structure_workbench_v18b";
 const DAY = 86400000;
 const NS = "http://www.w3.org/2000/svg";
 const svg = document.getElementById("chart");
