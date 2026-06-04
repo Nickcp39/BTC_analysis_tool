@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(python output/paper_4d_structure.py)",
+      "Bash(python output/paper_logic_flowchart.py)"
     ]
   }
 }
