@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-06-03T00:11:12",
+  "btc_price": 66724.16,
+  "indicators": {
+    "ahr999": {
+      "name": "AHR999",
+      "date": "2026-06-03",
+      "value": 0.356,
+      "price": 66724.16,
+      "gma200": 78555.1,
+      "estimate_price": 159290.38,
+      "zone": "深度价值区（抄底）",
+      "score": 2,
+      "in_deep_value": true
+    },
+    "fear_greed": {
+      "name": "恐慌贪婪指数",
+      "date": "2026-06-03",
+      "value": 11,
+      "zone": "极度恐惧",
+      "score": 2
+    },
+    "lth": {
+      "name": "长持者(LTH)",
+      "date": "2026-05-21",
+      "lth_supply_btc": 16300000.0,
+      "lth_ratio": 0.8191,
+      "lth_net_change_30d_btc": 200000.0,
+      "phase": "accumulation",
+      "ratio_zone": "中性",
+      "action_score": 1,
+      "ratio_score": 0,
+      "score": 1,
+      "source": "CoinDesk 2026-05-21 / CoinSpectator: LTH 16.3M逼近纪录,自峰顶+2.18M,过去一月+200k"
+    }
+  },
+  "composite_score": 5,
+  "max_score": 6,
+  "verdict": "强烈抄底区：四指标高度共振，历史上接近熊底"
+}

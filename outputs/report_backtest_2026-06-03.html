@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><title>BTC 算法回测 2026-06-03</title><style>
+body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#fafaf9;color:#1a1a1a;margin:0}
+.page{max-width:1000px;margin:0 auto;padding:38px 26px 80px} h1{font-size:23px;border-bottom:2px solid #1a1a1a;padding-bottom:10px}
+h2{font-size:18px;margin-top:30px} table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid #e5e5e3;padding:7px 11px;text-align:center} th{background:#f3f4f6}
+.box{background:#dcfce7;border:1px solid #15803d;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:15px}
+.foot{color:#9ca3af;font-size:12px;margin-top:30px;border-top:1px solid #e5e5e3;padding-top:12px}</style></head><body><div class=page>
+<h1>BTC 节奏/价格 算法回测（留一法 + 样本外）</h1>
+<p style=color:#6b6b6b;font-size:14px>数据至 2026-06-03　·　理念：不求完美，验证近似准确性；早期(2011/2013)市场小波动大，误差天然大</p>
+
+<div class=box>🎯 <b>样本外硬验证</b>：只用 ≤2021 数据 + 2022底，预测 2025 峰 = <b>$116,409</b> vs 实际(月均) $116,526　→ <b>误差 -0.1%</b></div>
+
+<h2>1. 时间 · 减半→峰（留一法，单位:天）</h2>
+<table><tr><th>抽出轮</th><th>实际</th><th>预测</th><th>误差</th></tr><tr><td>2013</td><td>371d</td><td>535d</td><td style=color:#b91c1c>+44%</td></tr><tr><td>2017</td><td>525d</td><td>484d</td><td style=color:#15803d>-8%</td></tr><tr><td>2021</td><td>546d</td><td>477d</td><td style=color:#15803d>-13%</td></tr><tr><td>2025</td><td>534d</td><td>481d</td><td style=color:#15803d>-10%</td></tr></table>
+<p>成熟周期(2017/2021/2025)平均绝对误差 <b>10%</b>；全样本 19%。</p>
+
+<h2>2. 时间 · 峰→底（留一法，单位:天）</h2>
+<table><tr><th>抽出轮</th><th>实际</th><th>预测</th><th>误差</th></tr><tr><td>2011</td><td>163d</td><td>378d</td><td style=color:#b91c1c>+132%</td></tr><tr><td>2015</td><td>406d</td><td>297d</td><td style=color:#b45309>-27%</td></tr><tr><td>2018</td><td>363d</td><td>312d</td><td style=color:#15803d>-14%</td></tr><tr><td>2022</td><td>366d</td><td>311d</td><td style=color:#b45309>-15%</td></tr></table>
+<p>成熟周期(2018/2022)平均绝对误差 <b>15%</b>；全样本 47%（2011仅163天，早期极端值拉高误差）。</p>
+
+<h2>3. 价格 · 底→峰倍数 R（留一法，幂压缩）</h2>
+<table><tr><th>抽出轮</th><th>实际</th><th>预测</th><th>误差</th></tr><tr><td>2017</td><td>70</td><td>53</td><td style=color:#b45309>-24%</td></tr><tr><td>2021</td><td>18</td><td>20</td><td style=color:#15803d>+10%</td></tr><tr><td>2025</td><td>7</td><td>7</td><td style=color:#15803d>+7%</td></tr></table>
+<p>成熟周期(2021/2025)平均绝对误差 <b>9%</b>；全样本 14%。</p>
+
+<h2>结论</h2>
+<div class=box>
+<b>近似准确性成立</b>：在成熟周期上——减半→峰误差 ~10%、峰→底 ~15%、底→峰倍数 ~9%；样本外预测2025峰误差仅 -0.1%。<br>
+早期(2011/2013)误差大是因为市场小、波动率高——这正印证"波动率随时间衰减、规律逐渐变清晰"。<br>
+<b>所以本轮底(~2026-10)与下轮峰(~2029-10, ~\$160k-220k)的推算，置信度来自成熟周期的可复算性，而非完美公式。</b>
+</div>
+<div class=foot>signals/backtest.py 生成。留一法=抽掉一轮用其余预测它。辅助分析，非买卖建议。</div>
+</div></body></html>

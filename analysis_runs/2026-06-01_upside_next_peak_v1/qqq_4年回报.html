@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QQQ（纳指100）每4年回报回测 · 与美国经济的强韧</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1a1f2b; --muted:#6b7280;
+    --line:#e6e8ee; --up:#16a34a; --flat:#d97706; --accent:#2563eb; --red:#dc2626;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",
+      "Hiragino Sans GB",sans-serif; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px; margin:0 auto; padding:28px 22px 50px;}
+  h1{font-size:26px; margin:8px 0 4px; letter-spacing:.5px;}
+  .sub{color:var(--muted); font-size:15px; margin-bottom:22px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:22px; margin:16px 0; box-shadow:0 1px 3px rgba(20,30,60,.04);
+    break-inside:avoid;
+  }
+  .big{
+    text-align:center; padding:30px 20px;
+    background:linear-gradient(135deg,#eef4ff,#f6f9ff); border:1px solid #dbe6ff;
+  }
+  .big .num{font-size:58px; font-weight:800; color:var(--accent); line-height:1;}
+  .big .lbl{font-size:16px; color:var(--muted); margin-top:10px;}
+  .big .note{font-size:15px; margin-top:14px;}
+  h2{font-size:19px; margin:6px 0 14px;}
+  table{width:100%; border-collapse:collapse; font-size:15px;}
+  th,td{padding:10px 8px; text-align:center; border-bottom:1px solid var(--line);}
+  th{color:var(--muted); font-weight:600; font-size:13px;}
+  td.win{text-align:left; font-weight:600;}
+  .tag{display:inline-block; padding:2px 10px; border-radius:999px; font-size:13px; font-weight:600;}
+  .tag.y{background:#e7f6ec; color:var(--up);}
+  .tag.n{background:#fdf2e2; color:var(--flat);}
+  tr.sum td{background:#f3f6ff; font-weight:700; border-top:2px solid #dbe6ff;}
+  .bar-row{display:flex; align-items:center; margin:9px 0; font-size:14px;}
+  .bar-row .yr{width:92px; color:var(--muted); flex:none;}
+  .bar-track{flex:1; background:#eef0f5; border-radius:8px; height:24px; overflow:hidden;}
+  .bar-fill{height:100%; border-radius:8px; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; color:#fff; font-size:13px; font-weight:700;}
+  .bar-fill.y{background:linear-gradient(90deg,#34d399,#16a34a);}
+  .bar-fill.n{background:linear-gradient(90deg,#fbbf24,#d97706);}
+  .ref-lbl{font-size:12px; color:#94a3b8; margin:6px 0 0 92px;}
+  .takeaway li{margin:8px 0; font-size:15.5px;}
+  .pill{display:inline-block; background:#eef4ff; color:var(--accent); border-radius:999px; padding:3px 12px; font-size:13px; font-weight:600; margin-right:6px;}
+  .foot{color:var(--muted); font-size:13px; margin-top:24px; text-align:center;}
+  /* timeline */
+  .tl{position:relative; margin:4px 0 0;}
+  .tl-row{display:flex; gap:14px; padding:11px 0; border-bottom:1px dashed var(--line); break-inside:avoid;}
+  .tl-row:last-child{border-bottom:none;}
+  .tl-yr{flex:none; width:56px; font-weight:800; font-size:17px; color:var(--accent);}
+  .tl-body{flex:1;}
+  .tl-evt{font-weight:700; font-size:15px;}
+  .tl-evt .crisis{color:var(--red);}
+  .tl-note{font-size:14px; color:#4b5563; margin-top:2px;}
+  .banner{
+    background:linear-gradient(135deg,#fff7ed,#fef2f2); border:1px solid #fed7aa;
+    border-radius:14px; padding:18px 20px; font-size:15.5px; margin-top:14px;
+  }
+  .banner b{color:var(--red);}
+  @page{ size:A4; margin:12mm; }
+  @media print{
+    body{background:#fff;}
+    .wrap{max-width:100%; padding:0;}
+    .card{box-shadow:none;}
+    .page-break{break-before:page;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>纳斯达克100（QQQ）到底几年能翻倍？</h1>
+  <div class="sub">用过去十年真实股价做的「持有4年」滚动回测 · 兼看美国经济的强韧 · 数据截至 2026年6月</div>
+
+  <div class="card big">
+    <div class="num">2.03&times;</div>
+    <div class="lbl">过去8个「持有4年」窗口的<strong>平均回报</strong></div>
+    <div class="note"><strong>平均下来，QQQ 大约每 4 年就能翻一倍</strong>（年化约 19%）。</div>
+  </div>
+
+  <div class="card">
+    <h2>怎么算的？</h2>
+    <p style="margin:0; color:#374151;">
+      把钱在某一年买入 QQQ，<strong>拿满4年</strong>再看变成多少倍。
+      比如「2026–2022」= 2022年6月买入，到2026年6月变成 2.49 倍。
+      一共测了8个这样的4年窗口，看真实结果如何。
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>8个窗口的真实结果</h2>
+    <div class="bar-row"><span class="yr">2026–2022</span><div class="bar-track"><div class="bar-fill y" style="width:100%">2.49×</div></div></div>
+    <div class="bar-row"><span class="yr">2021–2017</span><div class="bar-track"><div class="bar-fill y" style="width:95%">2.37×</div></div></div>
+    <div class="bar-row"><span class="yr">2020–2016</span><div class="bar-track"><div class="bar-fill y" style="width:90%">2.23×</div></div></div>
+    <div class="bar-row"><span class="yr">2023–2019</span><div class="bar-track"><div class="bar-fill y" style="width:86%">2.14×</div></div></div>
+    <div class="bar-row"><span class="yr">2024–2020</span><div class="bar-track"><div class="bar-fill n" style="width:79%">1.96×</div></div></div>
+    <div class="bar-row"><span class="yr">2022–2018</span><div class="bar-track"><div class="bar-fill n" style="width:73%">1.82×</div></div></div>
+    <div class="bar-row"><span class="yr">2025–2021</span><div class="bar-track"><div class="bar-fill n" style="width:66%">1.64×</div></div></div>
+    <div class="bar-row"><span class="yr">2019–2015</span><div class="bar-track"><div class="bar-fill n" style="width:64%">1.60×</div></div></div>
+    <div class="ref-lbl">绿色 = 4年内翻倍（≥2倍）　橙色 = 没到2倍（但都在赚钱）</div>
+  </div>
+
+  <div class="card">
+    <h2>明细表</h2>
+    <table>
+      <thead>
+        <tr><th>窗口（卖–买）</th><th>变成几倍</th><th>年化收益</th><th>是否翻倍</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="win">2019 – 2015</td><td>1.60×</td><td>12.5%</td><td><span class="tag n">否</span></td></tr>
+        <tr><td class="win">2020 – 2016</td><td>2.23×</td><td>22.2%</td><td><span class="tag y">是</span></td></tr>
+        <tr><td class="win">2021 – 2017</td><td>2.37×</td><td>24.1%</td><td><span class="tag y">是</span></td></tr>
+        <tr><td class="win">2022 – 2018</td><td>1.82×</td><td>16.2%</td><td><span class="tag n">否</span></td></tr>
+        <tr><td class="win">2023 – 2019</td><td>2.14×</td><td>20.9%</td><td><span class="tag y">是</span></td></tr>
+        <tr><td class="win">2024 – 2020</td><td>1.96×</td><td>18.3%</td><td><span class="tag n">否</span></td></tr>
+        <tr><td class="win">2025 – 2021</td><td>1.64×</td><td>13.2%</td><td><span class="tag n">否</span></td></tr>
+        <tr><td class="win">2026 – 2022</td><td>2.49×</td><td>25.6%</td><td><span class="tag y">是</span></td></tr>
+        <tr class="sum"><td class="win">平均</td><td>2.03×</td><td>约19%</td><td>4/8 翻倍</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 第二页：美国经济的强韧 -->
+  <div class="page-break"></div>
+
+  <h1 style="margin-top:6px;">这十年其实一点都不太平</h1>
+  <div class="sub">几乎每一年都有"吓人的大事"，但市场一次次挺了过来——这就是美国经济的强韧</div>
+
+  <div class="card">
+    <div class="tl">
+      <div class="tl-row"><div class="tl-yr">2015</div><div class="tl-body">
+        <div class="tl-evt"><span class="crisis">中国股灾 + 人民币贬值、油价腰斩</span></div>
+        <div class="tl-note">美联储9年来首次加息，全球市场剧烈震荡。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2016</div><div class="tl-body">
+        <div class="tl-evt"><span class="crisis">英国脱欧公投、特朗普意外当选</span></div>
+        <div class="tl-note">年初美股大跌，随后强势反弹，全年收红。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2017</div><div class="tl-body">
+        <div class="tl-evt">减税落地，科技龙头领涨</div>
+        <div class="tl-note">史上最平静的牛市之一，几乎全年没有像样回调。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2018</div><div class="tl-body">
+        <div class="tl-evt"><span class="crisis">中美贸易战开打、美联储连续加息</span></div>
+        <div class="tl-note">四季度纳指一度暴跌约20%，年底一片悲观。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2019</div><div class="tl-body">
+        <div class="tl-evt"><span class="crisis">收益率曲线倒挂、衰退担忧</span></div>
+        <div class="tl-note">美联储转向降息，科技股全年强劲大涨。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2020</div><div class="tl-body">
+        <div class="tl-evt"><span class="crisis">新冠爆发，3月史上最快熔断暴跌约34%</span></div>
+        <div class="tl-note">天量刺激出台，市场V型反弹，年内创出新高。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2021</div><div class="tl-body">
+        <div class="tl-evt">经济重启、散户狂热</div>
+        <div class="tl-note">纳指见顶；年底通胀开始抬头，埋下次年伏笔。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2022</div><div class="tl-body">
+        <div class="tl-evt"><span class="crisis">40年最高通胀、史上最猛加息、俄乌战争</span></div>
+        <div class="tl-note">纳指全年跌约33%，进入熊市，是最难熬的一年。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2023</div><div class="tl-body">
+        <div class="tl-evt"><span class="crisis">硅谷银行倒闭，引发银行业恐慌</span></div>
+        <div class="tl-note">ChatGPT 点燃 AI 浪潮，科技股强劲反弹。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2024</div><div class="tl-body">
+        <div class="tl-evt">AI 资本开支爆发、通胀回落</div>
+        <div class="tl-note">美联储开始降息，"软着陆"基本兑现。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2025</div><div class="tl-body">
+        <div class="tl-evt">AI 产业链持续投入</div>
+        <div class="tl-note">市场虽有波动，整体维持在高位。</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2026</div><div class="tl-body">
+        <div class="tl-evt">截至6月，纳指处于历史高位附近</div>
+        <div class="tl-note">十年长跑，又站在新的起点上。</div></div></div>
+    </div>
+
+    <div class="banner">
+      过去十年，美国经历了 <b>贸易战、新冠疫情、40年最高通胀、史上最快加息、银行危机、两场战争</b>——
+      但 QQQ 的<strong>每一个4年窗口都在赚钱，一半实现翻倍</strong>。
+      坏消息年年有，龙头企业的盈利却一轮轮创新高。这，就是美国经济和科技巨头的<strong>强韧</strong>。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>三句话结论</h2>
+    <ul class="takeaway">
+      <li><span class="pill">平均</span>过去十年，QQQ 持有4年<strong>平均涨到 2.03 倍</strong>，差不多就是翻倍。</li>
+      <li><span class="pill">没亏过</span>8个窗口里<strong>没有一次亏钱</strong>，哪怕买在最差的时点（2021高位），4年后也有 1.64 倍。</li>
+      <li><span class="pill">强韧</span>真正的底气不是"没有坏消息"，而是<strong>坏消息之后总能恢复并创新高</strong>——长期、分散、拿得住，时间站在我们这边。</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    口径：每年6月初最近交易日，QQQ 复权收盘价 · 数据源：Yahoo Finance / StockAnalysis<br>
+    经济事件为公开历史回顾 · 本文仅为历史回测与科普，不代表未来收益，不构成投资建议
+  </div>
+
+</div>
+</body>
+</html>
