@@ -93,9 +93,10 @@ def make_overlay_grid(summary: pd.DataFrame, series: pd.Series) -> Path:
             right_color = "#b45309"
             face = "#fff7ed"
 
+        a, b = row["pair"].split("->")
         ax.set_facecolor(face)
-        ax.plot(left_x, left_y, color=left_color, lw=1.65, label=f"{row['pair'].split('->')[0]} 缩放后")
-        ax.plot(right_x, right_y, color=right_color, lw=1.9, label=f"{row['pair'].split('->')[1]} 目标窗口")
+        ax.plot(left_x, left_y, color=left_color, lw=1.65, label=f"{a} 年（历史·已对齐）")
+        ax.plot(right_x, right_y, color=right_color, lw=1.9, label=f"{b} 年")
         ax.axvline(0, color="#111827", lw=0.8, alpha=0.45)
         ax.axhline(0, color="#111827", lw=0.8, alpha=0.25)
         ax.grid(True, color="#cbd5e1", alpha=0.45, lw=0.6)
@@ -108,24 +109,26 @@ def make_overlay_grid(summary: pd.DataFrame, series: pd.Series) -> Path:
         pad = max(0.06, (y_max - y_min) * 0.14)
         ax.set_ylim(y_min - pad, y_max + pad)
 
-        title = f"{i + 1}. {row['pair']}  peak {row['anchor_label']}  窗口 {row['window_label']}"
-        subtitle = (
-            f"amp {row['amp_median']:.3f}  time {row['time_median']:.3f}  "
-            f"shift {row['shift_median']:+.0f}d  RMSE {row['rmse_median']:.4f}"
-        )
-        ax.set_title(title + "\n" + subtitle, fontsize=9.5, weight="bold", pad=8)
+        window_desc = {
+            (0, 500): "顶后约 500 天",
+            (183, 183): "顶前后各约半年",
+            (365, 0): "顶前约 1 年",
+            (720, 0): "顶前约 2 年",
+        }.get((pre, post), f"{pre}/{post} 天")
+        title = f"{i + 1}. {a} 年 对比 {b} 年 · {window_desc}"
+        ax.set_title(title, fontsize=10.5, weight="bold", pad=8)
         ax.tick_params(labelsize=8)
         if i >= 6:
-            ax.set_xlabel("距目标 peak 的天数", fontsize=8.5)
-        ax.set_ylabel("log 价格相对 peak", fontsize=8.5)
+            ax.set_xlabel("距顶部的天数", fontsize=8.5)
+        ax.set_ylabel("价格相对顶部（对数刻度）", fontsize=8.5)
         ax.legend(loc="best", fontsize=7.5, frameon=True, framealpha=0.82)
 
     for ax in axes[len(summary) :]:
         ax.axis("off")
 
     fig.suptitle(
-        f"Peak 结构样本：{len(summary)} 个有效窗口组全部展开（2025 peak 统一锚定 2025-08-12）",
-        fontsize=16,
+        "多周期 BTC 价格走势横向对比图\n（2017 / 2021 / 2025 按价格顶部对齐，看走势形状是否相似）",
+        fontsize=15,
         weight="bold",
     )
     fig.savefig(out, bbox_inches="tight")

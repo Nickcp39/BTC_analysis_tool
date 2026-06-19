@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:n2="http://www.sec.gov/edgar/document/thirteenf/informationtable" xmlns:n1="http://www.sec.gov/edgar/thirteenffiler" xmlns:ns1="http://www.sec.gov/edgar/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SEC FORM 13-F Information Table</title>
+<style type="text/css">
+              .FormData {color: blue; background-color: white; font-size: small; font-family: Times, serif;}
+              .FormDataC {color: blue; background-color: white; font-size: small; font-family: Times, serif; text-align: center;}
+              .FormDataR {color: blue; background-color: white; font-size: small; font-family: Times, serif; text-align: right;}
+              .SmallFormData {color: blue; background-color: white; font-size: x-small; font-family: Times, serif;}
+              .FootnoteData {color: green; background-color: white; font-size: x-small; font-family: Times, serif;}
+              .FormNumText {font-size: small; font-weight: bold; font-family: arial, helvetica, sans-serif;}
+              .FormAttention {font-size: medium; font-weight: bold; font-family: helvetica;}
+              .FormText {font-size: small; font-weight: normal; font-family: arial, helvetica, sans-serif; text-align: left;}
+              .FormTextR {font-size: small; font-weight: normal; font-family: arial, helvetica, sans-serif; text-align: right;}
+              .FormTextC {font-size: small; font-weight: normal; font-family: arial, helvetica, sans-serif; text-align: center;}
+              .FormEMText {font-size: medium; font-style: italic; font-weight: normal; font-family: arial, helvetica, sans-serif;}
+              .FormULText {font-size: medium; text-decoration: underline; font-weight: normal; font-family: arial, helvetica, sans-serif;}
+              .SmallFormText {font-size: xx-small; font-family: arial, helvetica, sans-serif; text-align: left;}
+              .SmallFormTextR {font-size: xx-small; font-family: arial, helvetica, sans-serif; text-align: right;}
+              .SmallFormTextC {font-size: xx-small; font-family: arial, helvetica, sans-serif; text-align: center;}
+              .MedSmallFormText {font-size: x-small; font-family: arial, helvetica, sans-serif; text-align: left;}
+              .FormTitle {font-size: medium; font-family: arial, helvetica, sans-serif; font-weight: bold;}
+              .FormTitle1 {font-size: small; font-family: arial, helvetica, sans-serif; font-weight: bold; border-top: black thick solid;}
+              .FormTitle2 {font-size: small; font-family: arial, helvetica, sans-serif; font-weight: bold;}
+              .FormTitle3 {font-size: small; font-family: arial, helvetica, sans-serif; font-weight: bold; padding-top: 2em; padding-bottom: 1em;}
+              .SectionTitle {font-size: small; text-align: left; font-family: arial, helvetica, sans-serif; 
+              		font-weight: bold; border-top: gray thin solid; border-bottom: gray thin solid;}
+              .FormName {font-size: large; font-family: arial, helvetica, sans-serif; font-weight: bold;}
+              .CheckBox {text-align: center; width: 5px; cell-spacing: 0; padding: 0 3 0 3; border-width: thin; border-style: solid;  border-color: black:}
+              body {background: white;}
+      </style>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="4" summary="Form 13F-HR Header Information">
+<tr><td colspan="4" style="border: solid;text-align: center;"><p>The Securities and Exchange Commission has not necessarily reviewed the information in this filing and has not determined if it is accurate and complete.<br>The reader should not assume that the information is accurate and complete.</p></td></tr>
+<tr>
+<td width="10%" colspan="2" valign="top" align="left"></td>
+<td rowspan="1" width="70%" valign="middle" align="center">
+<span class="FormTitle">UNITED STATES SECURITIES AND EXCHANGE COMMISSION</span><br><span class="FormText">Washington, D.C. 20549</span><br><span class="FormTitle">FORM 13F</span><br><br><span class="FormTitle">FORM 13F INFORMATION TABLE</span><br><br>
+</td>
+<td rowspan="1" width="20%" valign="top" align="center"><table width="100%" border="1" summary="OMB Approval Status Box">
+<tr><td class="FormTextC">OMB APPROVAL</td></tr>
+<tr><td><table width="100%" border="0" summary="OMB Interior Box">
+<tr>
+<td class="SmallFormText" colspan="3">OMB Number:</td>
+<td class="SmallFormTextR">3235-0006</td>
+</tr>
+<tr><td class="SmallFormText" colspan="4">Estimated average burden</td></tr>
+<tr>
+<td class="SmallFormText" colspan="3">hours per response:</td>
+<td class="SmallFormTextR">23.8</td>
+</tr>
+</table></td></tr>
+</table></td>
+</tr>
+</table>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="4" summary="Form 13F-NT Header Information"><tbody>
+<tr>
+<td class="FormTextC">COLUMN 1</td>
+<td class="FormTextC">COLUMN 2</td>
+<td class="FormTextC" colspan="2">COLUMN 3</td>
+<td class="FormTextR">COLUMN 4</td>
+<td class="FormTextC" colspan="3">COLUMN 5</td>
+<td class="FormTextC">COLUMN 6</td>
+<td class="FormTextR">COLUMN 7</td>
+<td class="FormTextC" colspan="3">COLUMN 8</td>
+</tr>
+<tr>
+<td class="FormText"></td>
+<td class="FormText"></td>
+<td class="FormText"></td>
+<td class="FormText"></td>
+<td class="FormTextR">VALUE</td>
+<td class="FormTextR">SHRS OR</td>
+<td class="FormText">SH/</td>
+<td class="FormText">PUT/</td>
+<td class="FormText">INVESTMENT</td>
+<td class="FormTextR">OTHER</td>
+<td class="FormTextC" colspan="3">VOTING AUTHORITY</td>
+</tr>
+<tr>
+<td class="FormText">NAME OF ISSUER</td>
+<td class="FormText">TITLE OF CLASS</td>
+<td class="FormText">CUSIP</td>
+<td class="FormText">FIGI</td>
+<td class="FormTextR">(to the nearest dollar)</td>
+<td class="FormTextR">PRN AMT</td>
+<td class="FormText">PRN</td>
+<td class="FormText">CALL</td>
+<td class="FormText">DISCRETION</td>
+<td class="FormTextR">MANAGER</td>
+<td class="FormTextR">SOLE</td>
+<td class="FormTextR">SHARED</td>
+<td class="FormTextR">NONE</td>
+</tr>
+<tr>
+<td class="FormData">ALPHABET INC</td>
+<td class="FormData">CAP STK CL C</td>
+<td class="FormData">02079K107</td>
+<td class="FormData">BBG009S3NB21</td>
+<td class="FormDataR">1,063,103,160</td>
+<td class="FormDataR">3,706,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">3,706,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">APPLE INC</td>
+<td class="FormData">COM</td>
+<td class="FormData">037833100</td>
+<td class="FormData">BBG001S5N8V8</td>
+<td class="FormDataR">7,346,105,601</td>
+<td class="FormDataR">28,945,607</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">28,945,607</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">BERKSHIRE HATHAWAY INC DEL</td>
+<td class="FormData">CL B NEW</td>
+<td class="FormData">084670702</td>
+<td class="FormData">BBG001S90346</td>
+<td class="FormDataR">4,383,623,843</td>
+<td class="FormDataR">9,147,796</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">9,147,796</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">CIRCLE INTERNET GROUP INC</td>
+<td class="FormData">COM CL A</td>
+<td class="FormData">172573107</td>
+<td class="FormData">BBG01T61V3Q7</td>
+<td class="FormDataR">19,082,000</td>
+<td class="FormDataR">200,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">200,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">CREDO TECHNOLOGY GROUP HOLDI</td>
+<td class="FormData">ORDINARY SHARES</td>
+<td class="FormData">G25457105</td>
+<td class="FormData">BBG00T68J2H9</td>
+<td class="FormDataR">70,515,144</td>
+<td class="FormDataR">751,200</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">751,200</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">CROWDSTRIKE HLDGS INC</td>
+<td class="FormData">CL A</td>
+<td class="FormData">22788C105</td>
+<td class="FormData">BBG00BLYKRZ7</td>
+<td class="FormDataR">3,904,100</td>
+<td class="FormDataR">10,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">10,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">DISNEY WALT CO</td>
+<td class="FormData">COM</td>
+<td class="FormData">254687106</td>
+<td class="FormData">BBG001S5QHF3</td>
+<td class="FormDataR">145,707,284</td>
+<td class="FormDataR">1,511,800</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">1,511,800</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">INNODATA INC</td>
+<td class="FormData">COM NEW</td>
+<td class="FormData">457642205</td>
+<td class="FormData">BBG001S7DVN3</td>
+<td class="FormDataR">386,200</td>
+<td class="FormDataR">10,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">10,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">MICROSOFT CORP</td>
+<td class="FormData">COM</td>
+<td class="FormData">594918104</td>
+<td class="FormData">BBG001S5TD05</td>
+<td class="FormDataR">376,092,720</td>
+<td class="FormDataR">1,016,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">1,016,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">NVIDIA CORPORATION</td>
+<td class="FormData">COM</td>
+<td class="FormData">67066G104</td>
+<td class="FormData">BBG001S5TZJ6</td>
+<td class="FormDataR">2,414,354,360</td>
+<td class="FormDataR">13,843,775</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">13,843,775</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">OCCIDENTAL PETE CORP</td>
+<td class="FormData">COM</td>
+<td class="FormData">674599105</td>
+<td class="FormData">BBG001S5TZG9</td>
+<td class="FormDataR">666,997,500</td>
+<td class="FormDataR">10,261,500</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">10,261,500</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">PALANTIR TECHNOLOGIES INC</td>
+<td class="FormData">CL A</td>
+<td class="FormData">69608A108</td>
+<td class="FormData">BBG001T53796</td>
+<td class="FormDataR">8,776,800</td>
+<td class="FormDataR">60,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">60,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">PDD HOLDINGS INC</td>
+<td class="FormData">SPONSORED ADS</td>
+<td class="FormData">722304102</td>
+<td class="FormData">BBG00LBLDFH8</td>
+<td class="FormDataR">2,017,880,681</td>
+<td class="FormDataR">19,748,294</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">19,748,294</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">SNOWFLAKE INC</td>
+<td class="FormData">COM SHS</td>
+<td class="FormData">833445109</td>
+<td class="FormData">BBG007DHGNK2</td>
+<td class="FormDataR">1,508,200</td>
+<td class="FormDataR">10,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">10,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">SYNOPSYS INC</td>
+<td class="FormData">COM</td>
+<td class="FormData">871607107</td>
+<td class="FormData">BBG001S5VTR8</td>
+<td class="FormDataR">3,964,800</td>
+<td class="FormDataR">10,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">10,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">TAIWAN SEMICONDUCTOR MANUFAC</td>
+<td class="FormData">SPONSORED ADS</td>
+<td class="FormData">874039100</td>
+<td class="FormData">BBG001S5WWW4</td>
+<td class="FormDataR">51,098,040</td>
+<td class="FormDataR">151,200</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">151,200</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">TEMPUS AI INC</td>
+<td class="FormData">CL A</td>
+<td class="FormData">88023B103</td>
+<td class="FormData">BBG01MZQYK84</td>
+<td class="FormDataR">904,400</td>
+<td class="FormDataR">20,000</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">20,000</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">TESLA INC</td>
+<td class="FormData">COM</td>
+<td class="FormData">88160R101</td>
+<td class="FormData">BBG001SQKGD7</td>
+<td class="FormDataR">1,267,258,575</td>
+<td class="FormDataR">3,408,900</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">3,408,900</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+<tr>
+<td class="FormData">UNITEDHEALTH GROUP INC</td>
+<td class="FormData">COM</td>
+<td class="FormData">91324P102</td>
+<td class="FormData">BBG001S6WCJ1</td>
+<td class="FormDataR">162,732,826</td>
+<td class="FormDataR">601,400</td>
+<td class="FormData">SH</td>
+<td> </td>
+<td class="FormData">SOLE</td>
+<td> </td>
+<td class="FormDataR">601,400</td>
+<td class="FormDataR">0</td>
+<td class="FormDataR">0</td>
+</tr>
+</tbody></table>
+</body>
+</html>
