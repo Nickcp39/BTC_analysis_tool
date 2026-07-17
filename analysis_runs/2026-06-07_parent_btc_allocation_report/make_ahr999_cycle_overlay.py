@@ -21,7 +21,7 @@ PEAKS = [
     ("2021（参照）", pd.Timestamp("2021-11-08"), "#7c8595", 1.7, 2, 0.9, False),
     ("2025（本轮·重点看）", pd.Timestamp("2025-08-12"), "#0f766e", 3.8, 6, 1.0, True),
 ]
-LATEST = pd.Timestamp("2026-06-05")
+LATEST = pd.Timestamp("2026-07-17")
 
 
 def setup_matplotlib() -> None:
@@ -114,7 +114,7 @@ def main() -> None:
     ax.scatter([current["days_after_peak"]], [current["last_ahr999"]], s=95, color="#b91c1c", zorder=9,
                edgecolor="white", linewidth=1.6)
     ax.annotate(
-        f"当前 2026-06-05\n第 {current['days_after_peak']} 天 / AHR {current['last_ahr999']:.3f}",
+        f"当前 2026-07-17\n第 {current['days_after_peak']} 天 / AHR {current['last_ahr999']:.3f}",
         xy=(current["days_after_peak"], current["last_ahr999"]),
         xytext=(current["days_after_peak"] + 18, current["last_ahr999"] + 0.22),
         fontsize=10,

@@ -16,7 +16,7 @@ from pathlib import Path
 import markdown
 
 HERE = Path(__file__).resolve().parent
-STEM = "BTC_parent_allocation_report_2026-06-07"
+STEM = "BTC_parent_allocation_report_2026-07-17"
 MD = HERE / f"{STEM}.md"
 HTML = HERE / f"{STEM}.html"
 PDF = HERE / f"{STEM}.pdf"
