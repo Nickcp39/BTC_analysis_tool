@@ -1,0 +1,5 @@
+Loaded merged data: 2014-12-01 ~ 2026-09-22
+StepA3_post_scaled done. POST_GAMMA=0.65
+  Post days (clipped): 2017=600, 2021=600, 2025=403
+  PNG: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png\stepA3_post_scaled_082750.png
+  Notes: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\stepA3_post_scaled_082750.txt

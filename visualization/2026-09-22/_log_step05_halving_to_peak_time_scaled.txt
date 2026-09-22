@@ -1,0 +1,11 @@
+I:\yc_research\claude code\BTC_analysis_tool\code\step05_halving_to_peak_time_scaled.py:83: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["ts"], errors="coerce")
+Step05: halving-to-peak with cycle time scaling (step02 base + step03 time scale)
+  Peak anchor: 2025-08-15
+  Days: 2017=526, 2021=547, 2025=482
+  Time scale (ref=2025): 2017=0.9163, 2021=0.8812
+  Amplitude scale: 2017=0.58, 2021=0.33, 2025=0.85
+  2025 curve anchor: 2025-10-05 | d_25 from: table
+Output: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22
+PNG:    I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png
+Done.

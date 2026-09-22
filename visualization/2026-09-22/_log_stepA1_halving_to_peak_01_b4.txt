@@ -1,0 +1,8 @@
+I:\yc_research\claude code\BTC_analysis_tool\code\stepA1_halving_to_peak_01_b4.py:64: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["ts"], errors="coerce")
+StepA1 (01+B4) done. 2025 peak = 08-15
+  Pre-peak: step01 amplitude scale 2017=0.33, 2021=0.58
+  Post-peak days: 2017=60, 2021=51, 2025=403
+  Post-peak: raw amplitude (same as B4). Vol: 2017=16.3105, 2021=9.3226, 2025=15.2979
+  PNG: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png\stepA1_01_b4_combined.png
+Done.

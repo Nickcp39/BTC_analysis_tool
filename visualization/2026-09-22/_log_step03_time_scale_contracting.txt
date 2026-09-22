@@ -1,0 +1,6 @@
+Step03 time scale ratios (see TXT for full text):
+  cycle_0 953d scale_to_ref=1.0000
+  cycle_1 876d scale_to_ref=1.0879
+  cycle_2 892d scale_to_ref=1.0684
+Output: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\step03_time_scale_ratios.txt
+CSV:   I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\step03_time_scale_ratios.csv

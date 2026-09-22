@@ -1,0 +1,8 @@
+I:\yc_research\claude code\BTC_analysis_tool\code\stepB4_post_peak_only.py:63: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["ts"], errors="coerce")
+StepB4: post-peak only (volatility & days), 2025 days = anchor to latest
+  Post-peak days: 2017=60, 2021=51, 2025=403 (ref)
+  Post-peak vol:  2017=16.3105, 2021=9.3226, 2025=15.2979
+  Output: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22
+  PNG:    I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png
+Done.

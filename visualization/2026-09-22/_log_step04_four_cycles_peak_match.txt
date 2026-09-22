@@ -1,0 +1,8 @@
+I:\yc_research\claude code\BTC_analysis_tool\code\step04_four_cycles_peak_match.py:67: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["ts"], errors="coerce")
+Step04 done. 2025 peak (fixed): 2025-08-15
+h2p_days: [0, 526, 547, 482]
+time_scale: [1.0, 0.9163, 0.8812, 1.0]
+amp_scale: [1.0, 0.3333, 0.5774, 1.0]
+Output: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22
+PNG: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png\step04_four_cycles_scaled.png

@@ -1,0 +1,7 @@
+I:\yc_research\claude code\BTC_analysis_tool\code\step02_halving_to_peak_fusion.py:180: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["ts"], errors="coerce")
+Step02: halving-to-peak plot (2025 anchor from data)
+2025 peak anchor (plot): 2025-08-15
+Output dir: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22
+PNG dir:    I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png
+Done.

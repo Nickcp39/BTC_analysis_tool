@@ -1,0 +1,9 @@
+实测波动率比 vol25/vol21 = 0.54（amp 的独立锚）
+
+① 自由三参数(退化): amp=0.38  time=0.706  shift=-90天  rmse=0.105
+② 钉 amp=波动率比，time自由: amp=0.54  time=0.988  shift=-58天  rmse=0.165
+③ 钉 amp=波动率比 & time=1.0，只拟合 shift: amp=0.54  time=1.000  shift=-55天  rmse=0.165
+
+对照另一工具手调：amp≈0.50  time≈0.9  shift≈-70
+
+70天 vs 宏观锚点差：减半→顶 546vs533(差13)；底→顶 1059vs1061(差-2) → 都不到70

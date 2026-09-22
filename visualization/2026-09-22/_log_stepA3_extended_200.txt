@@ -1,0 +1,7 @@
+Loaded merged data: 2014-12-01 ~ 2026-09-22
+StepA3 done. Post-peak scaled with 2025 as baseline=1, first 600 days
+  Post days (clipped): 2017=600, 2021=600, 2025=403
+  x_max=600
+  PNG: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png\stepA3_extended_200_082748.png
+  Notes: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\stepA3_notes_082748.txt
+Done.

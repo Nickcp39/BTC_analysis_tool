@@ -1,0 +1,5 @@
+I:\yc_research\claude code\BTC_analysis_tool\code\stepA2_peak_skip_gap.py:68: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["ts"], errors="coerce")
+StepA2 done. 2025: pre to 0815, post from 1003, skip 0816-1002
+  PNG: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-09-22\png\stepA2_peak_skip_gap.png
+Done.
