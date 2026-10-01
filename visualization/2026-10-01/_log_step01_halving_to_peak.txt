@@ -1,0 +1,5 @@
+Output dir: I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-10-01
+PNG dir:    I:\yc_research\claude code\BTC_analysis_tool\visualization\2026-10-01\png
+Done.
+I:\yc_research\claude code\BTC_analysis_tool\code\step01_halving_to_peak.py:49: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["ts"], errors="coerce")

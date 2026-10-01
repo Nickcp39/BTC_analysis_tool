@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="python-markdown + chrome-print" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BTC_parent_allocation_report_2026-10-01</title>
+  <link rel="stylesheet" href="report.css" />
+</head>
+<body>
+<h1>比特币市场周期分析与配置建议（2026-10-01 更新版）</h1>
+<p>生成日期：2026-10-01 ｜ 2026 年 10 月 · 家庭内部讨论稿 ｜ 上一版：2026-09-22（原文件原样保留，未改动）<br>
+目的：10 月第三笔买入到期；同时，按真顶（2025-10-05）推算的「时间底窗口」（10 月 4–18 日）三天后开始——这是 6 月、7 月那批预测里<strong>最后一个还没被验证的时间点</strong>。用 10-01 的最新价格把全部计算<strong>重新抓取、重新计算、重新出图</strong>，并在窗口开始之前，先把「可能发生什么、每种情况怎么做」写下来。</p>
+<blockquote>
+<p><strong>本次更新一句话</strong>：09-22 之后 BTC 没有继续上冲，而是在 <strong>$83.5k–84.6k</strong> 的窄区间横了 9 天（美债收益率升到 2007 年以来最高、油价上涨、$85k 上方卖压重、ETF 流入逐日减少，见 §6），今天 <strong>$83,788</strong>（比 6 月低点 <strong>+43%</strong>，比 2025-10 真顶 <strong>-33%</strong>）。6 月 30 日的 <strong>$58,586</strong> 仍是本轮最低点；AHR999 从 0.60 回到 <strong>0.557</strong>，仍在 0.45–1.2 的「定投区」。三天后进入 10 月 4–18 日时间窗：按 2015 年以来的历史基准率，17 天里<strong>回踩到 $75k 一带大约四次里有一次，跌破 6 月低点大约只有 2%</strong>。<strong>家庭计划不变：10 月这一笔照常买，不加码、不提前，也不为了等窗口里的低价而拖延。</strong></p>
+</blockquote>
+<h2>0. 和 09-22 版相比，变了什么</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>09-22 版</th>
+<th><strong>10-01 版</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最新价格</td>
+<td>$85,938（当日盘中；FRED 事后修订为收盘 $86,250）</td>
+<td><strong>$83,788</strong>（10-01 当日盘中）</td>
+</tr>
+<tr>
+<td>09-22 之后的走势</td>
+<td>—</td>
+<td>9 天在 <strong>$83,483–$84,554</strong> 之间窄幅横盘；09-21 的 $86,397 仍是 6 月低点以来最高收盘</td>
+</tr>
+<tr>
+<td>相对 2025-10-05 真顶</td>
+<td>-31.1%</td>
+<td><strong>-32.8%</strong></td>
+</tr>
+<tr>
+<td>相对 06-30 低点</td>
+<td>+47%</td>
+<td><strong>+43%</strong></td>
+</tr>
+<tr>
+<td>要跌破 6 月低点还需再跌</td>
+<td>32%</td>
+<td><strong>30%</strong></td>
+</tr>
+<tr>
+<td>AHR999</td>
+<td>0.596</td>
+<td><strong>0.557</strong>（定投区 0.45–1.2）</td>
+</tr>
+<tr>
+<td>顶后天数（10-05 锚 / 08-12 锚）</td>
+<td>352 / 406</td>
+<td><strong>361 / 415</strong></td>
+</tr>
+<tr>
+<td>真顶时间窗 10-04 ~ 10-18</td>
+<td>还有 12–26 天</td>
+<td><strong>3 天后开始，17 天后结束</strong></td>
+</tr>
+<tr>
+<td>9 月均价</td>
+<td>截至 09-22 约 $79.2k</td>
+<td><strong>全月 $80,482</strong>（9 月收涨 6.2%）</td>
+</tr>
+<tr>
+<td>恐惧与贪婪指数</td>
+<td>78（极度贪婪）</td>
+<td><strong>74（贪婪）</strong>；09-23 以来一直在 70–74</td>
+</tr>
+<tr>
+<td>美国现货 ETF 9 月净流入</td>
+<td>截至 21 日约 +$13 亿</td>
+<td><strong>全月约 +$26.5 亿</strong>；但逐日递减，09-30 转为净流出 $1.49 亿</td>
+</tr>
+<tr>
+<td>长期持有者</td>
+<td>30 天变化 -2.2 万 BTC（09-20），「卖得越来越少」</td>
+<td><strong>获利了结又增加</strong>：一周已实现利润接近翻倍（Glassnode 09-30）；30 天变化没有新数据</td>
+</tr>
+<tr>
+<td>美国 10 年期国债收益率</td>
+<td>4.96%（09-22）</td>
+<td><strong>5.26%</strong>（09-29，2007 年以来最高）</td>
+</tr>
+</tbody>
+</table>
+<p>数据说明：本版只有一处历史数据被修订——09-22 当日收盘，从 09-22 版用的盘中价 $85,938 修订为 FRED 正式收盘 $86,250；其余历史数据与 09-22 版相同。今天（10-01）的价格是 Yahoo 当日盘中补点，FRED 正式数据到 09-30（$83,483）。</p>
+<h2>1. 当年的预测 vs 实际 —— 对照表</h2>
+<p>下图把我们 6 月、7 月做过的所有主要预测，和后来的真实走势画在一起：黄色带是 7 月版家庭计划说的「较合理价格区 $55k–60k」，红框是 6 月五个模型给的「底部」，两条虚线是按历史走势「退火」（按本轮较小的波动幅度压扁历史跌幅，见 §2.3）后的路径，两条灰色竖带是两种「顶后 365 天」时间窗。今天的红点正好站在第二条灰带（10 月 4–18 日）的左边。</p>
+<p><img alt="当年的预测 vs 实际走势" src="png/forecast_vs_actual.png"></p>
+<table>
+<thead>
+<tr>
+<th>当年的计算</th>
+<th>当时的结论</th>
+<th>实际（截至 2026-10-01）</th>
+<th>对/错</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>减半→顶 536 天（2017/2021 两轮）</td>
+<td>本轮顶约 2025-10-08</td>
+<td>实际顶 2025-10-05/06</td>
+<td>✅ 对（差 2–3 天）</td>
+</tr>
+<tr>
+<td>06-01 五模型：底部<strong>价格</strong></td>
+<td>中枢 $43,611–$60,385；共识中位 $57,626</td>
+<td>至今最低 <strong>$58,586</strong>（2026-06-30）</td>
+<td>✅ 对（落在区间内、接近中位）</td>
+</tr>
+<tr>
+<td>06-01 五模型：底部<strong>时间</strong></td>
+<td>中枢 2026-10-10 ~ 10-30</td>
+<td>低点出现在 06-30，<strong>早了 3–4 个月</strong></td>
+<td>❌ 时间错（除非 10 月再跌破）</td>
+</tr>
+<tr>
+<td>AHR999 深底 0.26–0.28</td>
+<td>本轮也会探到这一带</td>
+<td>2026-02-05 <strong>0.280</strong>；2026-06-30 <strong>0.281</strong></td>
+<td>✅ 对</td>
+</tr>
+<tr>
+<td>报告锚点 08-12 + 364/366 天</td>
+<td>2026-08-11 ~ 08-13 附近是时间底</td>
+<td>第 365 天 $63,402；08-01 $62,835 与 08-16 $62,859 两次踩在同一位置，<strong>08-17 起飞</strong></td>
+<td>⚠️ 时间点对上了，但它是「更高的低点」，不是新低</td>
+</tr>
+<tr>
+<td>真顶 10-05 + 364/378 天（stepC1）</td>
+<td>2026-10-04 ~ 10-18 附近是时间底</td>
+<td><strong>3 天后开始</strong>；要跌破 6 月低点需从今天再跌 <strong>30%</strong></td>
+<td>🟡 待验证（本月见分晓，见 §4）</td>
+</tr>
+<tr>
+<td>stepC1 退火价格底 -28% ~ -44%</td>
+<td>$69.5k–$89.9k</td>
+<td>6 月跌到 <strong>-53%</strong>（比模型深）；今天 <strong>-33%</strong>，仍在模型区间里</td>
+<td>⚠️ 半对</td>
+</tr>
+<tr>
+<td>stepD12 价格区间</td>
+<td>$29k–$57k，中枢 $39k</td>
+<td>至今最低 $58,586</td>
+<td>❌ 太悲观</td>
+</tr>
+<tr>
+<td>07-17 家庭计划「55–60k 较合理价格区」</td>
+<td>2026-08 → 2027-02 窗口里大概率能在这一带买</td>
+<td>窗口内最低 <strong>$62,835</strong>（08-01，只比 60k 高 5%）；8 月均价 $69,481，<strong>9 月均价 $80,482</strong></td>
+<td>❌ 错（09-22 版已把这句话作废）</td>
+</tr>
+<tr>
+<td>「W 底」（2 月第一脚 → 6 月第二脚）</td>
+<td>第二脚后反弹</td>
+<td>06-30 后 <strong>+43%</strong>（最高 +47%，09-21）</td>
+<td>✅ 对</td>
+</tr>
+<tr>
+<td>「真正时间底大概率在 8–10 月」</td>
+<td>8–10 月还会再跌回来</td>
+<td>8、9 月都没破 6 月低点（9 月最低 <strong>$75,656</strong>，09-15）</td>
+<td>❌ 至今是错的（10 月才开始）</td>
+</tr>
+<tr>
+<td>长期持有者「刚从派发切到吸筹」</td>
+<td>支持买入的证据之一</td>
+<td>8 月上涨后转回派发；09-22 版说「卖得越来越少」，但 9 月下旬价格回到 $84k–87k 后，获利了结又明显增加（§6.2）</td>
+<td>⚠️ 变了，黄灯（未转红）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>怎么读这张表</strong>：结论和 09-22 版一样——我们的<strong>价格</strong>判断基本是对的（底部价格、AHR 深底、W 底），错在<strong>时间</strong>：最便宜的那段（6 月底 $58k–62k）落在家庭计划开始之前。表里<strong>只剩一行还没有答案</strong>：真顶 10-05 + 364/378 天的时间窗，也就是 10 月 4–18 日。§4 专门讲这个窗口。</p>
+<blockquote>
+<p><strong>诚实提示</strong>：这张表里的「对」也只是一轮的结果。可对比的成熟周期只有 2017、2021 两轮，任何一条「对了」都不能当成规律被证实，「错了」也不能说明模型全废——它说明的是：<strong>时间预测比价格预测更不可靠</strong>。这正是当初坚持「按月分批、不赌某一天」的原因。</p>
+</blockquote>
+<h2>2. 峰后 365 天对照 + 波动退火（重新计算）</h2>
+<h3>2.1 两个锚点，两个答案</h3>
+<p>本轮「顶」有两种算法，结论不同，必须分开看：</p>
+<table>
+<thead>
+<tr>
+<th>锚点</th>
+<th>含义</th>
+<th style="text-align: right;">今天是顶后第几天</th>
+<th>前两轮「顶→底」天数</th>
+<th>对应的时间底</th>
+<th>现状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2025-08-12</strong>（家长报告统一锚点）</td>
+<td>按顶部结构对齐的锚点</td>
+<td style="text-align: right;"><strong>第 415 天</strong></td>
+<td>364 / 366</td>
+<td>2026-08-11 ~ 08-13</td>
+<td>已过；那几天正好是 8 月起飞前最后一个低点</td>
+</tr>
+<tr>
+<td><strong>2025-10-05</strong>（stepC1 真顶，$124,720）</td>
+<td>价格最高点</td>
+<td style="text-align: right;"><strong>第 361 天</strong></td>
+<td>364 / 378</td>
+<td>2026-10-04 ~ 10-18</td>
+<td><strong>3 天后开始</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>按 08-12 锚点</strong>：前两轮 AHR999 低点都在顶后第 364/366 天。本轮第 365 天（2026-08-12）价格 $63,402，前后两次在 $62.8k 踩稳，随后上涨。<strong>时间点对上了，但方向和历史不同</strong>：前两轮第 365 天是「最深的底」，本轮第 365 天是「比 6 月更高的低点」——最深的底已经在第 322 天（6 月 30 日）提前出现了。</li>
+<li><strong>按 10-05 真顶锚点</strong>：时间底窗口是 10 月 4–18 日，三天后开始。价格要在这个窗口里跌破 6 月低点，需要从今天再跌 30%。</li>
+</ul>
+<h3>2.2 AHR999：三轮顶后的「便宜程度」（按 08-12 锚点对齐，重新计算）</h3>
+<p><img alt="AHR999 多年横向结构对比" src="png/ahr999_cycle_overlay_peak_aligned.png"></p>
+<table>
+<thead>
+<tr>
+<th>周期</th>
+<th style="text-align: right;">价格顶部</th>
+<th style="text-align: right;">日期</th>
+<th style="text-align: right;">距顶部天数</th>
+<th style="text-align: right;">AHR999</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017 顶后低点</td>
+<td style="text-align: right;">2017-12-16</td>
+<td style="text-align: right;">2018-12-15</td>
+<td style="text-align: right;">第 364 天</td>
+<td style="text-align: right;">0.272</td>
+<td>历史深底区</td>
+</tr>
+<tr>
+<td>2021 顶后低点</td>
+<td style="text-align: right;">2021-11-08</td>
+<td style="text-align: right;">2022-11-09</td>
+<td style="text-align: right;">第 366 天</td>
+<td style="text-align: right;">0.260</td>
+<td>历史深底区</td>
+</tr>
+<tr>
+<td>2025 第一脚</td>
+<td style="text-align: right;">2025-08-12</td>
+<td style="text-align: right;">2026-02-05</td>
+<td style="text-align: right;">第 177 天</td>
+<td style="text-align: right;">0.280</td>
+<td>本轮 AHR 真最低</td>
+</tr>
+<tr>
+<td>2025 第二脚</td>
+<td style="text-align: right;">2025-08-12</td>
+<td style="text-align: right;">2026-06-30</td>
+<td style="text-align: right;">第 322 天</td>
+<td style="text-align: right;">0.281</td>
+<td>本轮价格最低（$58,586）</td>
+</tr>
+<tr>
+<td>2025 8 月低点</td>
+<td style="text-align: right;">2025-08-12</td>
+<td style="text-align: right;">2026-08-01 / 08-16</td>
+<td style="text-align: right;">第 354 / 369 天</td>
+<td style="text-align: right;">0.332 / 0.336</td>
+<td>更高的低点，随后上涨</td>
+</tr>
+<tr>
+<td>2025 9 月高点</td>
+<td style="text-align: right;">2025-08-12</td>
+<td style="text-align: right;">2026-09-21</td>
+<td style="text-align: right;">第 405 天</td>
+<td style="text-align: right;">0.604</td>
+<td>6 月低点以来最高</td>
+</tr>
+<tr>
+<td><strong>当前</strong></td>
+<td style="text-align: right;">2025-08-12</td>
+<td style="text-align: right;"><strong>2026-10-01</strong></td>
+<td style="text-align: right;"><strong>第 415 天</strong></td>
+<td style="text-align: right;"><strong>0.557</strong></td>
+<td>仍在 0.45–1.2「定投区」；9 月全月最低 0.467，没有回到 0.45 以下</td>
+</tr>
+</tbody>
+</table>
+<p><strong>把 AHR999 换算成今天的价格</strong>（AHR999 大致和价格的平方成正比；下面按 10-01 的 200 日均线精确反算）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">AHR999</th>
+<th>含义</th>
+<th style="text-align: right;">今天大约对应的 BTC 价格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0.30</td>
+<td>历史深底区上沿</td>
+<td style="text-align: right;">约 <strong>$61,400</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">0.45</td>
+<td>深度价值区上沿</td>
+<td style="text-align: right;">约 <strong>$75,300</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">0.557</td>
+<td><strong>今天</strong></td>
+<td style="text-align: right;"><strong>$83,788</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">1.20</td>
+<td>定投区上沿 / 偏热区起点</td>
+<td style="text-align: right;">约 <strong>$123,100</strong></td>
+</tr>
+</tbody>
+</table>
+<p>和 09-22 版（约 $61.0k / $74.7k / $122k）相比，三条线都上移了几百到一千美元，因为 200 日均线在缓慢上升（09-22 约 $70,325 → 10-01 约 $70,921）。意思不变：价格回到约 $75k 以下，AHR 才会重新回到「深度价值区」；回到约 $61k 以下才是「历史深底」。<strong>今天的价格不算「深度便宜」，只是「不贵」。</strong></p>
+<h3>2.3 stepC1：真顶锚点 + 波动退火（07-17 版 / 09-22 版 / 10-01 版）</h3>
+<p>「退火」的意思：本轮波动比前两轮小很多（人工波动等级 2017=9、2021=3、2025=1），所以把 2017、2021 的历史跌幅按系数压扁（2017×0.33、2021×0.58），再和本轮比。参数与 7 月版、9 月版完全相同，只换了数据。</p>
+<p><img alt="stepC1 峰后见底预测（10-01 重算）" src="png/stepC1_bottom_forecast_2026-10-01.png"></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">07-17 版</th>
+<th style="text-align: right;">09-22 版</th>
+<th style="text-align: right;"><strong>10-01 版（重算）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据最新日 / 价格</td>
+<td style="text-align: right;">2026-07-17 / $63,965</td>
+<td style="text-align: right;">2026-09-22 / $85,938</td>
+<td style="text-align: right;"><strong>2026-10-01 / $83,788</strong></td>
+</tr>
+<tr>
+<td>相对真顶（10-05）</td>
+<td style="text-align: right;">-48.7%</td>
+<td style="text-align: right;">-31.1%</td>
+<td style="text-align: right;"><strong>-32.8%</strong></td>
+</tr>
+<tr>
+<td>峰后天数（真顶锚点）</td>
+<td style="text-align: right;">285 天</td>
+<td style="text-align: right;">352 天</td>
+<td style="text-align: right;"><strong>361 天</strong></td>
+</tr>
+<tr>
+<td>仿 2017 退火路径在同一天的位置</td>
+<td style="text-align: right;">-22.0%（实际深 26.7pp）</td>
+<td style="text-align: right;">-26.8%（实际深 4.3pp）</td>
+<td style="text-align: right;"><strong>-27.5%（实际深 5.3pp）</strong></td>
+</tr>
+<tr>
+<td>仿 2021 退火路径在同一天的位置</td>
+<td style="text-align: right;">-39.6%（实际深 9.1pp）</td>
+<td style="text-align: right;">-40.0%（实际浅 8.9pp）</td>
+<td style="text-align: right;"><strong>-39.6%（实际浅 6.8pp）</strong></td>
+</tr>
+<tr>
+<td>峰后走势相关系数 r（2017 / 2021）</td>
+<td style="text-align: right;">0.812 / 0.750</td>
+<td style="text-align: right;">0.769 / 0.724</td>
+<td style="text-align: right;"><strong>0.729 / 0.704</strong></td>
+</tr>
+<tr>
+<td>退火预测底部跌幅</td>
+<td style="text-align: right;">-28% ~ -44%（$69.5k–$89.9k）</td>
+<td style="text-align: right;">不变</td>
+<td style="text-align: right;">不变（参数没改）</td>
+</tr>
+<tr>
+<td>时间底（真顶 + 364/378 天）</td>
+<td style="text-align: right;">2026-10-04 ~ 10-18</td>
+<td style="text-align: right;">不变</td>
+<td style="text-align: right;">不变，<strong>3 天后开始</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读法</strong>：</p>
+<ol>
+<li>价格仍然夹在<strong>两条退火路径之间</strong>：比仿 2017 那条（约 $90k）低 7%，比仿 2021 那条（约 $75k）高 11%。</li>
+<li><strong>窗口里两条路径怎么走</strong>：仿 2017 那条在 10 月基本走平（-27% 到 -28%，约 $90k）；仿 2021 那条在 10 月继续下探，从 10-04 的 -40%（约 $74.7k）走到 10-18 的 -44%（约 <strong>$69.5k</strong>）。也就是说，<strong>模型在窗口里最深的情形，是从今天回落约 17% 到 $70k 一带——仍然比 6 月低点高约 19%</strong>。没有一条模型路径要求 10 月必须跌破 6 月低点。</li>
+<li>相关系数 r 从 7 月起一路下降（2017：0.81 → 0.73；2021：0.75 → 0.70）。原因是本轮 6 月就见低、8 月就起飞，节奏比前两轮快，<strong>本轮和历史模板正在慢慢分开</strong>。模型仍然有参考价值，但越往后越不能当「路线图」。</li>
+</ol>
+<h2>3. 这波 +43% 是熊市反弹，还是底已经过去了？（更新）</h2>
+<p>方法和 09-22 版相同：把前两轮「后来被证明是真底」的低点，和「熊市中途、之后又被跌破」的低点，都对齐到第 0 天，看本轮 6 月 30 日之后的走法更像哪一种。</p>
+<p><img alt="06-30 之后这波反弹更像哪一种" src="png/bottom_aligned_rebound.png"></p>
+<table>
+<thead>
+<tr>
+<th>情形</th>
+<th>低点日期</th>
+<th style="text-align: right;">低点价格</th>
+<th style="text-align: right;">低点后 150 天内最大涨幅</th>
+<th style="text-align: right;">低点后第 93 天涨幅</th>
+<th>之后有没有跌破这个低点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018-12 真底（2017 轮）</td>
+<td>2018-12-15</td>
+<td style="text-align: right;">$3,183</td>
+<td style="text-align: right;">+151%</td>
+<td style="text-align: right;">+25%</td>
+<td>没有（之后最低 $3,195）</td>
+</tr>
+<tr>
+<td>2022-11 真底（2021 轮）</td>
+<td>2022-11-21</td>
+<td style="text-align: right;">$15,756</td>
+<td style="text-align: right;">+94%</td>
+<td style="text-align: right;">+54%</td>
+<td>没有（之后最低 $16,194）</td>
+</tr>
+<tr>
+<td>2018-02 熊市中途低点</td>
+<td>2018-02-05</td>
+<td style="text-align: right;">$6,905</td>
+<td style="text-align: right;">+66%</td>
+<td style="text-align: right;">+35%</td>
+<td><strong>有</strong>（后来跌到 $3,183）</td>
+</tr>
+<tr>
+<td>2022-06 熊市中途低点</td>
+<td>2022-06-18</td>
+<td style="text-align: right;">$18,989</td>
+<td style="text-align: right;">+29%</td>
+<td style="text-align: right;">+3%</td>
+<td><strong>有</strong>（后来跌到 $15,756）</td>
+</tr>
+<tr>
+<td><strong>2026-06-30 本轮至今最低</strong></td>
+<td>2026-06-30</td>
+<td style="text-align: right;">$58,586</td>
+<td style="text-align: right;">+48%（进行中）</td>
+<td style="text-align: right;"><strong>+43%</strong></td>
+<td>未知</td>
+</tr>
+</tbody>
+</table>
+<p>几条事实：</p>
+<ol>
+<li><strong>本轮第 93 天 +43%，在四个参照里排第二</strong>：比 2022-11 那次真底（+54%）低，比另外三个都高。09-22 时（第 84 天 +47%）本轮还排第一；这 9 天本轮横盘，而 2022-11 那条线在同一阶段继续上涨，所以被反超。跟得最紧的仍是 2022-11 真底（从低点涨 25%，那次用了 53 天，本轮用了 52 天）。</li>
+<li><strong>熊市后期（顶后 250 天以后）的反弹，前两轮都很小</strong>：2017 轮最大 +14%，2021 轮最大 +19%。本轮这波发生在顶后第 322–415 天，最大 +47%，<strong>不像前两轮熊市后期的反弹</strong>。</li>
+<li><strong>但熊市早期出现过更猛的反弹</strong>：2018 年 2 月到 3 月涨了 +66%，然后又跌了 72%。所以<strong>「涨得猛」本身不能证明见底</strong>。</li>
+<li><strong>历史基准率</strong>（2015 年以来所有交易日，不分牛熊）：BTC 在未来 60 天内跌 30% 以上的概率约 <strong>11%</strong>，120 天内约 <strong>21%</strong>；<strong>在 17 天（时间窗的长度）内跌 30% 以上，只有约 2%</strong>。</li>
+</ol>
+<p><strong>结论（有保留）</strong>：证据仍然<strong>偏向</strong>「6 月 30 日就是本轮的底，或者非常接近底」。10 月时间窗是对这个判断最直接的检验：<strong>如果 10-18 过去、价格没有跌破 $58,586，两个锚点的时间窗就都过去了、都没出新低，「6 月是底」的把握会明显上升</strong>。但样本只有 2 个真底、2 个假底，我们<strong>不据此加码，也不据此停手</strong>。</p>
+<h2>4. 10 月时间窗（10-04 ~ 10-18）：事先写好的预案（本版新增）</h2>
+<h3>4.1 窗口里可能看到的几个价位</h3>
+<table>
+<thead>
+<tr>
+<th>价位</th>
+<th style="text-align: right;">大约价格</th>
+<th style="text-align: right;">距今天</th>
+<th>是什么</th>
+<th style="text-align: right;">17 天内触及的历史基准率</th>
+<th>家庭计划怎么做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仿 2017 退火路径</td>
+<td style="text-align: right;">约 $90,000</td>
+<td style="text-align: right;">+7%</td>
+<td>模型里较浅的那条路径</td>
+<td style="text-align: right;">约 47%</td>
+<td>照常买这一笔，不加码</td>
+</tr>
+<tr>
+<td>09-21 高点</td>
+<td style="text-align: right;">$86,397</td>
+<td style="text-align: right;">+3%</td>
+<td>6 月低点以来最高收盘</td>
+<td style="text-align: right;">约 70%</td>
+<td>照常买这一笔，不加码</td>
+</tr>
+<tr>
+<td><strong>今天</strong></td>
+<td style="text-align: right;"><strong>$83,788</strong></td>
+<td style="text-align: right;">—</td>
+<td>AHR 0.557，定投区</td>
+<td style="text-align: right;">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Glassnode「真实市场均价」</td>
+<td style="text-align: right;">约 $77,200</td>
+<td style="text-align: right;">-8%</td>
+<td>Glassnode 说日线收在这以下＝这一段上涨结束（§6.3）</td>
+<td style="text-align: right;">约 32%</td>
+<td>照常买这一笔，不加码</td>
+</tr>
+<tr>
+<td>AHR 0.45</td>
+<td style="text-align: right;">约 $75,300</td>
+<td style="text-align: right;">-10%</td>
+<td>回到「深度价值区」上沿</td>
+<td style="text-align: right;">约 25%</td>
+<td>照常买这一笔，不加码</td>
+</tr>
+<tr>
+<td>仿 2021 退火路径的窗口最低</td>
+<td style="text-align: right;">约 $69,500（10-18）</td>
+<td style="text-align: right;">-17%</td>
+<td>模型里较深的那条路径</td>
+<td style="text-align: right;">约 12%</td>
+<td>照常买这一笔，不加码</td>
+</tr>
+<tr>
+<td>6 月低点</td>
+<td style="text-align: right;">$58,586</td>
+<td style="text-align: right;">-30%</td>
+<td>跌破＝「6 月是底」被否定</td>
+<td style="text-align: right;">约 2%</td>
+<td>照常买这一笔，不加码；按 §10 重新计算底部</td>
+</tr>
+</tbody>
+</table>
+<p><strong>怎么读</strong>：</p>
+<ol>
+<li>「17 天内触及」= 从某一天起的 17 天里，任意一天的收盘价碰到过这个价位；用的是 2015 年以来所有交易日（不分牛熊）的平均。涨、跌两个方向可能先后都发生，所以几行加起来不等于 100%。<strong>这不是预测，只是告诉我们哪种情况常见、哪种罕见。</strong></li>
+<li>模型在窗口里最深只指向约 $69.5k，跌破 6 月低点的基准率只有约 2%。所以如果窗口里真的出现一个「时间底」，更可能是<strong>一个高于 6 月低点的低点</strong>——就像 8 月 12 日前后（08-12 锚点的时间窗）那样：时间点对上，价格不创新低。这只是可能性，不是保证。</li>
+<li><strong>这 9 天安静得少见</strong>：9 天的收盘价最高、最低只差 1.3%，在 2015 年以来所有 9 天区间里排在最窄的 0.4%（2023 年以来最窄）。2016 年以来类似的安静期只有 5 次，之后 30 天 2 次上涨、3 次下跌，其中 2018 年 10 月那次之后一个月跌了 33%。<strong>安静不等于安全，也不告诉我们方向</strong>——只说明接下来出现较大波动并不意外。</li>
+</ol>
+<h3>4.2 无论窗口里发生什么，10 月这一笔都按计划买</h3>
+<ul>
+<li><strong>不拖延</strong>：不为了「等窗口里的低价」把 10 月这一笔拖到 10-18 以后。17 天里跌 10% 以上的概率大约四分之一，等待本身就是在赌时间——而 6 月、7 月的经验正是：我们对时间的判断最不可靠。</li>
+<li><strong>不提前</strong>：不因为「时间窗快到了」就把 11 月以后的额度提前买进来。</li>
+<li><strong>不加码</strong>：就算窗口里跌到 $70k 甚至更低，也只买原定的这一笔。</li>
+<li><strong>10-18 之后复盘一次</strong>（写进下一版）：<ul>
+<li>没跌破 $58,586 → 两个锚点的时间窗都过去了，都没出新低；「6 月是底」的把握上升。<strong>仍然不加码</strong>，剩下几笔照常。</li>
+<li>跌破 $58,586 → 6 月不是底，按 §10 重新计算底部；<strong>仍然只按月买</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2>5. 多周期价格走势横向对比（重新出图）</h2>
+<p><img alt="多周期 BTC 价格走势横向对比图" src="png/peak_structure_all_windows_grid.png"></p>
+<p>和 09-22 版相比，第 1 格（2021 对比 2025·顶后约 500 天）只多了 9 天横盘，读法不变：</p>
+<table>
+<thead>
+<tr>
+<th>看什么</th>
+<th>10-01 版的读法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顶后跌幅形状</td>
+<td>前 350 天和 2021 轮高度重合</td>
+</tr>
+<tr>
+<td>起飞时间</td>
+<td>本轮在顶后第 374 天（08-12 锚，2026-08-21）从低点涨超 25%；2021 轮是第 431 天（2023-01-13）——本轮比 2021 模板<strong>早约 2 个月</strong></td>
+</tr>
+<tr>
+<td>涨跌幅度</td>
+<td>本轮最深 -53%，2021 轮 -77%，2017 轮 -84%——<strong>每一轮都更浅</strong></td>
+</tr>
+</tbody>
+</table>
+<p>减半→顶的时间规律（536 天，误差 2–3 天）仍然是整套研究里最硬的一条；但<strong>顶→底的时间，本轮明显比前两轮短</strong>。一个合理的解释是：ETF、公司财库这类低频资金让跌幅变浅、节奏变快。这只是解释，不是结论。</p>
+<h2>6. 09-22 以来：发生了什么、谁在买、谁在卖（外部报道，2026-09-22 ~ 10-01）</h2>
+<h3>6.1 这 9 天的主要事件（报道的事实，不是我们的判断）</h3>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09-22</td>
+<td>全市场单日获利了结约 2.57 万枚 BTC，为 2026 年最多（报道没有区分长期、短期持有者）</td>
+<td>CryptoQuant（经 The Block 09-29）</td>
+</tr>
+<tr>
+<td>09-23</td>
+<td>BTC 盘中摸到约 $87.3k 后回落，盘中跌破 $84k；全天爆仓约 $5.8 亿，其中多头约 $4.4 亿；同日美股下跌（标普 -0.75%、纳指 -1.13%）</td>
+<td>Cryptonomist 09-24；Bitfinex 09-28</td>
+</tr>
+<tr>
+<td>09-22 ~ 09-29</td>
+<td>美国 10 年期国债收益率从 4.96% 升到 <strong>5.26%</strong>（2007 年以来最高），10 年期实际利率 2.63% → 2.91%；美元同时走强</td>
+<td>FRED（DGS10、DFII10、DTWEXBGS）</td>
+</tr>
+<tr>
+<td>09-23 ~ 09-29</td>
+<td>美联储官员（Barr、Williams）表示年内可能还要再加息一次，但「不急」</td>
+<td>Admiral Markets、FXStreet（转述）</td>
+</tr>
+<tr>
+<td>09-24</td>
+<td>Bitget 交易所被盗约 $3.5 亿；链上没有出现大量 BTC 转入交易所抛售</td>
+<td>Axel Adler Jr 09-25</td>
+</tr>
+<tr>
+<td>09-26 ~ 09-28</td>
+<td>美国拒绝伊朗重开霍尔木兹海峡的提议，布伦特原油期货涨 3% 以上至约 $107；09-28 开盘 BTC 从 $84.5k 跌到 $82.8k</td>
+<td>Al Jazeera 09-28；QCP 09-28</td>
+</tr>
+<tr>
+<td>09-28</td>
+<td>Strategy（原 MicroStrategy）公告：09-21 ~ 27 买入 1,665 BTC，均价 $85,681，总持仓 847,666 BTC</td>
+<td>Strategy 8-K（公司公告原文）</td>
+</tr>
+<tr>
+<td>09-30</td>
+<td>8 月 PCE 通胀低于预期（核心同比 3.0%），10 月加息概率从一半左右降到约 35%；BTC 冲到 $85.6k 后又回到 $85k 下方</td>
+<td>Reuters（经 Star-Advertiser）；FXStreet 10-01</td>
+</tr>
+<tr>
+<td>09-30</td>
+<td>美国现货 BTC ETF 净流出 $1.49 亿，10 个交易日来第一次流出</td>
+<td>Farside（经 Blockchain.news）</td>
+</tr>
+<tr>
+<td>监管</td>
+<td>Clarity Act 09-15 程序性投票失败后，参议院至今没有安排新的投票；SEC、CFTC 9 月下旬各自发布加密资产问答；SEC 委员 Peirce 10-02 离任</td>
+<td>Coin Republic 09-27；Elliptic</td>
+</tr>
+</tbody>
+</table>
+<p><strong>要点</strong>：09-22 之后的回落，报道里提得最多的是<strong>宏观逆风</strong>——长期利率升到 19 年来最高、油价因霍尔木兹海峡问题上涨、美元走强、美联储说年内可能还要加息。另一方面，<strong>$85k 上方有明显的卖压</strong>：Glassnode 说 Binance 现货盘口 $85k–85.5k 的卖单墙 09-24 以后扩大到约三倍；Bitfinex 说约 65 万枚 BTC 的买入成本在 $85k–86.5k 之间（意思是：这一带买入的人一回本就容易卖）。ETF 资金仍在流入，但一天比一天少，最后一天转成流出。</p>
+<h3>6.2 谁在买、谁在卖</h3>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>09-22 版</th>
+<th><strong>10-01 版</strong></th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>美国现货 BTC ETF 持币</td>
+<td>约 1,263,265 BTC（09-21，Bitbo）</td>
+<td>约 <strong>1,292,181 BTC</strong>（09-30，Bitbo，同一来源）</td>
+<td>9 天又增加约 2.9 万枚</td>
+</tr>
+<tr>
+<td>ETF 净流入</td>
+<td>8 月 +$35.2 亿；9 月至 21 日约 +$13 亿</td>
+<td><strong>9 月全月约 +$26.5 亿</strong>（其中 09-22 ~ 30 约 +$13.4 亿）；09-21 ~ 25 一周 +$23.9 亿，是 2026 年最好的一周</td>
+<td>仍是主要买盘，但<strong>逐日递减</strong>：09-21 起依次为 +$9.99 亿、+$7.15 亿、+$3.47 亿、+$1.91 亿、+$1.35 亿、+$0.31 亿、+$0.66 亿，09-30 <strong>-$1.49 亿</strong></td>
+</tr>
+<tr>
+<td>ETF 平均成本</td>
+<td>约 $82k（CoinDesk）/ 约 $86k（Glassnode）</td>
+<td>约 <strong>$81.9k</strong>（Bitfinex 09-30）</td>
+<td>今天价格略高于 ETF 平均成本</td>
+</tr>
+<tr>
+<td>公司 + 政府财库</td>
+<td>约 1,914,382 BTC</td>
+<td>约 <strong>1,917,676 BTC</strong>（CoinGecko，193 家）</td>
+<td>小幅增加；Strategy 一周买 1,665 枚，也有公司（Sequans）清仓卖完</td>
+</tr>
+<tr>
+<td>长期持有者（LTH）获利了结</td>
+<td>30 天变化 -2.2 万 BTC（09-20，CryptoQuant，二手转述），「卖得越来越少」</td>
+<td>Glassnode 09-30：截至 09-29 的一周，LTH 已实现利润<strong>接近翻倍</strong>，占全部已实现利润的比例从 34% 升到 <strong>55%</strong></td>
+<td><strong>价格回到 $84k–87k 后，长期持有者卖得更多了</strong></td>
+</tr>
+<tr>
+<td>LTH 30 天变化（CryptoQuant）</td>
+<td>09-20 -2.17 万</td>
+<td>09-20 之后没有找到新的公开数字</td>
+<td>无法确认是否还在收窄</td>
+</tr>
+<tr>
+<td>杠杆</td>
+<td>突破后新增约 $20 亿杠杆</td>
+<td>期货持仓从 09-21 的 70 万枚以上降到 09-29 的 64.4 万枚，1 月以来最低（Bitfinex）</td>
+<td><strong>杠杆已经被洗掉一大部分</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="真实用户结构（10 月更新）" src="png/real_user_structure_change.png"></p>
+<p><strong>必须如实讲清楚的一点</strong>：09-22 版说长期持有者「卖得越来越少」（30 天变化从 -10.6 万收窄到 -2.2 万），并把这条信号评为黄灯。<strong>这 9 天的新数据方向相反</strong>：价格回到 $84k–87k 之后，长期持有者的获利了结明显增加。</p>
+<p>我们的解读：这仍然是<strong>上涨中、在高位把币卖给新买家</strong>（ETF、Strategy 这类），不是 6 月那种下跌中的恐慌性卖出；CryptoQuant 的分析师也说长期持有者的平均获利幅度（约 72%）远低于 2024 年 12 月（约 350%），属于「温和」。按 §10 的规则，红灯的标准是「在下跌中持续派发、30 天变化再次扩大到 -10 万枚以上」，目前没有达到（也没有 09-20 之后的 30 天数据）。所以：<strong>黄灯维持，不转红；但「卖得越来越少」这句话要收回。</strong></p>
+<h3>6.3 市场情绪：从「极度贪婪」回到「贪婪」</h3>
+<ul>
+<li>恐惧与贪婪指数（alternative.me）：09-22 为 78（极度贪婪，这一波的最高）→ 之后 9 天都在 <strong>70–74（贪婪）</strong>，10-01 为 74。</li>
+<li>杠杆：09-21 突破后堆起来的杠杆大部分已经平掉（见上表）；09-23 当天约 $4.4 亿多头被强平。</li>
+<li>Glassnode 的检验标准变了：09-22 时是「站稳 $86k 算确认、跌破 $62–65k 算失败」；09-23 的周报把分界线下移到 <strong>$84k</strong>（站稳则上看 $96.7k，跌破则回看 $77k）；09-30 的周报又说<strong>日线收在 $77.2k 以下就算这一段上涨结束</strong>。09-28 以来收盘都在 $84k 下方。</li>
+<li>分析师观点（都只是观点）：CryptoQuant 的 Moreno 说价格站上 365 日均线「确认了新牛市」，同时提醒「有疲态、短期可能回调」，支撑看约 $80k、$71k、$67k；Glassnode 称这是「还没有广泛参与的早期上升趋势」；Bitfinex 认为非农数据（10-02）前大概率在 $82.5k–84k 震荡。</li>
+<li>10 月季节性：2013–2025 年的 13 个 10 月里有 10 个上涨（CoinGlass 数据，经 Cryptopotato），但 2025 年 10 月下跌约 4%。<strong>季节性只是统计，不是理由。</strong></li>
+</ul>
+<p><strong>对我们的意义</strong>：情绪从极度贪婪降回贪婪、杠杆被洗掉，<strong>短期过热的程度比 09-22 低</strong>；但宏观逆风（利率、油价、美元）和 $85k 上方的卖压都还在。这些都不改变家庭计划——它们正好说明为什么不能靠猜短期方向来决定买不买。</p>
+<h2>7. BTC 的核心基本面没有变</h2>
+<p>价格从 $58k 涨到 $86k、再回到 $84k，和它从 $124k 跌到 $58k 一样，都不改变 BTC 的第一性原理：账本仍可信、2100 万上限未变、共识未破裂、自托管属性仍在、安全预算没有失效。<strong>涨了不代表协议更好，跌了也不代表协议坏了。</strong>真正会破坏 BTC 的，仍然是：上限被修改、全节点验证严重中心化、矿工被可控实体集中、长期手续费撑不住安全预算，或者市场不再认为它是最可信的数字稀缺资产。</p>
+<h2>8. 为什么仍然只能小额</h2>
+<p>7 月版的理由一条都没有变：BTC 没有股息、没有经营利润，价格来自共识和稀缺性重估；高波动，判断对了也可能熬很久；有集中化、托管、监管、ETF 赎回、财库踩踏风险。</p>
+<p>09-22 版加了一条：<strong>涨了之后最容易犯的错，是「后悔没多买」然后临时加码。</strong>这一版再加一条：<strong>时间窗临近时最容易犯的错，是「等低点」</strong>——把该买的那一笔拖着不买，想等一个更便宜的价格。本轮从顶部跌了 53%，也从底部涨了 47%；接下来半个月涨跌都可能发生，仓位上限和买入节奏必须继续提前定死。</p>
+<table>
+<thead>
+<tr>
+<th>纪律</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不用养老钱</td>
+<td>父母生活安全永远优先</td>
+</tr>
+<tr>
+<td>不用应急金</td>
+<td>医疗、家庭现金流、房屋支出优先</td>
+</tr>
+<tr>
+<td>不借钱</td>
+<td>杠杆会把长期判断变成短期爆仓</td>
+</tr>
+<tr>
+<td>不一次买完</td>
+<td>按月分批到 2027-02</td>
+</tr>
+<tr>
+<td>不因为涨了而加码</td>
+<td>「错过了便宜价」不是加钱的理由</td>
+</tr>
+<tr>
+<td><strong>不为了等低点而拖延</strong></td>
+<td><strong>时间窗不是择时的理由，10 月这一笔照常买</strong></td>
+</tr>
+</tbody>
+</table>
+<h2>9. 家庭执行方案（10-01 更新）</h2>
+<p><strong>总额不变，节奏不变，价格口径按 10-01 重算。</strong></p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>动作</th>
+<th>价格口径（10 月更新）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-08</td>
+<td>第一笔（已到期）</td>
+<td>8 月均价约 $69.5k</td>
+</tr>
+<tr>
+<td>2026-09</td>
+<td>第二笔（已到期）</td>
+<td>9 月均价约 $80.5k</td>
+</tr>
+<tr>
+<td><strong>2026-10</strong></td>
+<td><strong>第三笔（本月）</strong></td>
+<td>今天 $83,788，AHR 0.557（定投区）。照常买这一笔；10-04 ~ 10-18 时间窗里无论涨跌，<strong>不额外加、不拖延</strong>（§4）</td>
+</tr>
+<tr>
+<td>2026-11</td>
+<td>第四笔</td>
+<td>同时复查：长期持有者 30 天变化（§6、§10 的黄灯是否转红）；10 月时间窗的结果</td>
+</tr>
+<tr>
+<td>2026-12</td>
+<td>第五笔</td>
+<td>不因为短期涨跌改变总额度</td>
+</tr>
+<tr>
+<td>2027-01</td>
+<td>第六笔</td>
+<td>继续保持小额、无杠杆</td>
+</tr>
+<tr>
+<td>2027-02</td>
+<td>最后一笔，结束本轮计划</td>
+<td>买完后停止追加计划外仓位</td>
+</tr>
+</tbody>
+</table>
+<p><strong>价格参考（10-01 重算；只作参考，不是触发器）</strong>：</p>
+<ul>
+<li>价格 &lt; 约 $75.3k（AHR &lt; 0.45，深度价值区）：买得很舒服，照常买，<strong>不加码</strong>。</li>
+<li>价格约 $75.3k–$123.1k（AHR 0.45–1.2，定投区）：照常按月买。<strong>今天在这里。</strong></li>
+<li>价格 &gt; 约 $123.1k（AHR &gt; 1.2，偏热区）：<strong>剩下的几笔暂停</strong>，等 AHR 回到 1.2 以下再继续；到 2027-02 还没回来就不买了，总额只会少、不会多。</li>
+<li>这三个价格会随 200 日均线漂移，<strong>以当月重算的 AHR999 为准</strong>，不以价格为准。</li>
+</ul>
+<p>一句话：<strong>剩下几笔大概率比原来想的贵。这是按时间分批的代价，也是它存在的原因</strong>——我们没有猜中底部的时间，但也没有因为猜错而全部错过。</p>
+<h2>10. 什么情况说明我们错了（更新）</h2>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>说明什么</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 月（尤其 10-04 ~ 10-18）跌破 <strong>$58,586</strong></td>
+<td>6 月不是底；10-05 真顶锚点的时间底仍然有效</td>
+<td>继续按月买，<strong>不加码</strong>；重新计算底部</td>
+</tr>
+<tr>
+<td><strong>（新增）10-18 之后仍没跌破 $58,586</strong></td>
+<td>两个锚点的时间窗都过去了、都没出新低 → 「6 月是底」的把握上升</td>
+<td>照常，<strong>不加码</strong>；下一版把对照表里「底部时间」一行改判</td>
+</tr>
+<tr>
+<td>AHR999 &gt; 1.2（今天约 $123k）</td>
+<td>进入偏热区</td>
+<td>暂停剩余几笔</td>
+</tr>
+<tr>
+<td>长期持有者<strong>在下跌中</strong>持续派发：30 天变化再次扩大到 -10 万 BTC 以上，且价格同时在跌</td>
+<td>强手在下跌中离场</td>
+<td>暂停买入</td>
+</tr>
+<tr>
+<td>现状（09-29，Glassnode）：价格回到 $84k–87k 时获利了结增加，一周已实现利润接近翻倍；仍是<strong>上涨中</strong>的获利了结；30 天变化 09-20（-2.2 万）之后没有公开数据</td>
+<td>🟡 黄灯，不是红灯（「卖得越来越少」已收回）</td>
+<td>照常；11 月复查 30 天变化</td>
+</tr>
+<tr>
+<td>2100 万上限或核心共识出现实质破坏</td>
+<td>第一性原理被破坏</td>
+<td>立即重新评估</td>
+</tr>
+<tr>
+<td>自托管、出入金、转账自由被系统性压制</td>
+<td>核心属性受损</td>
+<td>暂停买入</td>
+</tr>
+<tr>
+<td>家庭现金流或应急金需要钱</td>
+<td>生活优先</td>
+<td>停止买入</td>
+</tr>
+<tr>
+<td>买入后心态变成想梭哈、借钱、追涨</td>
+<td>纪律失守</td>
+<td>停止买入</td>
+</tr>
+</tbody>
+</table>
+<h2>11. 给父母的话</h2>
+<p>9 月 22 日我们说：<strong>价格说对了，时间说错了</strong>——底在 6 月底就出现了，比我们以为的早，8 月中开始上涨。</p>
+<p>之后这 9 天几乎什么也没发生，价格在 $83k–85k 横着。接下来半个月，是我们 6 月份算出来的最后一个「时间底」窗口。窗口里如果跌，我们照常买这一笔；如果不跌，我们也照常买这一笔。<strong>这就是按月分批的意义：不需要知道答案，也能把事情做对。</strong></p>
+<p>我们希望得到的支持和 7 月、9 月一样：不是相信 BTC 一定涨，而是支持一个<strong>有边界、小额、按月分批、不加码</strong>的长期配置实验。这笔钱可以亏、可以等很多年，但不能让父母承担心理和现金流压力。</p>
+<h2>12. 数据与来源</h2>
+<p>内部数据与脚本（本版全部新生成，旧版文件均未改动）：</p>
+<ul>
+<li><code>data/btc_merged_daily.csv</code>：BTC 日线合并数据，已更新至 2026-10-01（FRED CBBTCUSD 至 09-30 + Yahoo 10-01 当日补点）。与 09-22 版相比只修订了 1 行（2026-09-22 当日收盘 $85,938 → $86,250）。</li>
+<li><code>analysis_runs/2026-10-01_parent_btc_allocation_report/</code>：本版报告目录（脚本从 09-22 版复制，只改了输入日期、对照表文字和 LTH 图注；<code>report.css</code> 改为长表格可以跨页）。</li>
+<li><code>make_forecast_vs_actual.py</code> → <code>png/forecast_vs_actual.png</code>、<code>png/bottom_aligned_rebound.png</code>、<code>forecast_scorecard.csv</code>、<code>rebound_comparison.csv</code>（§1、§3 的数字来源）。</li>
+<li><code>make_ahr999_cycle_overlay.py</code> → <code>png/ahr999_cycle_overlay_peak_aligned.png</code>、<code>ahr999_recalc_to_2026-10-01.csv</code>、<code>ahr999_cycle_overlay_summary.csv</code>（§2.2）。</li>
+<li><code>make_peak_structure_charts.py</code> → <code>png/peak_structure_all_windows_grid.png</code>（§5）。</li>
+<li><code>make_real_user_charts.py</code> → <code>png/real_user_structure_change.png</code>（§6）；LTH 基准点来自本目录 <code>lth_metrics_2026-10-01.csv</code>（与 09-22 版相同：这 9 天没有找到新的 LTH 供应公开数字）。</li>
+<li><code>report_numbers_2026-10-01.py</code> → <code>report_numbers_2026-10-01.txt</code>：§2.2 的 AHR 反算价格、§2.3 窗口内退火路径、§3–§4 的历史基准率和「安静期」统计。</li>
+<li><code>visualization/2026-10-01/</code>：整条分析流程（step01–05、stepA1–A3、stepB4、stepC1）按新数据重跑的全部输出；<code>stepC1_bottom_forecast.txt</code> 是 §2.3 的数字来源。</li>
+<li><code>output/core_points_2026-10-01/</code>：stepD1–D14 核心点分析按新数据重跑的输出（原 <code>output/core_points/</code> 保留为 7 月版不动）。stepD10/D12/D13/D14 的结论与 09-22 版完全相同（它们只依赖 2025 顶部之前的结构和固定参数）。</li>
+<li><code>analysis_runs/2026-06-01_parent_report/tables/model_average_inputs.csv</code>：6 月五模型底部预测原文（§1 对照表的「当时的结论」）。</li>
+<li><code>visualization/2026-07-17/</code>、<code>visualization/2026-09-22/</code> 的 <code>stepC1_bottom_forecast.txt</code>：7 月版、9 月版退火预测原文（§2.3 表格前两列）。</li>
+</ul>
+<p>外部来源（09-22 版各项数字的来源见 09-22 版报告 §11）：</p>
+<ul>
+<li>FRED / Coinbase Bitcoin CBBTCUSD：https://fred.stlouisfed.org/series/CBBTCUSD</li>
+<li>FRED 美债收益率与美元指数：DGS10 https://fred.stlouisfed.org/series/DGS10 ；DFII10 https://fred.stlouisfed.org/series/DFII10 ；DTWEXBGS https://fred.stlouisfed.org/series/DTWEXBGS</li>
+<li>blockchain.com Charts API（活跃地址、确认交易数）：https://api.blockchain.info/charts/</li>
+<li>alternative.me 恐惧与贪婪指数 API：https://api.alternative.me/fng/</li>
+<li>Cryptonomist 2026-09-24：09-23 回落与美股下跌 —— https://en.cryptonomist.ch/2026/09/24/bitcoin-price-decline-spot-etf/</li>
+<li>Bitfinex Alpha 2026-09-28 / 09-30：09-23 爆仓、$85k–86.5k 成本带、期货持仓、ETF 平均成本 —— https://blog.bitfinex.com/bitfinex-alpha/btc-breakout-now-depends-on-spot-demand/ ；https://blog.bitfinex.com/bitfinex-alpha/bitcoin-needs-stronger-spot-demand-q4/</li>
+<li>Admiral Markets 2026-09-29（Barr、Williams 讲话转述）—— https://admiralmarkets.com/analytics/traders-blog/fed-williams-speech-september-29-2026 ；FXStreet 2026-09-29（Williams）—— https://www.fxstreet.com/news/feds-williams-says-no-rush-after-september-hike-202609291822</li>
+<li>Reuters 8 月 PCE（经 Star-Advertiser 转载，2026-09-30）—— https://www.staradvertiser.com/2026/09/30/breaking-news/u-s-inflation-rises-below-expectations-consumer-spending-robust/ ；FXStreet 2026-10-01（PCE 后走势、加息概率）—— https://www.fxstreet.com/cryptocurrencies/news/bitcoin-price-forecast-btc-struggles-below-85-000-as-etf-outflows-rising-us-treasury-yields-weigh-202610010832</li>
+<li>Al Jazeera 2026-09-28：霍尔木兹海峡与油价 —— https://www.aljazeera.com/economy/2026/9/28/oil-prices-surge-after-trump-rejects-irans-plan-to-reopen-strait-of-hormuz ；QCP Market Colour 2026-09-28 —— https://www.qcpgroup.com/insights/qcp-market-colour-48/</li>
+<li>Axel Adler Jr 2026-09-25：Bitget 事件后的链上反应 —— https://axeladlerjr.com/how-bitcoin-reacted-to-the-bitget-hack/</li>
+<li>Strategy 8-K（2026-09-28）—— https://assets.contentstack.io/v3/assets/bltf8d808d9b8cebd37/blteecf6b3544e56dd2/6ab9b1c199bf529f43db8f1d/form-8-k_09-28-2026.pdf ；Cryptonomist 2026-09-25：Sequans 清仓 —— https://en.cryptonomist.ch/2026/09/25/sequans-bitcoin-exit/</li>
+<li>The Block 2026-09-26：09-21 ~ 25 一周 ETF 流量 —— https://www.theblock.co/news/markets/2026-09-26-bitcoin-etfs-turn-positive-for-2026-with-2-4-billion-weekly-inflow-their-largest-since-october-416944</li>
+<li>TFTC 9 月 ETF 每日流量（逐日加总得 9 月 +$26.48 亿）—— https://www.tftc.io/bitcoin-etf-flows/september-2026 ；Blockchain.news（09-30 流出，Farside 数据）—— https://blockchain.news/flashnews/bitcoin-etf-148-7m-net-outflow-sept-30</li>
+<li>Bitbo US ETF 持币（09-30）：https://bitbo.io/treasuries/us-etfs/ ；CoinGecko BTC 财库（2026-10-01 访问）：https://www.coingecko.com/en/treasuries/bitcoin</li>
+<li>Glassnode The Week On-chain 第 38 / 39 周（2026-09-23 / 09-30）—— https://research.glassnode.com/the-week-onchain-week-38-2026/ ；https://research.glassnode.com/the-week-onchain-week-39-2026/</li>
+<li>The Block 2026-09-29（CryptoQuant：09-22 获利了结 2.57 万枚、Moreno 观点）—— https://www.theblock.co/news/markets/2026-09-29-cryptoquant-says-bitcoin-correction-could-near-traders-unrealized-profit-21-month-high-417206 ；crypto.news 2026-09-25（CryptoQuant Darkfost：LTH 获利幅度约 72%）—— https://crypto.news/bitcoin-holders-are-taking-profits/</li>
+<li>Axel Adler Jr：CryptoQuant LTH 30 天变化（截至 09-20）—— https://axeladlerjr.com/long-term-holder-supply-decline-slows-nearly-fivefold/</li>
+<li>Coin Republic 2026-09-27：Clarity Act 进展 —— https://thecoinrepublic.com/2026/09/27/clarity-act-setback-precedes-blockchain-association-ceo-exit ；Elliptic：SEC/CFTC 问答、Peirce 离任 —— https://www.elliptic.co/insights/crypto-regulatory-affairs-sec-and-cftc-push-cryptoasset-rulemaking-in-wake-of-failed-clarity-vote/</li>
+<li>Cryptopotato：10 月季节性（CoinGlass 数据）—— https://cryptopotato.com/bitcoin-enters-its-most-bullish-month-after-massive-q3-uptober-or-redtober-next/</li>
+</ul>
+<p>说明：以上外部数字由一次网络检索整理，均附日期与链接；二手转述的已注明。其中 FRED 10 年期收益率、恐惧与贪婪指数、Bitbo ETF 持币、CoinGecko 财库、TFTC 9 月流量、Glassnode 第 39 周的数字，已逐项打开原页面再次核对。不同机构的 ETF 持币、LTH 口径不同，本报告不做跨口径相减。</p>
+<p>免责声明：本报告是家庭内部研究材料，不是投资顾问建议。BTC 属于高波动、高不确定性资产，只适合小额、长期、可承受损失的资金。</p>
+</body>
+</html>

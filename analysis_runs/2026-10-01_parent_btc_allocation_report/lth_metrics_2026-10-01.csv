@@ -1,0 +1,4 @@
+date,lth_supply_btc,circulating_supply_btc,lth_ratio,lth_net_change_30d_btc,phase,source
+2025-10-06,14120000,19850000,0.7114,,distribution,"CoinDesk: 峰顶$126k时LTH约14.12M"
+2026-06-25,14800000,19950000,0.7419,,accumulation,"Glassnode via CoinDesk 2026-06-25: LTH 14.8M创历史新高,自峰顶+0.68M; 30天净仓位2026-06首次转正(2025-07以来第一次)"
+2026-08-07,14700000,19970000,0.7361,,distribution,"Glassnode via CoinDesk 2026-08-07: LTH约14.7M,一周-21万(部分为Coldcard事件后托管迁移,不全是卖出); 流通量按06-25值+43天x450枚发行估算; CryptoQuant 30天LTH变化 08-30 -105900 / 09-20 -21700(二手转述,口径不同)"
