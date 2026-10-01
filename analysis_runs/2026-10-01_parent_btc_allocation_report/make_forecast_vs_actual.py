@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """2026-09-22 版新增：把「当年的预测」和「后来的实际」放在一起对照。
-2026-10-01 版：退火路径改读 visualization/2026-10-01 重算结果；对照表按 10-01 的状态改写（9 月已走完）。
+2026-10-01 版：口径统一为顶 = 2025-08-12、底 = 2026-06-30（AGENTS.md 规定不再用 2025-10-05）。
+去掉 09-22 版按 10-05 画的退火路径和「10-05 + 364/378 天」时间窗；对照表按 08-12 顶、06-30 底重新判。
 
 输出（全部写在本目录，不碰任何旧版本）：
-- png/forecast_vs_actual.png         价格实际走势 + 06-01 五模型底部框 + 07-17 家庭计划 55-60k 区 + 退火路径 + 两个「365 天」时间窗
+- png/forecast_vs_actual.png         价格实际走势 + 06-01 五模型底部框 + 07-17 家庭计划 55-60k 区 + 「顶 08-12 + 364–378 天」时间窗
 - png/bottom_aligned_rebound.png     把「真底」和「熊市中途低点」都对齐到 0 天，看本轮 06-30 之后的反弹更像哪一种
-- forecast_scorecard.csv             对照表（报告 §2 的数字来源）
-- rebound_comparison.csv             反弹对照表（报告 §6 的数字来源）
+- forecast_scorecard.csv             对照表（报告 §1 的数字来源）
+- rebound_comparison.csv             反弹对照表（报告 §3 的数字来源）
 """
 from __future__ import annotations
 
@@ -27,10 +28,10 @@ T = pd.Timestamp
 
 # ---- 当年的预测（原样抄自旧版产物，路径见 SOURCES）----
 JUNE_MODELS = ROOT / "analysis_runs" / "2026-06-01_parent_report" / "tables" / "model_average_inputs.csv"
-STEPC1_OLD = ROOT / "visualization" / "2026-07-17" / "stepC1_bottom_forecast.txt"
-STEPC1_NEW_CSV = ROOT / "visualization" / "2026-10-01" / "stepC1_postpeak_aligned.csv"
-TRUE_TOP, TRUE_TOP_PX = T("2025-10-05"), 124720.09       # stepC1 真顶
-REPORT_ANCHOR = T("2025-08-12")                            # 家长报告统一锚点（AGENTS.md）
+TOP = T("2025-08-12")                                      # 本轮的顶（AGENTS.md 统一锚点）
+BOTTOM = T("2026-06-30")                                   # 本轮的底（顶后最低收盘）
+HALVING = T("2024-04-20")
+HIST_TOP_TO_BOTTOM = (364, 378)                            # 2017 / 2021 轮价格顶→价格底天数
 FAMILY_BAND = (55000, 60000)                               # 07-17 版 §8「较合理的价格期望区间」
 BUY_WINDOW = (T("2026-08-01"), T("2027-02-28"))            # 07-17 版 §8 按月分批窗口
 CONSENSUS = dict(mean=54472, median=57626, lo=43611, hi=60385)  # stepD14 交叉验证（06 月模型共识）
@@ -72,35 +73,27 @@ def forecast_chart(s: pd.Series, june: pd.DataFrame) -> None:
     ax.add_patch(plt.Rectangle((mdates.date2num(c_lo), p_lo), (c_hi - c_lo).days, p_hi - p_lo,
                                fc="#fecaca", ec="#b91c1c", lw=1.2, alpha=0.75, zorder=2))
     ax.text(c_hi + pd.Timedelta(days=5), p_lo - 1500,
-            f"06-01 五模型「底部」预测\n中枢价 ${p_lo/1000:.1f}k–${p_hi/1000:.1f}k\n中枢日 {c_lo:%m-%d}–{c_hi:%m-%d}",
+            f"06-01 五模型「底部」预测\n中枢价 \\${p_lo/1000:.1f}k–\\${p_hi/1000:.1f}k\n中枢日 {c_lo:%m-%d}–{c_hi:%m-%d}",
             fontsize=8.4, color="#b91c1c", va="top")
 
-    # 退火路径（从真顶 10-05 出发，换算成价格）
-    ann = pd.read_csv(STEPC1_NEW_CSV, encoding="utf-8-sig")
-    for col, color, name in [("dd_2017_scaled", "#16a34a", "仿 2017（退火）"),
-                             ("dd_2021_scaled", "#ea580c", "仿 2021（退火）")]:
-        d = TRUE_TOP + pd.to_timedelta(ann["post_day"], unit="D")
-        px = TRUE_TOP_PX * (1 + ann[col] / 100.0)
-        keep = d <= T("2027-03-01")
-        ax.plot(d[keep], px[keep], color=color, lw=1.3, ls="--", alpha=0.85, zorder=3,
-                label=f"stepC1 退火路径 {name}")
-
-    # 两个「365 天」时间窗
-    for a, b, txt, y in [
-        (REPORT_ANCHOR + pd.Timedelta(days=364), REPORT_ANCHOR + pd.Timedelta(days=366), "报告锚点 08-12\n+364/366 天", 118000),
-        (TRUE_TOP + pd.Timedelta(days=364), TRUE_TOP + pd.Timedelta(days=378), "真顶 10-05\n+364/378 天", 111000),
-    ]:
-        ax.axvspan(a, b, color="#64748b", alpha=0.22, zorder=2)
-        ax.text(b + pd.Timedelta(days=3), y, txt, fontsize=8.4, color="#334155", va="top")
+    # 「顶 08-12 + 前两轮顶→底天数」时间窗
+    a, b = (TOP + pd.Timedelta(days=d) for d in HIST_TOP_TO_BOTTOM)
+    ax.axvspan(a, b, color="#64748b", alpha=0.22, zorder=2)
+    ax.text(b + pd.Timedelta(days=3), 118000, f"顶 08-12\n+{HIST_TOP_TO_BOTTOM[0]}–{HIST_TOP_TO_BOTTOM[1]} 天", fontsize=8.4,
+            color="#334155", va="top")
 
     # 实际价格
     act = s.loc["2025-06-01":]
     ax.plot(act.index, act.values, color="#0f172a", lw=2.4, zorder=6, label="BTC 实际价格（FRED/Coinbase 日线）")
 
+    retest = s.loc["2025-09-15":"2025-11-15"].idxmax()
+    ax.annotate(f"{retest:%m-%d} 回测\n只比 8 月顶高 {s[retest] / s[TOP] - 1:.1%}", xy=(retest, float(s[retest])),
+                xytext=(retest + pd.Timedelta(days=24), float(s[retest]) + 5000), fontsize=8, color="#64748b",
+                arrowprops={"arrowstyle": "-", "color": "#94a3b8", "lw": 0.8})
     marks = [
-        (TRUE_TOP, TRUE_TOP_PX, "真顶 2025-10-05\n$124,720", (-118, 4000)),
+        (TOP, float(s[TOP]), f"顶 2025-08-12\n${s[TOP]:,.0f}", (-70, 6000)),
         (*low_between(s, "2026-01-20", "2026-02-20"), "第一脚", (-40, -16000)),
-        (*low_between(s, "2026-06-01", "2026-07-15"), "第二脚（至今最低）", (-100, -14000)),
+        (BOTTOM, float(s[BOTTOM]), f"底 2026-06-30\n${s[BOTTOM]:,.0f}", (-100, -14000)),
         (*low_between(s, "2026-07-18", "2026-08-18"), "8 月更高的低点", (-35, -17000)),
         (latest, float(s.iloc[-1]), "今天", (12, 9000)),
     ]
@@ -132,7 +125,7 @@ def rebound_chart(s: pd.Series) -> pd.DataFrame:
         ("2022-11 真底（2021 轮）", *low_between(s, "2022-11-01", "2022-12-31"), "#0d9488", "-", "true"),
         ("2018-02 熊市中途低点", *low_between(s, "2018-01-25", "2018-02-28"), "#f97316", "--", "bear"),
         ("2022-06 熊市中途低点", *low_between(s, "2022-06-01", "2022-07-15"), "#dc2626", "--", "bear"),
-        ("2026-06-30 本轮至今最低", *low_between(s, "2026-06-01", "2026-07-15"), "#0f172a", "-", "now"),
+        ("2026-06-30 本轮的底", *low_between(s, "2026-06-01", "2026-07-15"), "#0f172a", "-", "now"),
     ]
     rows = []
     fig, ax = plt.subplots(figsize=(12.8, 6.4), dpi=170)
@@ -151,7 +144,7 @@ def rebound_chart(s: pd.Series) -> pd.DataFrame:
             "低点价格": round(p0),
             "低点后150天内最大涨幅": round((after.max() / p0 - 1) * 100, 1),
             f"低点后{(latest - s.loc['2026-06-01':'2026-07-15'].idxmin()).days}天时涨幅": round((float(at_n.iloc[-1]) / p0 - 1) * 100, 1),
-            "之后是否跌破这个低点": "是" if kind != "now" and float(future_min.min()) < p0 else ("否" if kind != "now" else "未知（进行中）"),
+            "之后是否跌破这个低点": "是" if kind != "now" and float(future_min.min()) < p0 else ("否" if kind != "now" else "至今没有"),
             "之后最低价": round(float(future_min.min())) if kind != "now" else None,
         })
     ax.axhline(0, color="#475569", lw=0.9)
@@ -169,34 +162,37 @@ def rebound_chart(s: pd.Series) -> pd.DataFrame:
 
 
 def scorecard(s: pd.Series, june: pd.DataFrame) -> pd.DataFrame:
+    """按顶 2025-08-12、底 2026-06-30 重新判每一条当年的说法。"""
     latest, px = s.index.max(), float(s.iloc[-1])
-    d_low, p_low = low_between(s, "2025-10-05", str(latest.date()))
+    top_px, low_px = float(s[TOP]), float(s[BOTTOM])
     d_hl, p_hl = low_between(s, "2026-07-18", "2026-08-05")
     d_hl2, p_hl2 = low_between(s, "2026-08-06", "2026-08-18")
-    p_anchor365 = float(s.loc[REPORT_ANCHOR + pd.Timedelta(days=365)])
+    win_a, win_b = (TOP + pd.Timedelta(days=d) for d in HIST_TOP_TO_BOTTOM)
     d_win, p_win = low_between(s, str(BUY_WINDOW[0].date()), str(latest.date()))
-    need = 1 - p_low / px
+    h2t, t2b, dd = (TOP - HALVING).days, (BOTTOM - TOP).days, low_px / top_px - 1
     r = [
-        ("减半→顶 536 天（2017/2021 两轮）", "本轮顶约 2025-10-08", "实际顶 2025-10-05/06", "对（差 2–3 天）"),
+        ("减半→顶 536 天（2017/2021 两轮平均）", "本轮顶约 2025-10-08",
+         f"顶在 2025-08-12（减半后 {h2t} 天）", f"错：早了 {536 - h2t} 天，本轮整体快约一成"),
         ("06-01 五模型：底部价格", f"中枢 ${june.center_price.min():,.0f}–${june.center_price.max():,.0f}；共识中位 ${CONSENSUS['median']:,}",
-         f"至今最低 ${p_low:,.0f}（{d_low:%Y-%m-%d}）", "价格对（落在区间内、接近中位）"),
+         f"底 ${low_px:,.0f}（2026-06-30），比共识中位只高 {low_px / CONSENSUS['median'] - 1:.1%}", "对"),
         ("06-01 五模型：底部时间", f"中枢 {june.center_date.min():%Y-%m-%d} ~ {june.center_date.max():%Y-%m-%d}",
-         f"低点出现在 {d_low:%Y-%m-%d}，早了约 3–4 个月", "时间错（除非 10 月再跌破）"),
+         "底在 2026-06-30，早了 3–4 个月", "错"),
         ("AHR999 深底 0.26–0.28", "本轮也会探到这一带", "2026-02-05 0.280；2026-06-30 0.281", "对"),
-        ("报告锚点 08-12 + 364/366 天", "2026-08-11 ~ 08-13 附近是时间底",
-         f"第 365 天 ${p_anchor365:,.0f}；{d_hl:%m-%d} ${p_hl:,.0f} 与 {d_hl2:%m-%d} ${p_hl2:,.0f} 两次踩在同一位置，08-17 起飞",
-         "时间点对，但它是「更高的低点」不是新低"),
-        ("真顶 10-05 + 364/378 天（stepC1）", "2026-10-04 ~ 10-18 附近是时间底",
-         f"{(T('2026-10-04') - latest).days} 天后开始；要跌破 6 月低点需从今天再跌 {need:.0%}", "待验证"),
-        ("stepC1 退火价格底 -28% ~ -44%", "$69.5k–$89.9k",
-         f"6 月跌到 -53%（跌过头）；今天 {px/TRUE_TOP_PX-1:.0%} 又回到区间里", "半对：跌得比模型深，但现在回到模型路径"),
-        ("stepD12 价格区间", "$29k–$57k，中枢 $39k", f"至今最低 ${p_low:,.0f}", "太悲观"),
+        (f"顶 08-12 + 前两轮顶→底天数（{HIST_TOP_TO_BOTTOM[0]}–{HIST_TOP_TO_BOTTOM[1]} 天）",
+         f"{win_a:%Y-%m-%d} ~ {win_b:%m-%d} 附近是时间底",
+         f"这段时间只有更高的低点（{d_hl:%m-%d} ${p_hl:,.0f}、{d_hl2:%m-%d} ${p_hl2:,.0f}，08-17 起涨）；"
+         f"真正的底在顶后第 {t2b} 天（06-30），早了 {HIST_TOP_TO_BOTTOM[0] - t2b}–{HIST_TOP_TO_BOTTOM[1] - t2b} 天",
+         "半对：方向对，时间早了 6–8 周"),
+        ("退火模型：顶后跌 28%–44%", "本轮跌幅会比前两轮浅很多",
+         f"顶→底 {dd:.1%}，比模型最深的 -44% 还深约 {abs(dd) * 100 - 44.3:.0f} 个百分点", "半对：浅是对的，但浅得不够"),
+        ("stepD12 价格区间", "$29k–$57k，中枢 $39k", f"底 ${low_px:,.0f}", "太悲观"),
         ("07-17 家庭计划「55–60k 较合理价格区」", "2026-08 → 2027-02 窗口里大概率能在这一带买",
-         f"窗口内最低 ${p_win:,.0f}（{d_win:%m-%d}，离 60k 只差 {p_win/FAMILY_BAND[1]-1:.0%}）；8 月均价 ${s.loc['2026-08'].mean():,.0f}，9 月均价 ${s.loc['2026-09'].mean():,.0f}",
-         "错：55–60k 在窗口开始前（6 月底）就到过，窗口里没再回来"),
-        ("「W 底」（2 月第一脚 → 6 月第二脚）", "第二脚后反弹", f"06-30 后 +{px/p_low-1:.0%}", "对"),
+         f"底在窗口开始前（06-30）；窗口内最低 ${p_win:,.0f}（{d_win:%m-%d}）；8 月均价 ${s.loc['2026-08'].mean():,.0f}，9 月均价 ${s.loc['2026-09'].mean():,.0f}",
+         "错（09-22 版已作废这句话）"),
+        ("「W 底」（2 月第一脚 → 6 月第二脚）", "第二脚后反弹",
+         f"06-30 后 +{px / low_px - 1:.0%}（最高 +{s.loc[BOTTOM:].max() / low_px - 1:.0%}）", "对"),
         ("「真正时间底大概率在 8–10 月」", "8–10 月还会再跌回来",
-         f"8、9 月都没破 6 月低点（9 月最低 ${s.loc['2026-09'].min():,.0f}）", "至今是错的（10 月才开始）"),
+         f"底在 6 月底；8、9 月都没再跌回去（9 月最低 ${s.loc['2026-09'].min():,.0f}）", "错"),
     ]
     return pd.DataFrame(r, columns=["当年的计算", "当时的结论", "实际（截至 " + f"{latest:%Y-%m-%d}）", "对/错"])
 
