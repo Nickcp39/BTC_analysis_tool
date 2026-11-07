@@ -1,0 +1,5 @@
+Step04: 4 cycles peak-aligned, time scaled by halving->peak, amplitude scaled
+2025 peak (fixed): 2025-08-15
+halving_to_peak days: 2017=526, 2021=547, 2025=482
+time_scale (ref=2025): 2013=1.0000, 2017=0.9163, 2021=0.8812, 2025=1.0000
+amp_scale (ref=2025): 2013=1.0000, 2017=0.3333, 2021=0.5774, 2025=1.0000
