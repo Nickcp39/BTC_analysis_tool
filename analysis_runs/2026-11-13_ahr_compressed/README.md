@@ -2,7 +2,9 @@
 
 用户的要求（11-09、11-13）：配对点位给时间；AHR999 不是「低于某个数就买」，它的数字每轮都在被压缩，要从这个角度重新看现在。数据截至 2026-11-12 收盘 $70,822（11-13 盘中约 $68.5k）。
 
-脚本 `ahr_compressed.py` → `ahr_compressed_numbers.txt`（全部数字）、`ahr_compressed_ladder.csv`（压缩后的水位换成今天的价格）、`png/ahr_compressed.png`。配对来自 `analysis_runs/2026-11-13_manual_point_compare/user_pairs.csv`。
+**报告**：`BTC_AHR999_compressed_2026-11-13.pdf`（同内容 .md / .html / .txt，由 `build_report.py` 生成）。
+
+脚本 `ahr_compressed.py` → `ahr_compressed_numbers.txt`（全部数字）、`ahr_compressed_ladder.csv`（压缩后的水位换成今天的价格）、`png/fig1_ahr_scale_by_cycle.png`（每轮刻度）、`png/fig2_compression_fit.png`（配对点上的压缩量）、`png/fig3_pairs_time_compressed_level.png`（配对时间 + 压缩水位，主图）、`png/fig4_levels_to_price.png`（换成今天的价格）。配对来自 `analysis_runs/2026-11-13_manual_point_compare/user_pairs.csv`。
 
 ## 做法
 
