@@ -13,6 +13,7 @@ OUT = Path(__file__).resolve().parent
 SAVED_JSON = OUT / "segment_cycle_samples_v19_saved.json"
 SAVED_CSV = OUT / "segment_cycle_samples_v19_saved.csv"
 BACKUP_DIR = OUT / "sample_backups"
+PAGE = OUT / "segment_cycle_workbench_v19.html"
 DUPLICATE_TOLERANCE = {"amp": 0.03, "time": 0.03, "shift": 10}
 
 
@@ -145,6 +146,19 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
+        if path in ("/", "/index.html", "/segment_cycle_workbench_v19.html"):
+            body = PAGE.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if path == "/samples":
+            data = json.loads(SAVED_JSON.read_text(encoding="utf-8")) if SAVED_JSON.exists() else {}
+            self._send_json(200, {"ok": True, "samples": data.get("samples", [])})
+            return
         if path == "/status":
             self._send_json(
                 200,
@@ -182,6 +196,7 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args()
     httpd = ThreadingHTTPServer((args.host, args.port), Handler)
+    print(f"Workbench: http://{args.host}:{args.port}/")
     print(f"Segment sample save server: http://{args.host}:{args.port}/status")
     print(f"Saving to: {SAVED_JSON}")
     httpd.serve_forever()

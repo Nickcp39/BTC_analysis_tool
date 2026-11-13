@@ -16,6 +16,10 @@ except Exception:
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data" / "btc_merged_daily.csv"
 MARKS_CSV = ROOT / "output" / "core_points" / "manual_points.csv"
+POINT_DIR = ROOT / "analysis_runs" / "2026-11-13_manual_point_compare"
+KEY_POINTS_CSV = POINT_DIR / "marked_points.csv"
+USER_PAIRS_CSV = POINT_DIR / "user_pairs.csv"
+KEY_SOURCES = {"user", "user_pair", "report_anchor", "manual_points"}
 OUT = Path(__file__).resolve().parent
 HTML = OUT / "segment_cycle_workbench_v19.html"
 CASE_LEDGER = OUT / "segment_cycle_case_ledger_v19.csv"
@@ -52,8 +56,8 @@ CYCLES = [
         "label": "2025 cycle",
         "halving": "2024-04-20",
         "peak": "2025-08-12",
-        "bottom": "2026-02-05",
-        "note": "Current cycle anchors are editable assumptions.",
+        "bottom": "2026-06-30",
+        "note": "Top 2025-08-12 (true top, not 10-05); bottom 2026-06-30 confirmed by the user 2026-11.",
     },
 ]
 
@@ -95,20 +99,51 @@ def load_price_rows() -> tuple[pd.Series, list[dict]]:
     return series, rows
 
 
-def load_marks() -> list[dict]:
-    if not MARKS_CSV.exists():
-        return []
-    df = pd.read_csv(MARKS_CSV, parse_dates=["date"])
-    df = df.drop_duplicates(subset=["date"]).sort_values("date")
-    return [
-        {
-            "date": d.date().isoformat(),
-            "price": round(float(p), 2),
-            "type": str(t),
-            "n": int(n) if pd.notna(n) else None,
-        }
-        for n, d, p, t in zip(df["n"], df["date"], df["price"], df["type"])
-    ]
+def load_marks(series: pd.Series) -> list[dict]:
+    marks: list[dict] = []
+    if MARKS_CSV.exists():
+        df = pd.read_csv(MARKS_CSV, parse_dates=["date"])
+        df = df.drop_duplicates(subset=["date"]).sort_values("date")
+        marks = [
+            {
+                "date": d.date().isoformat(),
+                "price": round(float(p), 2),
+                "type": str(t),
+                "n": int(n) if pd.notna(n) else None,
+            }
+            for n, d, p, t in zip(df["n"], df["date"], df["price"], df["type"])
+        ]
+    marks += load_key_points(series)
+    return marks
+
+
+def load_key_points(series: pd.Series) -> list[dict]:
+    """User-confirmed points and pairs from the 2026-11-13 ledgers, drawn as yellow rings."""
+    found: dict[str, list[str]] = {}
+    if KEY_POINTS_CSV.exists():
+        kp = pd.read_csv(KEY_POINTS_CSV, dtype=str).fillna("")
+        for _, r in kp.iterrows():
+            if r["date"] and r["source"] in KEY_SOURCES:
+                found.setdefault(r["date"], []).append(f"{r['cycle']} {r['label']}")
+    if USER_PAIRS_CSV.exists():
+        up = pd.read_csv(USER_PAIRS_CSV, dtype=str).fillna("")
+        for _, r in up.iterrows():
+            for col in ("date_2021", "date_2025"):
+                if r[col]:
+                    found.setdefault(r[col], []).append(f"配对 {r['pair']}")
+    out = []
+    for date, labels in sorted(found.items()):
+        ts = pd.Timestamp(date)
+        if ts not in series.index:
+            continue
+        out.append({
+            "date": date,
+            "price": round(float(series.loc[ts]), 2),
+            "type": "K",
+            "n": None,
+            "label": " / ".join(dict.fromkeys(labels)),
+        })
+    return out
 
 
 def cycle_by_id(cycle_id: str) -> dict:
@@ -136,7 +171,7 @@ def build_cases(series: pd.Series) -> list[dict]:
         }
 
     case_no = 1
-    preferred_first = ("2021", "2025", "peak_pre_1y")
+    preferred_first = ("2021", "2025", "bottom_pm_1y")
     ordered: list[tuple[str, str, dict]] = []
     for left_id, right_id in PAIR_ORDER:
         for preset in WINDOW_PRESETS:
@@ -211,8 +246,9 @@ def write_runbook() -> None:
 Goal: manually compare BTC cycle structure around peak/bottom anchors across fixed windows, then save the ratio settings and export the visual evidence.
 
 ## Workflow
-1. Open `segment_cycle_workbench_v19.html`.
-2. Start with `Peak pre 1y: 2021 -> 2025`.
+0. Rebuild with fresh data: `python segment_cycle_workbench_v19.py` (reads data/btc_merged_daily.csv).
+1. Start `python segment_sample_save_server.py` and open http://127.0.0.1:8765/ (the page loads saved samples from the project file; Save writes segment_cycle_samples_v19_saved.json/.csv plus a backup).
+2. Start with `Bottom +/- 1y: 2021 -> 2025` (bottoms 2022-11-21 / 2026-06-30). Yellow rings = user-confirmed points and pairs from analysis_runs/2026-11-13_manual_point_compare/.
 3. Adjust height, time scale, and horizontal shift.
 4. Save Sample after every visually meaningful fit.
 5. Export Sample Library JSON regularly.
@@ -238,6 +274,7 @@ def write_html(rows: list[dict], marks: list[dict], cases: list[dict]) -> None:
         .replace("__CYCLES_JSON__", json.dumps(CYCLES, ensure_ascii=False))
         .replace("__WINDOWS_JSON__", json.dumps(WINDOW_PRESETS, ensure_ascii=False))
         .replace("__CASES_JSON__", json.dumps(cases, ensure_ascii=False))
+        .replace("__DATA_END__", rows[-1]["date"])
     )
     HTML.write_text(html, encoding="utf-8")
 
@@ -393,7 +430,7 @@ aside { padding: 12px; max-height: calc(100vh - 84px); overflow: auto; }
 <header>
   <div>
     <h1>BTC Segment Cycle Workbench v19</h1>
-    <div class="muted">比较 peak / bottom 前后不同时间段；手动保存高度比例、时间比例、平移和对比图。</div>
+    <div class="muted">比较 peak / bottom 前后不同时间段；手动保存高度比例、时间比例、平移和对比图。价格数据截至 __DATA_END__（末行可能是当天盘中价）；黄圈 = 你确认过的点位和配对。</div>
   </div>
   <div class="toolbar">
     <button id="saveSample" class="primary">保存样本</button>
@@ -510,7 +547,8 @@ const MARKS = __MARKS_JSON__.map(d => ({
   t: new Date(d.date + "T00:00:00").getTime(),
   price: +d.price,
   type: d.type,
-  n: d.n
+  n: d.n,
+  label: d.label || ""
 }));
 const CYCLES = __CYCLES_JSON__;
 const WINDOWS = __WINDOWS_JSON__;
@@ -518,10 +556,13 @@ const DEFAULT_CASES = __CASES_JSON__;
 const DAY = 86400000;
 const NS = "http://www.w3.org/2000/svg";
 const W = 1200, H = 720, M = { l: 70, r: 150, t: 28, b: 48 };
-const STORE_CASES = "btc_segment_cycle_workbench_v19_cases";
+const STORE_CASES = "btc_segment_cycle_workbench_v19b_cases";
 const STORE_SAMPLES = "btc_segment_cycle_workbench_v19_samples";
 const STORE_ACTIVE = "btc_segment_cycle_workbench_v19_active";
-const SAVE_API = "http://127.0.0.1:8765/save_samples";
+const API_BASE = location.protocol.startsWith("http") ? "" : "http://127.0.0.1:8765";
+const SAVE_API = API_BASE + "/save_samples";
+const SAMPLES_API = API_BASE + "/samples";
+let serverMerged = false;
 const DUPLICATE_TOLERANCE = { amp: 0.03, time: 0.03, shift: 10 };
 const svg = document.getElementById("chart");
 const tip = document.getElementById("tip");
@@ -594,8 +635,26 @@ function projectPayload() {
     cases
   };
 }
+async function loadServerSamples() {
+  try {
+    const resp = await fetch(SAMPLES_API);
+    const result = await resp.json();
+    if (!resp.ok || !result.ok) return false;
+    const known = new Set(samples.map(s => s.saved_at));
+    (result.samples || []).forEach(s => { if (!known.has(s.saved_at)) samples.push(s); });
+    samples.sort((a, b) => String(a.saved_at).localeCompare(String(b.saved_at)));
+    samples = dedupeSamples(samples);
+    persistSamples();
+    renderSamples();
+    serverMerged = true;
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 async function saveProjectLibrary(showAlert = true) {
   try {
+    if (!serverMerged) await loadServerSamples();
     const resp = await fetch(SAVE_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -667,7 +726,8 @@ function markRows(anchorDate, preDays, postDays, sideName, transform, params) {
         log_norm: logNorm,
         log_plot: transform ? logNorm * params.amp_scale : logNorm,
         type: m.type,
-        n: m.n
+        n: m.n,
+        label: m.label || ""
       };
     });
 }
@@ -778,6 +838,17 @@ function drawMarkers(g, rows, px, py, color, fill, connect) {
     svgEl(g, "path", { d, fill: "none", stroke: color, "stroke-width": 1.1, opacity: .45, "stroke-dasharray": "4 4" });
   }
   sorted.forEach(m => {
+    if (m.type === "K") {
+      const ring = svgEl(g, "circle", {
+        cx: px(m.rel_plot), cy: py(m.log_plot), r: 8.5,
+        fill: "none", stroke: "#f5c542", "stroke-width": 2.2, opacity: .95
+      });
+      svgEl(ring, "title").textContent = m.dateText + " " + m.label;
+      svgEl(g, "text", {
+        x: px(m.rel_plot) + 10, y: py(m.log_plot) - 9, fill: "#f5c542", "font-size": 11
+      }).textContent = m.dateText.slice(2);
+      return;
+    }
     svgEl(g, "circle", {
       cx: px(m.rel_plot),
       cy: py(m.log_plot),
@@ -1265,6 +1336,7 @@ byId("copyCurrent").onclick = async () => {
 populateSelects();
 setControls(cases[activeIndex] || cases[0]);
 draw();
+loadServerSamples();
 </script>
 </body>
 </html>
@@ -1274,7 +1346,7 @@ draw();
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     series, rows = load_price_rows()
-    marks = load_marks()
+    marks = load_marks(series)
     cases = build_cases(series)
     write_case_ledger(cases)
     write_runbook()
