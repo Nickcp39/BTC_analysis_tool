@@ -1,0 +1,11 @@
+cycle_workbench_v20 build (made by Claude)
+data: 2010-07-17 -> 2026-11-13 (5964 days); FRED from 2014-12-01
+last row: 2026-11-13 68,685.50 (may be an intraday Yahoo point)
+Mt.Gox days interpolated: 20 (2014-02-06 -> 2014-02-25)
+marks: 133 hand marks + 15 confirmed points/pairs
+2011: peak 2011-06-08 $29.60 AHR 590.946 | bottom 2011-11-18 $2.05 AHR 0.132
+2013: halving 2012-11-28 $12.35 AHR 0.658 | peak 2013-11-30 $1,205.66 AHR 99.623 | bottom 2015-01-14 $120.00 AHR 0.104
+2017: halving 2016-07-09 $657.61 AHR 0.797 | peak 2017-12-16 $19,650.01 AHR 26.635 | bottom 2018-12-15 $3,183.00 AHR 0.272
+2021: halving 2020-05-11 $8,557.37 AHR 0.704 | peak 2021-11-08 $67,510.06 AHR 3.799 | bottom 2022-11-21 $15,755.75 AHR 0.267
+2025: halving 2024-04-20 $64,905.95 AHR 1.239 | peak 2025-08-12 $123,365.63 AHR 1.270 | bottom 2026-06-30 $58,585.96 AHR 0.281
+html: I:\yc_research\claude code\BTC_analysis_tool\analysis_runs\2026-11-13_cycle_workbench_v20_claude\cycle_workbench_v20.html

@@ -1,0 +1,778 @@
+<!doctype html>
+<!-- BTC multi-cycle manual workbench v20. Made by Claude (Claude Code, Opus 5.5), 2026-11-13.
+     Rebuilt from the v19 segment workbench; same logic: rel_day x time + shift, log move x amp. -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Claude (Claude Code, Opus 5.5)" />
+<title>BTC 多周期手动对比工作台 v20（Claude 制作）</title>
+<style>
+:root {
+  --surface: #1a1a19; --panel: #222220; --panel-2: #2a2a27; --line: #383835;
+  --grid: #2f2f2c; --text: #f0efec; --text-2: #c3c2b7; --muted: #8d8c86;
+  --accent: #3987e5; --danger: #d03b3b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface); color: var(--text);
+  font: 13px/1.45 "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; }
+header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+  padding: 10px 14px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+h1 { margin: 0 0 2px; font-size: 17px; font-weight: 600; }
+.badge { display: inline-block; margin-left: 8px; padding: 1px 8px; border: 1px solid var(--line);
+  border-radius: 10px; font-size: 11px; font-weight: 400; color: var(--text-2); vertical-align: middle; }
+.muted { color: var(--muted); }
+.toolbar { display: flex; gap: 6px; flex-wrap: wrap; }
+button { background: var(--panel-2); color: var(--text); border: 1px solid var(--line); border-radius: 6px;
+  padding: 5px 10px; font: inherit; cursor: pointer; }
+button:hover { border-color: #55554f; }
+button.primary { background: #1c5cab; border-color: #256abf; }
+button.small { padding: 2px 7px; font-size: 12px; }
+button.danger { color: #f0a0a0; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 10px; padding: 10px; }
+@media (max-width: 1150px) { main { grid-template-columns: 1fr; } }
+.chart-wrap { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px; }
+svg#chart { width: 100%; height: auto; display: block; touch-action: none; user-select: none; cursor: grab; }
+svg#chart.dragging { cursor: grabbing; }
+.status { padding: 3px 8px 5px; color: var(--text-2); font-size: 12px; min-height: 22px; }
+.status-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+button.on { border-color: var(--accent); background: #184f95; }
+.tip { position: absolute; pointer-events: none; display: none; background: rgba(20,20,19,.96);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font-size: 12px; color: var(--text); min-width: 210px; z-index: 5; }
+.tip .row { display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.help { margin: 6px 4px 2px; color: var(--muted); font-size: 12px; }
+.help b { color: var(--text-2); font-weight: 600; }
+aside { display: flex; flex-direction: column; gap: 8px; max-height: calc(100vh - 90px); overflow: auto; }
+@media (max-width: 1150px) { aside { max-height: none; } }
+.sec { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.sec h3 { margin: 0 0 6px; font-size: 13px; color: var(--text-2); font-weight: 600; }
+.grid2 { display: grid; grid-template-columns: 78px 1fr; gap: 5px 8px; align-items: center; }
+select, input[type=number], input[type=date], textarea { background: var(--surface); color: var(--text);
+  border: 1px solid var(--line); border-radius: 5px; padding: 3px 5px; font: inherit; }
+input[type=number] { width: 70px; }
+textarea { width: 100%; min-height: 54px; resize: vertical; }
+.presets { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.cyc { border-top: 1px solid var(--line); padding: 6px 0; }
+.cyc:first-of-type { border-top: 0; }
+.cyc.active { background: rgba(57,135,229,.08); margin: 0 -10px; padding: 6px 10px; }
+.cyc-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cyc-head .name { font-weight: 600; }
+.tag { font-size: 11px; padding: 0 6px; border-radius: 8px; border: 1px solid var(--line); color: var(--text-2); }
+.prm { display: grid; grid-template-columns: 34px 1fr 70px; gap: 6px; align-items: center; margin-top: 3px; }
+.prm input[type=range] { width: 100%; }
+.sample { border-top: 1px solid var(--line); padding: 5px 0; }
+.sample .meta { color: var(--text-2); }
+.sample .btns { display: flex; gap: 4px; margin-top: 3px; flex-wrap: wrap; }
+.tabs { display: flex; gap: 4px; margin-bottom: 6px; }
+.tabs button.on { border-color: var(--accent); }
+#toast { position: fixed; right: 16px; bottom: 16px; max-width: 420px; padding: 8px 12px; border-radius: 8px;
+  background: #2a2a27; border: 1px solid var(--line); display: none; z-index: 10; white-space: pre-line; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>BTC 多周期手动对比工作台 v20 <span class="badge">Claude 制作 · 2026-11-13 · 基于 v19，逻辑不变</span></h1>
+    <div class="muted" id="dataInfo"></div>
+  </div>
+  <div class="toolbar">
+    <button id="undoBtn" title="Ctrl+Z">撤销</button>
+    <button id="saveBtn" class="primary">保存样本</button>
+    <button id="pngBtn">导出 PNG</button>
+    <button id="csvBtn">导出 CSV</button>
+  </div>
+</header>
+<main>
+  <section class="chart-wrap" id="chartWrap">
+    <div class="status-row"><div class="status" id="status"></div>
+      <button id="timeModeBtn" class="small" title="快捷键 T">拖动 = 时间比例（T）</button></div>
+    <svg id="chart" viewBox="0 0 1200 700" font-family="Microsoft YaHei, PingFang SC, system-ui, sans-serif"></svg>
+    <div class="tip" id="tip"></div>
+    <div class="help">
+      <b>拖线</b>：在图上按住一条线（参考周期以外），左右拖 = 平移，上下拖 = 高度；按住 <b>Shift</b> 左右拖（或打开右上「拖动 = 时间比例」/ 按 T）= 时间比例，以这条线的锚点为中心拉伸。
+      <b>键盘</b>：← → 平移（加 Shift 一次 10 天）、↑ ↓ 高度、[ ] 时间比例、数字 1–5 选周期、Ctrl+Z 撤销。
+      变换：线 = 该轮「锚点后天数 × 时间比例 + 平移」对「相对锚点的对数涨跌 × 高度比例」；参考周期不动。每轮的线只画到前后两轮同类锚点为止，不会跑进别的周期。白圈 = 你确认过的点位和配对（鼠标停上去看是哪个）。
+    </div>
+  </section>
+  <aside>
+    <div class="sec">
+      <h3>对比设置</h3>
+      <div class="grid2">
+        <label>数据</label>
+        <select id="series"><option value="price">价格</option><option value="ahr">AHR999</option></select>
+        <label>锚点</label>
+        <select id="anchorType"><option value="peak">顶</option><option value="bottom">底</option><option value="halving">减半</option></select>
+        <label>参考周期</label>
+        <select id="reference"></select>
+        <label>锚点前天数</label>
+        <input id="pre" type="number" min="0" max="2500" step="10" />
+        <label>锚点后天数</label>
+        <input id="post" type="number" min="0" max="2500" step="10" />
+      </div>
+      <div class="presets" id="presets"></div>
+    </div>
+    <div class="sec">
+      <h3>周期（点名字选中要拖的那条）</h3>
+      <div id="cycleRows"></div>
+    </div>
+    <div class="sec">
+      <div class="grid2">
+        <label>显示</label>
+        <div>
+          <label><input id="showMarks" type="checkbox" /> 手标高低点</label>
+          <label style="margin-left:8px"><input id="showKeys" type="checkbox" /> 确认点 / 配对</label>
+        </div>
+        <label>纵轴</label>
+        <div><label><input id="lockY" type="checkbox" /> 锁定纵轴范围</label></div>
+        <label>视觉评分</label>
+        <select id="score">
+          <option value="">未评分</option><option value="5">5 很像</option><option value="4">4 可用</option>
+          <option value="3">3 一般</option><option value="2">2 勉强</option><option value="1">1 不像</option>
+        </select>
+      </div>
+      <textarea id="note" placeholder="备注：为什么像 / 哪里不像" style="margin-top:6px"></textarea>
+    </div>
+    <div class="sec">
+      <div class="tabs">
+        <button id="tabV20" class="on">v20 样本</button>
+        <button id="tabV19">v19 旧样本（6 月）</button>
+      </div>
+      <div id="sampleInfo" class="muted"></div>
+      <div id="sampleList"></div>
+    </div>
+  </aside>
+</main>
+<div id="toast"></div>
+<script>
+const DATA = __DATA_JSON__;
+const TOOL = "cycle_workbench_v20 (made by Claude)";
+const DAY = 86400000;
+const T0 = Date.parse(DATA.start + "T00:00:00Z");
+const N = DATA.price.length;
+const CYC = DATA.cycles;
+const STORE = "btc_cycle_workbench_v20_state";
+const STORE_SAMPLES = "btc_cycle_workbench_v20_samples";
+const API = location.protocol.startsWith("http") ? "" : "http://127.0.0.1:8766";
+const W = 1200, H = 700, M = { l: 66, r: 128, t: 34, b: 52 };
+const NS = "http://www.w3.org/2000/svg";
+const C = { surface: "#1a1a19", panel: "#222220", grid: "#2f2f2c", axis: "#a3a29b", text: "#f0efec", text2: "#c3c2b7", muted: "#8d8c86", zero: "#55554f" };
+const ANCHOR_NAME = { peak: "顶", bottom: "底", halving: "减半" };
+const SERIES_NAME = { price: "价格", ahr: "AHR999" };
+const PRESETS = [
+  ["顶前 1 年", "peak", 365, 0], ["顶 ±1 年", "peak", 365, 365], ["顶后 1 年", "peak", 0, 365], ["顶前 3 年→后 1 年", "peak", 1095, 400],
+  ["底前 1 年", "bottom", 365, 0], ["底 ±1 年", "bottom", 365, 365], ["底后 2 年", "bottom", 0, 730], ["底前 1 年→后 2 年", "bottom", 365, 730],
+  ["减半→顶", "halving", 60, 650], ["减半 ±2 年", "halving", 730, 730]
+];
+
+const svg = document.getElementById("chart");
+const tip = document.getElementById("tip");
+const $ = id => document.getElementById(id);
+
+function idxOf(d) { return Math.round((Date.parse(d + "T00:00:00Z") - T0) / DAY); }
+function dateOf(i) { return new Date(T0 + i * DAY).toISOString().slice(0, 10); }
+function arr() { return state.series === "ahr" ? DATA.ahr : DATA.price; }
+function valAt(i) { if (i < 0 || i >= N) return null; const v = arr()[i]; return v == null || v <= 0 ? null : v; }
+function cyc(id) { return CYC.find(c => c.id === id); }
+function fmtUsd(v) { return v >= 100 ? "$" + Math.round(v).toLocaleString() : "$" + v.toPrecision(3); }
+function fmtVal(i) {
+  const p = DATA.price[i], a = DATA.ahr[i];
+  return (p != null ? fmtUsd(p) : "-") + (a != null ? " · AHR " + a.toFixed(3) : "");
+}
+function fmtPct(y) { const p = (Math.exp(y) - 1) * 100; return (p > 0 ? "+" : "") + (Math.abs(p) >= 100 ? p.toFixed(0) : p.toFixed(1)) + "%"; }
+function r2(v) { return Math.round(v * 100) / 100; }
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+function el(parent, name, attrs = {}, text) {
+  const n = document.createElementNS(NS, name);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  if (text != null) n.textContent = text;
+  parent.appendChild(n);
+  return n;
+}
+function toast(msg, ms = 3500) {
+  const t = $("toast"); t.textContent = msg; t.style.display = "block";
+  clearTimeout(toast._h); toast._h = setTimeout(() => (t.style.display = "none"), ms);
+}
+
+// ---------- state ----------
+function defaultState() {
+  return {
+    series: "price", anchorType: "bottom", reference: "2025", pre: 365, post: 730, active: "2021",
+    showMarks: true, showKeys: true, lockY: false,
+    visible: { "2011": false, "2013": false, "2017": true, "2021": true, "2025": true },
+    anchors: Object.fromEntries(CYC.map(c => [c.id, { peak: c.peak, bottom: c.bottom, halving: c.halving }])),
+    params: {}
+  };
+}
+let state = loadState();
+function loadState() {
+  try {
+    const s = JSON.parse(localStorage.getItem(STORE));
+    if (s && s.anchors && s.params) return { ...defaultState(), ...s };
+  } catch (e) {}
+  return defaultState();
+}
+function persist() { localStorage.setItem(STORE, JSON.stringify(state)); }
+function pkey() { return state.reference + "|" + state.anchorType + "|" + state.series; }
+const IDENTITY = Object.freeze({ amp: 1, time: 1, shift: 0 });
+function P(cid) {
+  if (cid === state.reference) return IDENTITY;
+  const k = pkey();
+  state.params[k] = state.params[k] || {};
+  return (state.params[k][cid] = state.params[k][cid] || { amp: 1, time: 1, shift: 0 });
+}
+
+// undo
+const undoStack = [];
+let lastUndoAt = 0;
+function markUndo(force = false) {
+  const now = Date.now();
+  if (!force && now - lastUndoAt < 700) { lastUndoAt = now; return; }
+  lastUndoAt = now;
+  undoStack.push(JSON.stringify(state));
+  if (undoStack.length > 300) undoStack.shift();
+}
+function undo() {
+  if (!undoStack.length) { toast("没有可以撤销的操作"); return; }
+  state = JSON.parse(undoStack.pop());
+  lastUndoAt = 0;
+  persist(); yRange = null; renderAll();
+}
+
+// ---------- geometry ----------
+function geo(cid) {
+  const anchor = state.anchors[cid] && state.anchors[cid][state.anchorType];
+  if (!anchor) return null;
+  const ia = idxOf(anchor);
+  const va = valAt(ia);
+  if (va == null) return null;
+  return { cid, anchor, ia, va, p: P(cid) };
+}
+// A cycle's line stops at the neighbouring cycles' anchors of the same type, so a
+// compressed older cycle never runs into the next cycle's data (e.g. 2021 into 2025).
+function spanOf(cid) {
+  const k = CYC.findIndex(c => c.id === cid);
+  const prev = k > 0 ? state.anchors[CYC[k - 1].id][state.anchorType] : null;
+  const next = k < CYC.length - 1 ? state.anchors[CYC[k + 1].id][state.anchorType] : null;
+  return [prev ? idxOf(prev) : -Infinity, next ? idxOf(next) : Infinity];
+}
+function rowsOf(g) {
+  const { p } = g;
+  const [s0, s1] = spanOf(g.cid);
+  const lo = Math.floor((-state.pre - p.shift) / p.time) - 1;
+  const hi = Math.ceil((state.post - p.shift) / p.time) + 1;
+  const out = [];
+  for (let rel = lo; rel <= hi; rel++) {
+    if (g.ia + rel < s0 || g.ia + rel > s1) continue;
+    const v = valAt(g.ia + rel);
+    if (v == null) continue;
+    const x = rel * p.time + p.shift;
+    if (x < -state.pre || x > state.post) continue;
+    out.push({ i: g.ia + rel, rel, x, y: Math.log(v / g.va) * p.amp });
+  }
+  return out;
+}
+function yAtX(g, x) {
+  const rel = (x - g.p.shift) / g.p.time;
+  const r0 = Math.floor(rel), f = rel - r0;
+  const [s0, s1] = spanOf(g.cid);
+  if (g.ia + r0 < s0 || g.ia + r0 + 1 > s1) return null;
+  const a = valAt(g.ia + r0), b = valAt(g.ia + r0 + 1);
+  if (a == null || b == null) return null;
+  return ((1 - f) * Math.log(a / g.va) + f * Math.log(b / g.va)) * g.p.amp;
+}
+function fitStats(cid) {
+  const g = geo(cid), gr = geo(state.reference);
+  if (!g || !gr || cid === state.reference) return null;
+  let s = 0, n = 0;
+  for (let x = -state.pre; x <= state.post; x++) {
+    const vr = valAt(gr.ia + x);
+    if (vr == null) continue;
+    const y = yAtX(g, x);
+    if (y == null) continue;
+    const d = y - Math.log(vr / gr.va);
+    s += d * d; n++;
+  }
+  return n ? { rmse: Math.sqrt(s / n), n } : { rmse: null, n: 0 };
+}
+function visibleIds() { return CYC.map(c => c.id).filter(id => state.visible[id] || id === state.reference); }
+function draggableIds() { return visibleIds().filter(id => id !== state.reference); }
+
+// ---------- scales ----------
+let yRange = null, dragging = null, hoverX = null, timeMode = false;
+function setTimeMode(on) { timeMode = on; $("timeModeBtn").classList.toggle("on", on); }
+function computeYRange() {
+  let lo = Infinity, hi = -Infinity;
+  for (const id of visibleIds()) {
+    const g = geo(id); if (!g) continue;
+    for (const r of rowsOf(g)) { if (r.y < lo) lo = r.y; if (r.y > hi) hi = r.y; }
+  }
+  if (!isFinite(lo)) { lo = -0.5; hi = 0.5; }
+  if (hi - lo < 0.2) { const m = (hi + lo) / 2; lo = m - 0.1; hi = m + 0.1; }
+  const pad = (hi - lo) * 0.06;
+  return [lo - pad, hi + pad];
+}
+function px(x) { return M.l + (x + state.pre) / Math.max(1, state.pre + state.post) * (W - M.l - M.r); }
+function invx(X) { return (X - M.l) / (W - M.l - M.r) * Math.max(1, state.pre + state.post) - state.pre; }
+function py(y) { return M.t + (yRange[1] - y) / (yRange[1] - yRange[0]) * (H - M.t - M.b); }
+function invy(Y) { return yRange[1] - (Y - M.t) / (H - M.t - M.b) * (yRange[1] - yRange[0]); }
+const PCT_TICKS = [-0.95, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.5, 0.75, 1, 1.5, 2, 3, 4, 6, 9, 14, 19, 29, 49, 99];
+const RATIO_TICKS = [1e-4, 3e-4, 1e-3, 3e-3, 0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30, 100, 300, 1000, 3000];
+// Small ranges: percent vs the anchor. Big ranges (old cycles, AHR): multiples of the anchor value.
+function yTicks() {
+  const inRange = y => y >= yRange[0] && y <= yRange[1];
+  if (yRange[1] - yRange[0] > 3.2) {
+    let t = RATIO_TICKS.filter(r => inRange(Math.log(r)));
+    while (t.length > 11) t = t.filter((r, k) => k % 2 === 0 || r === 1);
+    return t.map(r => [Math.log(r), r === 1 ? "锚点" : "×" + r]);
+  }
+  let t = PCT_TICKS.map(p => Math.log(1 + p)).filter(inRange);
+  while (t.length > 11) t = t.filter((y, k) => k % 2 === 0 || Math.abs(y) < 1e-9);
+  return t.map(y => [y, Math.abs(y) < 1e-9 ? "锚点" : fmtPct(y)]);
+}
+function xStep(span) { for (const s of [10, 20, 30, 50, 100, 150, 200, 250, 365, 500]) if (span / s <= 12) return s; return 730; }
+
+// ---------- drawing ----------
+let rafPending = false;
+function requestDraw() { if (!rafPending) { rafPending = true; requestAnimationFrame(() => { rafPending = false; draw(); }); } }
+function draw() {
+  if (!yRange || (!dragging && !state.lockY)) yRange = computeYRange();
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  el(svg, "rect", { x: 0, y: 0, width: W, height: H, fill: C.panel });
+  const gGrid = el(svg, "g");
+  // y grid + labels
+  for (const [y, label] of yTicks()) {
+    const Y = py(y);
+    el(gGrid, "line", { x1: M.l, x2: W - M.r, y1: Y, y2: Y, stroke: Math.abs(y) < 1e-9 ? C.zero : C.grid, "stroke-width": 1 });
+    el(gGrid, "text", { x: M.l - 8, y: Y + 4, "text-anchor": "end", fill: C.axis, "font-size": 11 }, label);
+  }
+  // x grid + labels (with the reference cycle's calendar date)
+  const step = xStep(state.pre + state.post);
+  const gr = geo(state.reference);
+  for (let x = Math.ceil(-state.pre / step) * step; x <= state.post; x += step) {
+    const X = px(x);
+    el(gGrid, "line", { x1: X, x2: X, y1: M.t, y2: H - M.b, stroke: x === 0 ? C.zero : C.grid, "stroke-width": 1, "stroke-dasharray": x === 0 ? "4 4" : "" });
+    el(gGrid, "text", { x: X, y: H - M.b + 16, "text-anchor": "middle", fill: C.axis, "font-size": 11 }, x === 0 ? "0" : (x > 0 ? "+" : "") + x + "天");
+    if (gr) el(gGrid, "text", { x: X, y: H - M.b + 30, "text-anchor": "middle", fill: C.muted, "font-size": 10 }, dateOf(gr.ia + x).slice(2));
+  }
+  el(gGrid, "text", { x: M.l, y: H - 8, fill: C.muted, "font-size": 10 },
+    "横轴：相对" + ANCHOR_NAME[state.anchorType] + "的天数（第二行 = 参考周期 " + state.reference + " 的日期）；纵轴：相对锚点的" + SERIES_NAME[state.series] + "涨跌（对数刻度）");
+
+  // caption (kept in the saved PNG)
+  const cap = [SERIES_NAME[state.series], "锚点 " + ANCHOR_NAME[state.anchorType], "前 " + state.pre + " / 后 " + state.post + " 天", "参考 " + state.reference + " (" + (gr ? gr.anchor : "-") + ")"];
+  el(svg, "text", { x: M.l, y: 20, fill: C.text2, "font-size": 12 }, "v20 · " + cap.join(" · "));
+  el(svg, "text", { x: W - 8, y: 20, "text-anchor": "end", fill: C.muted, "font-size": 10 }, "Claude 制作的工作台 · 数据至 " + DATA.end);
+
+  const order = visibleIds().filter(id => id !== state.reference && id !== state.active);
+  if (state.active !== state.reference && state.visible[state.active]) order.push(state.active);
+  order.push(state.reference);
+  const ends = [], placed = [];
+  const gLines = el(svg, "g");
+  for (const id of order) {
+    const g = geo(id); if (!g) continue;
+    const rows = rowsOf(g); if (rows.length < 2) continue;
+    const c = cyc(id);
+    const isRef = id === state.reference, isAct = id === state.active && !isRef;
+    let d = "";
+    let prevI = null;
+    for (const r of rows) {
+      d += (prevI !== null && r.i === prevI + 1 ? "L" : "M") + px(r.x).toFixed(1) + "," + py(r.y).toFixed(1);
+      prevI = r.i;
+    }
+    el(gLines, "path", { d, fill: "none", stroke: C.panel, "stroke-width": isRef ? 5 : 4, "stroke-linejoin": "round", opacity: 0.9 });
+    el(gLines, "path", { d, fill: "none", stroke: c.color, "stroke-width": isRef ? 2.6 : isAct ? 2.2 : 1.6, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: isRef || isAct ? 1 : 0.85 });
+    // marks
+    const lo = rows[0].i, hi = rows[rows.length - 1].i;
+    for (const m of DATA.marks) {
+      const mi = idxOf(m.date);
+      if (mi < lo || mi > hi) continue;
+      const v = valAt(mi); if (v == null) continue;
+      const X = px((mi - g.ia) * g.p.time + g.p.shift), Y = py(Math.log(v / g.va) * g.p.amp);
+      if (m.type === "K") {
+        if (!state.showKeys) continue;
+        const ring = el(gLines, "circle", { cx: X, cy: Y, r: 7, fill: "none", stroke: C.text, "stroke-width": 1.8 });
+        el(ring, "title", {}, m.date + " " + m.label);
+        if (!placed.some(b => Math.abs(b[0] - X) < 52 && Math.abs(b[1] - Y) < 13)) {
+          placed.push([X, Y]);
+          el(gLines, "text", { x: X + 9, y: Y - 8, fill: C.text2, "font-size": 10 }, m.date.slice(2));
+        }
+      } else if (state.showMarks) {
+        el(gLines, "circle", { cx: X, cy: Y, r: 4, fill: m.type === "H" ? c.color : C.panel, stroke: m.type === "H" ? C.panel : c.color, "stroke-width": m.type === "H" ? 1.5 : 2 });
+      }
+    }
+    const last = rows[rows.length - 1];
+    ends.push({ id, X: px(last.x), Y: py(last.y), color: c.color, label: c.id + (isRef ? " 参考" : ""), i: last.i, isRef });
+  }
+  // today marker on the reference line
+  const refEnd = ends.find(e => e.isRef);
+  if (refEnd && refEnd.i === N - 1) {
+    el(svg, "circle", { cx: refEnd.X, cy: refEnd.Y, r: 5, fill: cyc(state.reference).color, stroke: C.text, "stroke-width": 1.5 });
+    el(svg, "text", { x: refEnd.X + 9, y: refEnd.Y + 4, fill: C.text, "font-size": 11 }, "今天 " + DATA.end.slice(5));
+  }
+  // direct labels at the line ends, nudged apart
+  ends.sort((a, b) => a.Y - b.Y);
+  for (let k = 1; k < ends.length; k++) if (ends[k].Y - ends[k - 1].Y < 15) ends[k].Y = ends[k - 1].Y + 15;
+  const LX = W - M.r + 8;
+  for (const e of ends) {
+    el(svg, "rect", { x: LX, y: e.Y - 5, width: 10, height: 10, rx: 2, fill: e.color });
+    el(svg, "text", { x: LX + 14, y: e.Y + 4, fill: C.text, "font-size": 11 }, e.label);
+  }
+  // hover crosshair
+  if (hoverX != null && !dragging) {
+    const X = px(hoverX);
+    el(svg, "line", { x1: X, x2: X, y1: M.t, y2: H - M.b, stroke: C.muted, "stroke-width": 1, "stroke-dasharray": "3 3" });
+  }
+  updateStatus();
+}
+
+function updateStatus() {
+  const id = state.active;
+  if (!id || id === state.reference || !state.visible[id]) { $("status").textContent = "参考周期 " + state.reference + "（不动）"; return; }
+  const p = P(id), f = fitStats(id);
+  $("status").textContent = (dragging ? "拖动中 · " : "当前 · ") + cyc(id).label + " · 高度 " + p.amp.toFixed(2) + " · 时间 " + p.time.toFixed(2) +
+    " · 平移 " + (p.shift > 0 ? "+" : "") + p.shift + " 天" + (f && f.rmse != null ? " · RMSE " + f.rmse.toFixed(3) + "（" + f.n + " 天重叠）" : "");
+}
+
+// ---------- side panel ----------
+function renderControls() {
+  $("series").value = state.series; $("anchorType").value = state.anchorType;
+  $("pre").value = state.pre; $("post").value = state.post;
+  $("showMarks").checked = state.showMarks; $("showKeys").checked = state.showKeys; $("lockY").checked = state.lockY;
+  const ref = $("reference");
+  ref.innerHTML = CYC.map(c => `<option value="${c.id}">${c.label}</option>`).join("");
+  ref.value = state.reference;
+  $("presets").innerHTML = PRESETS.map((p, k) => `<button class="small" data-k="${k}">${p[0]}</button>`).join("");
+  $("presets").querySelectorAll("button").forEach(b => b.onclick = () => {
+    const p = PRESETS[+b.dataset.k];
+    markUndo(true); state.anchorType = p[1]; state.pre = p[2]; state.post = p[3];
+    persist(); yRange = null; renderAll();
+  });
+}
+function renderCycleRows() {
+  const box = $("cycleRows");
+  box.innerHTML = CYC.map((c, k) => {
+    const isRef = c.id === state.reference;
+    const anchor = state.anchors[c.id][state.anchorType];
+    const ia = anchor ? idxOf(anchor) : null;
+    const prm = (key, label, min, max, step) => `<div class="prm"><span class="muted">${label}</span>
+      <input type="range" data-p="${key}" min="${min}" max="${max}" step="${step}" />
+      <input type="number" data-n="${key}" min="${min}" max="${max}" step="${step}" /></div>`;
+    return `<div class="cyc${c.id === state.active && !isRef ? " active" : ""}" data-id="${c.id}">
+      <div class="cyc-head">
+        <span class="sw" style="background:${c.color}"></span>
+        <span class="name" role="button" style="cursor:pointer">${k + 1} · ${c.label}</span>
+        ${isRef ? '<span class="tag">参考，不动</span>' : `<label class="muted"><input type="checkbox" class="vis" ${state.visible[c.id] ? "checked" : ""}/> 显示</label>`}
+        ${isRef ? "" : '<button class="small reset">重置</button>'}
+      </div>
+      <div class="muted" style="margin-top:3px">${ANCHOR_NAME[state.anchorType]}：
+        ${state.anchorType === "halving" && !c.halving ? "这一轮没有减半" :
+          `<input type="date" class="anchor" value="${anchor || ""}" /> ${ia != null && DATA.price[ia] != null ? fmtVal(ia) : "无数据"}`}
+      </div>
+      ${isRef ? "" : prm("amp", "高度", 0.05, 2.5, 0.01) + prm("time", "时间", 0.3, 2.5, 0.01) + prm("shift", "平移", -900, 900, 1)}
+      ${isRef ? "" : '<div class="muted fit" style="margin-top:2px"></div>'}
+      ${c.note ? `<div class="muted" style="font-size:11px;margin-top:2px">${c.note}</div>` : ""}
+    </div>`;
+  }).join("");
+  box.querySelectorAll(".cyc").forEach(node => {
+    const id = node.dataset.id;
+    node.querySelector(".name").onclick = () => { if (id !== state.reference) { state.active = id; state.visible[id] = true; persist(); renderAll(); } };
+    const vis = node.querySelector(".vis");
+    if (vis) vis.onchange = () => { markUndo(true); state.visible[id] = vis.checked; persist(); yRange = null; renderAll(); };
+    const rs = node.querySelector(".reset");
+    if (rs) rs.onclick = () => { markUndo(true); Object.assign(P(id), { amp: 1, time: 1, shift: 0 }); persist(); yRange = null; renderAll(); };
+    const an = node.querySelector(".anchor");
+    if (an) an.onchange = () => {
+      if (!an.value) return;
+      markUndo(true); state.anchors[id][state.anchorType] = an.value; persist(); yRange = null; renderAll();
+    };
+    node.querySelectorAll("input[data-p], input[data-n]").forEach(inp => {
+      const key = inp.dataset.p || inp.dataset.n;
+      inp.oninput = () => {
+        const v = +inp.value; if (!isFinite(v)) return;
+        markUndo(); state.active = id; P(id)[key] = key === "shift" ? Math.round(v) : r2(v);
+        persist(); syncCycleValues(); requestDraw();
+      };
+      inp.onchange = () => { yRange = null; requestDraw(); };
+    });
+  });
+  syncCycleValues();
+}
+function syncCycleValues() {
+  $("cycleRows").querySelectorAll(".cyc").forEach(node => {
+    const id = node.dataset.id;
+    node.classList.toggle("active", id === state.active && id !== state.reference);
+    if (id === state.reference) return;
+    const p = P(id);
+    node.querySelectorAll("input[data-p]").forEach(i => { if (document.activeElement !== i) i.value = p[i.dataset.p]; });
+    node.querySelectorAll("input[data-n]").forEach(i => { if (document.activeElement !== i) i.value = i.dataset.n === "shift" ? p.shift : p[i.dataset.n].toFixed(2); });
+    const f = fitStats(id), fit = node.querySelector(".fit");
+    if (fit) fit.textContent = f && f.rmse != null ? `RMSE ${f.rmse.toFixed(3)} · 与参考重叠 ${f.n} 天` : "和参考周期没有重叠";
+  });
+}
+function renderAll() { renderControls(); renderCycleRows(); draw(); renderSamples(); }
+
+["series", "anchorType", "reference"].forEach(id => $(id).onchange = () => {
+  markUndo(true); state[id] = $(id).value;
+  if (id === "reference" && state.active === state.reference) state.active = draggableIds()[0] || state.active;
+  persist(); yRange = null; renderAll();
+});
+["pre", "post"].forEach(id => $(id).onchange = () => {
+  const v = clamp(Math.round(+$(id).value || 0), 0, 2500); markUndo(true); state[id] = v; persist(); yRange = null; renderAll();
+});
+["showMarks", "showKeys", "lockY"].forEach(id => $(id).onchange = () => { state[id] = $(id).checked; persist(); yRange = null; draw(); });
+
+// ---------- drag on the chart ----------
+function svgPoint(ev) {
+  const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+  return pt.matrixTransform(svg.getScreenCTM().inverse());
+}
+function nearestLine(X, Y) {
+  let best = null;
+  for (const id of draggableIds()) {
+    const g = geo(id); if (!g) continue;
+    const y = yAtX(g, invx(X)); if (y == null) continue;
+    const d = Math.abs(py(y) - Y);
+    if (d < 14 && (!best || d < best.d)) best = { id, d };
+  }
+  return best && best.id;
+}
+svg.addEventListener("pointerdown", ev => {
+  const pt = svgPoint(ev);
+  if (pt.x < M.l || pt.x > W - M.r || pt.y < M.t || pt.y > H - M.b) return;
+  const hit = nearestLine(pt.x, pt.y);
+  if (hit) state.active = hit;
+  if (!draggableIds().includes(state.active)) { state.active = draggableIds()[0]; if (!state.active) return; }
+  markUndo(true);
+  const p = P(state.active);
+  dragging = { id: state.active, mode: ev.shiftKey || timeMode ? "time" : "pending", X0: pt.x, Y0: pt.y, x0: invx(pt.x), y0: invy(pt.y), p0: { ...p } };
+  svg.setPointerCapture(ev.pointerId);
+  svg.classList.add("dragging");
+  tip.style.display = "none";
+  syncCycleValues(); requestDraw();
+});
+svg.addEventListener("pointermove", ev => {
+  const pt = svgPoint(ev);
+  if (!dragging) { hover(ev, pt); return; }
+  const d = dragging, p = P(d.id);
+  const dX = pt.x - d.X0, dY = pt.y - d.Y0;
+  if (d.mode === "pending" && Math.hypot(dX, dY) > 5) d.mode = Math.abs(dX) >= Math.abs(dY) ? "shift" : "amp";
+  const x = invx(pt.x), y = invy(pt.y);
+  if (d.mode === "shift") p.shift = Math.round(d.p0.shift + (x - d.x0));
+  if (d.mode === "amp") {
+    const ratio = Math.abs(d.y0) > 0.04 && Math.sign(y) === Math.sign(d.y0) ? y / d.y0 : Math.exp(-dY / 220);
+    p.amp = r2(clamp(d.p0.amp * ratio, 0.05, 2.5));
+  }
+  if (d.mode === "time") {
+    const ax = d.p0.shift;
+    const ratio = Math.abs(d.x0 - ax) > 10 && (x - ax) / (d.x0 - ax) > 0 ? (x - ax) / (d.x0 - ax) : Math.exp(dX / 300);
+    p.time = r2(clamp(d.p0.time * ratio, 0.3, 2.5));
+  }
+  syncCycleValues(); requestDraw();
+});
+function endDrag() {
+  if (!dragging) return;
+  const p = P(dragging.id), p0 = dragging.p0;
+  if (p.amp === p0.amp && p.time === p0.time && p.shift === p0.shift) undoStack.pop();
+  dragging = null; svg.classList.remove("dragging");
+  persist(); yRange = null; syncCycleValues(); requestDraw();
+}
+svg.addEventListener("pointerup", endDrag);
+svg.addEventListener("pointercancel", endDrag);
+svg.addEventListener("pointerleave", () => { if (!dragging) { hoverX = null; tip.style.display = "none"; requestDraw(); } });
+
+function hover(ev, pt) {
+  if (pt.x < M.l || pt.x > W - M.r || pt.y < M.t || pt.y > H - M.b) { hoverX = null; tip.style.display = "none"; requestDraw(); return; }
+  hoverX = Math.round(invx(pt.x));
+  const rows = [];
+  for (const id of visibleIds()) {
+    const g = geo(id); if (!g) continue;
+    const rel = Math.round((hoverX - g.p.shift) / g.p.time);
+    const i = g.ia + rel, v = valAt(i);
+    const [s0, s1] = spanOf(id);
+    if (v == null || i < s0 || i > s1) continue;
+    rows.push(`<div class="row"><span class="sw" style="background:${cyc(id).color}"></span><span>${id}</span>
+      <span class="muted">${dateOf(i)}</span><span>${fmtVal(i)}</span><span class="muted">${fmtPct(Math.log(v / g.va))}</span></div>`);
+  }
+  const hit = nearestLine(pt.x, pt.y);
+  tip.innerHTML = `<div class="muted">横轴 ${hoverX > 0 ? "+" : ""}${hoverX} 天${hit ? " · 按住可拖 " + hit : ""}</div>` + rows.join("");
+  const wrap = $("chartWrap").getBoundingClientRect();
+  let left = ev.clientX - wrap.left + 14, top = ev.clientY - wrap.top + 14;
+  tip.style.display = "block";
+  if (left + tip.offsetWidth > wrap.width - 4) left = ev.clientX - wrap.left - tip.offsetWidth - 14;
+  if (top + tip.offsetHeight > wrap.height - 4) top = ev.clientY - wrap.top - tip.offsetHeight - 14;
+  tip.style.left = left + "px"; tip.style.top = top + "px";
+  requestDraw();
+}
+
+document.addEventListener("keydown", ev => {
+  const tag = (ev.target.tagName || "").toLowerCase();
+  if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "z") { if (tag !== "textarea" && tag !== "input") { ev.preventDefault(); undo(); } return; }
+  if (["input", "textarea", "select"].includes(tag)) return;
+  if (/^[1-5]$/.test(ev.key)) {
+    const id = CYC[+ev.key - 1].id;
+    if (id !== state.reference) { state.active = id; state.visible[id] = true; persist(); yRange = null; renderAll(); }
+    return;
+  }
+  if (ev.key === "t" || ev.key === "T") { setTimeMode(!timeMode); return; }
+  const id = state.active;
+  if (!draggableIds().includes(id)) return;
+  if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "[", "]", "{", "}"].includes(ev.key)) return;
+  markUndo();
+  const p = P(id), big = ev.shiftKey;
+  let used = true;
+  if (ev.key === "ArrowLeft") p.shift -= big ? 10 : 1;
+  else if (ev.key === "ArrowRight") p.shift += big ? 10 : 1;
+  else if (ev.key === "ArrowUp") p.amp = r2(clamp(p.amp + (big ? 0.05 : 0.01), 0.05, 2.5));
+  else if (ev.key === "ArrowDown") p.amp = r2(clamp(p.amp - (big ? 0.05 : 0.01), 0.05, 2.5));
+  else if (ev.key === "]" || ev.key === "}") p.time = r2(clamp(p.time + (big ? 0.05 : 0.01), 0.3, 2.5));
+  else if (ev.key === "[" || ev.key === "{") p.time = r2(clamp(p.time - (big ? 0.05 : 0.01), 0.3, 2.5));
+  else used = false;
+  if (used) { ev.preventDefault(); persist(); syncCycleValues(); requestDraw(); }
+});
+$("undoBtn").onclick = undo;
+$("timeModeBtn").onclick = () => setTimeMode(!timeMode);
+
+// ---------- samples ----------
+let samples = [];
+try { samples = JSON.parse(localStorage.getItem(STORE_SAMPLES)) || []; } catch (e) { samples = []; }
+let serverLoaded = false, v19 = [], tab = "v20";
+function persistSamples() { localStorage.setItem(STORE_SAMPLES, JSON.stringify(samples)); }
+async function loadServer() {
+  try {
+    const r = await fetch(API + "/samples"); const j = await r.json();
+    if (!r.ok || !j.ok) return false;
+    const known = new Set(samples.map(s => s.id));
+    for (const s of j.samples || []) if (!known.has(s.id)) samples.push(s);
+    samples.sort((a, b) => String(a.saved_at).localeCompare(String(b.saved_at)));
+    persistSamples(); serverLoaded = true;
+    try { const r2_ = await fetch(API + "/v19_samples"); const j2 = await r2_.json(); v19 = j2.samples || []; } catch (e) {}
+    renderSamples();
+    return true;
+  } catch (e) { return false; }
+}
+async function svgToPng(scale = 2) {
+  const xml = new XMLSerializer().serializeToString(svg);
+  const url = URL.createObjectURL(new Blob([xml], { type: "image/svg+xml;charset=utf-8" }));
+  const img = new Image();
+  await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = url; });
+  const cv = document.createElement("canvas"); cv.width = W * scale; cv.height = H * scale;
+  const ctx = cv.getContext("2d"); ctx.scale(scale, scale); ctx.drawImage(img, 0, 0, W, H);
+  URL.revokeObjectURL(url);
+  return cv.toDataURL("image/png");
+}
+async function pushToServer(snapshot) {
+  if (!serverLoaded) await loadServer();
+  const r = await fetch(API + "/save", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ version: "v20", tool: TOOL, samples, snapshot }) });
+  const j = await r.json();
+  if (!r.ok || !j.ok) throw new Error(j.error || "save failed");
+  return j;
+}
+function currentRecord() {
+  const gr = geo(state.reference);
+  const now = new Date();
+  return {
+    id: "s" + now.getTime(), saved_at: now.toISOString(), tool: TOOL, data_end: DATA.end,
+    series: state.series, anchor_type: state.anchorType, pre_days: state.pre, post_days: state.post,
+    reference: state.reference, reference_anchor: gr ? gr.anchor : null,
+    cycles: visibleIds().map(id => {
+      const p = P(id), f = fitStats(id);
+      return { id, anchor: state.anchors[id][state.anchorType], amp: p.amp, time: p.time, shift: p.shift,
+        rmse: f && f.rmse != null ? +f.rmse.toFixed(4) : null, overlap_days: f ? f.n : null, is_reference: id === state.reference };
+    }),
+    visual_score: $("score").value, note: $("note").value.trim()
+  };
+}
+$("saveBtn").onclick = async () => {
+  const rec = currentRecord();
+  hoverX = null; draw();
+  let png = null; try { png = await svgToPng(); } catch (e) {}
+  samples.push(rec); persistSamples(); renderSamples();
+  try {
+    const j = await pushToServer(png ? { id: rec.id, png } : null);
+    toast(`已保存到项目文件（共 ${j.samples} 个样本）\n${j.json}` + (j.snapshot ? `\n图：${j.snapshot}` : ""), 6000);
+  } catch (e) {
+    toast("样本只存在了浏览器里，项目文件没写进去：请先运行 workbench_server_v20.py，再点一次保存。", 8000);
+  }
+};
+function loadRecord(s) {
+  markUndo(true);
+  state.series = s.series || "price"; state.anchorType = s.anchor_type; state.pre = +s.pre_days; state.post = +s.post_days;
+  state.reference = s.reference;
+  for (const id of Object.keys(state.visible)) state.visible[id] = false;
+  const k = pkey(); state.params[k] = state.params[k] || {};
+  for (const c of s.cycles) {
+    if (!state.anchors[c.id]) continue;
+    if (c.anchor) state.anchors[c.id][state.anchorType] = c.anchor;
+    state.visible[c.id] = true;
+    if (c.id !== s.reference) state.params[k][c.id] = { amp: +c.amp, time: +c.time, shift: +c.shift };
+  }
+  state.active = s.cycles.map(c => c.id).find(id => id !== s.reference) || state.active;
+  $("score").value = s.visual_score || ""; $("note").value = s.note || "";
+  persist(); yRange = null; renderAll();
+}
+function v19ToRecord(s) {
+  return { series: "price", anchor_type: s.anchor_type, pre_days: s.pre_days, post_days: s.post_days, reference: String(s.right_cycle),
+    cycles: [{ id: String(s.right_cycle), anchor: s.right_anchor }, { id: String(s.left_cycle), anchor: s.left_anchor, amp: s.amp_scale, time: s.time_scale, shift: s.shift_days }],
+    visual_score: s.visual_score || "", note: (s.note || "") + (s.right_anchor === "2025-10-05" ? "（v19 这条用的是 10-05 旧顶）" : "") };
+}
+function renderSamples() {
+  $("tabV20").classList.toggle("on", tab === "v20"); $("tabV19").classList.toggle("on", tab === "v19");
+  const box = $("sampleList");
+  if (tab === "v19") {
+    $("sampleInfo").textContent = serverLoaded ? `6 月在 v19 存的 ${v19.length} 个样本（只读，点「载入」看它在新工作台里的样子）` : "开着 workbench_server_v20.py 才能读到 v19 旧样本";
+    box.innerHTML = v19.map((s, k) => `<div class="sample"><div class="meta">${s.left_cycle}→${s.right_cycle} · ${ANCHOR_NAME[s.anchor_type] || s.anchor_type} · 前 ${s.pre_days} / 后 ${s.post_days}</div>
+      <div class="muted">${s.left_anchor} → ${s.right_anchor} · 高度 ${(+s.amp_scale).toFixed(2)} · 时间 ${(+s.time_scale).toFixed(2)} · 平移 ${s.shift_days} · RMSE ${s.rmse ?? "-"}</div>
+      <div class="btns"><button class="small" data-k="${k}">载入</button></div></div>`).join("");
+    box.querySelectorAll("button[data-k]").forEach(b => b.onclick = () => loadRecord(v19ToRecord(v19[+b.dataset.k])));
+    return;
+  }
+  $("sampleInfo").textContent = samples.length ? `共 ${samples.length} 个（项目文件：cycle_workbench_v20_samples.json）` + (serverLoaded ? "" : " · 未连上保存服务") : "还没有样本：把图拖到你觉得像，再点「保存样本」。";
+  box.innerHTML = samples.slice().reverse().map(s => {
+    const parts = s.cycles.filter(c => !c.is_reference).map(c => `${c.id}：高 ${(+c.amp).toFixed(2)} 时 ${(+c.time).toFixed(2)} 移 ${c.shift}${c.rmse != null ? " · " + (+c.rmse).toFixed(3) : ""}`);
+    return `<div class="sample"><div class="meta">${s.saved_at.slice(0, 16).replace("T", " ")} · ${SERIES_NAME[s.series]} · ${ANCHOR_NAME[s.anchor_type]} · 前 ${s.pre_days}/后 ${s.post_days} · 参考 ${s.reference}${s.visual_score ? " · 评分 " + s.visual_score : ""}</div>
+      <div class="muted">${parts.join("<br>")}</div>${s.note ? `<div class="muted">备注：${s.note}</div>` : ""}
+      <div class="btns"><button class="small" data-load="${s.id}">载入</button>${serverLoaded ? `<a class="small" href="${API}/snapshots/${s.id}.png" target="_blank" style="color:#86b6ef">看图</a>` : ""}
+      <button class="small danger" data-del="${s.id}">删除</button></div></div>`;
+  }).join("");
+  box.querySelectorAll("button[data-load]").forEach(b => b.onclick = () => loadRecord(samples.find(s => s.id === b.dataset.load)));
+  box.querySelectorAll("button[data-del]").forEach(b => b.onclick = async () => {
+    if (!confirm("删除这个样本？（项目文件里也会删掉，备份目录里还留着）")) return;
+    samples = samples.filter(s => s.id !== b.dataset.del); persistSamples(); renderSamples();
+    try { await pushToServer(null); } catch (e) { toast("只在浏览器里删了，保存服务没开"); }
+  });
+}
+$("tabV20").onclick = () => { tab = "v20"; renderSamples(); };
+$("tabV19").onclick = () => { tab = "v19"; renderSamples(); };
+
+// ---------- exports ----------
+function download(name, data, type) {
+  const a = document.createElement("a");
+  a.href = typeof data === "string" && data.startsWith("data:") ? data : URL.createObjectURL(new Blob([data], { type }));
+  a.download = name; document.body.appendChild(a); a.click(); a.remove();
+}
+$("pngBtn").onclick = async () => { hoverX = null; draw(); download(`cycle_v20_${state.anchorType}_${state.reference}.png`, await svgToPng(), "image/png"); };
+$("csvBtn").onclick = () => {
+  const ids = visibleIds(), gs = ids.map(geo);
+  const head = ["x_day", "ref_date"].concat(...ids.map(id => [id + "_date", id + "_price", id + "_ahr", id + "_y"]));
+  const lines = [head.join(",")];
+  const gr = geo(state.reference);
+  for (let x = -state.pre; x <= state.post; x++) {
+    const row = [x, gr ? dateOf(gr.ia + x) : ""];
+    gs.forEach(g => {
+      if (!g) { row.push("", "", "", ""); return; }
+      const i = g.ia + Math.round((x - g.p.shift) / g.p.time), y = yAtX(g, x);
+      row.push(i >= 0 && i < N ? dateOf(i) : "", DATA.price[i] ?? "", DATA.ahr[i] ?? "", y == null ? "" : y.toFixed(5));
+    });
+    lines.push(row.join(","));
+  }
+  download(`cycle_v20_${state.anchorType}_${state.reference}.csv`, "﻿" + lines.join("\n"), "text/csv");
+};
+
+$("dataInfo").textContent = `价格 ${DATA.start} → ${DATA.end}（末行可能是当天盘中价）；${DATA.fred_start} 起 FRED，之前 CryptoCompare（2014-02 Mt.Gox 崩盘的 ${DATA.despiked.length} 天用插值）；AHR999 按项目 signals 公式。页面生成 ${DATA.built_at}。`;
+renderAll();
+loadServer();
+</script>
+</body>
+</html>
